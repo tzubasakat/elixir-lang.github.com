@@ -1,5 +1,5 @@
 ---
-title: "Installing Elixir"
+title: "Elixir をインストール"
 section: install
 layout: default
 ---
@@ -103,9 +103,9 @@ Elixir はリリースごとにプリコンパイル済みパッケージをご�
   * [kiex](https://github.com/taylor/kiex) - 〃
   * [kerl](https://github.com/yrashk/kerl) - 〃
 
-Keep in mind that each Elixir version supports specific Erlang/OTP versions. [Check the compatibility table](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#compatibility-between-elixir-and-erlang-otp) if you have questions or run into issues.
+いずれのElixirのバージョンも、特定のErlang/OTPのバージョンをサポートしているということを忘れないでください。もし質問や、使っていて問題があった場合は、[互換性表](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#compatibility-between-elixir-and-erlang-otp)を確認してください。
 
-If you would prefer to compile from source manually, don't worry, we got your back too.
+もしソースから手でコンパイルする方が好みの場合でも、心配しないでください、私達がついています。
 
 ## ソースファイルから直接コンパイルする (UNIX 系や MinGW)
 
