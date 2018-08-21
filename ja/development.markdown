@@ -6,11 +6,11 @@ layout: default
 
 # {{ page.title }}
 
-In this section we outline the language's past and future development.
+このセクションでは、Elixir が歩んできたこれまでの過去と、今後の開発における未来についてお話しましょう。
 
-[Plataformatec](http://plataformatec.com.br/), a software consultancy, created Elixir in 2012 as a Research and Development project led by José Valim. Elixir's goal is to be a productive language for writing maintainable and reliable software.
+2012 年。Elixir は、ソフトウェアコンサルティング事業を行っている[Plataformatec](http://plataformatec.com.br/)社にて、その共同設立者のうち一人であるジョゼ・ヴァリム(José Valim)氏の総指揮のもと、研究開発プロジェクトとして作成されました。Elixir は、生産性と保守性の高いコード、そして信頼性の高いソフトウェア開発を目標にして生まれた言語です。
 
-Elixir runs on top of the Erlang Virtual Machine, which provides a scalable and fault-tolerant foundation. Elixir was designed to leverage this foundation without performance costs and aims to contribute to the wider ecosystem whenever possible.
+Elixir は Erlang 仮想マシン上で実行される、高い拡張性と堅牢性を兼ね備えており、パフォーマンスの為に高コストを費やすことなくそれらを実現できること、そして可能な際には必ず広範なエコシステムを提供することを目標として設計されています。
 
 Elixir's source code is under the [Apache 2 License](https://github.com/elixir-lang/elixir/blob/master/LICENSE) and is maintained by the Elixir Core team, composed of six members: Aleksei Magusev, Andrea Leopardi, Eric Meadows-Jönsson, James Fish, José Valim, and Michał Muskała. The Elixir team works towards an even understanding of the Elixir codebase across all members so it never depends on a single person. The source code and information for contributors can be found on [the language repository](https://github.com/elixir-lang/elixir). 
 
