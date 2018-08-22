@@ -10,9 +10,9 @@ layout: default
 
 2012 年。Elixir は、ソフトウェアコンサルティング事業を行っている[Plataformatec](http://plataformatec.com.br/)社にて、その共同設立者のうち一人であるジョゼ・ヴァリム(José Valim)氏の総指揮のもと、研究開発プロジェクトとして作成されました。Elixir は、生産性と保守性の高いコード、そして信頼性の高いソフトウェア開発を目標にして生まれた言語です。
 
-Elixir は Erlang 仮想マシン上で実行される、高い拡張性と堅牢性を兼ね備えており、パフォーマンスの為に高コストを費やすことなくそれらを実現できること、そして可能な際には必ず広範なエコシステムを提供することを目標として設計されています。
+Elixir は Erlang 仮想マシン上で実行されます。高い拡張性と堅牢性を兼ね備えており、パフォーマンスの為に高コストを費やすことなくそれらを実現できること、そして可能な際には必ず広範なエコシステムを提供することを目標として設計されています。
 
-Elixir's source code is under the [Apache 2 License](https://github.com/elixir-lang/elixir/blob/master/LICENSE) and is maintained by the Elixir Core team, composed of six members: Aleksei Magusev, Andrea Leopardi, Eric Meadows-Jönsson, James Fish, José Valim, and Michał Muskała. The Elixir team works towards an even understanding of the Elixir codebase across all members so it never depends on a single person. The source code and information for contributors can be found on [the language repository](https://github.com/elixir-lang/elixir). 
+Elixir のソースコードは[Apache 2 ライセンス](https://github.com/elixir-lang/elixir/blob/master/LICENSE)の下にあり、Aleksei Magusev, Andrea Leopardi, Eric Meadows-Jönsson, James Fish, José Valim, そして Michał Muskała らの Elixir Core team によって管理されています。Elixir team のメンバー達は、誰かひとりが抱える負担を大きくしてしまうことのないよう、全員が足並みを揃え協力しあって仕事に取り組んでいます。ソースコードやその他の情報はこちらからご覧いただけますので参照してください。[Elixir-Lang ソースコードリポジトリ](https://github.com/elixir-lang/elixir). 
 
 The language development is open, both in terms of source code and of collaborations. All features and bug fixes planned for the next releases can be found [in the issues tracker](https://github.com/elixir-lang/elixir/issues). Features that may cause a larger impact on the language are first proposed to the community in [the Elixir mailing list](https://groups.google.com/group/elixir-lang-core) as well as in [the "Elixir News" section in the Elixir Forum](https://elixirforum.com/c/elixir-news).
 
