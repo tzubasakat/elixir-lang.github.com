@@ -16,7 +16,7 @@ Elixir のソースコードは[Apache 2 ライセンス](https://github.com/eli
 
 言語開発についてはオープンです。規約を遵守してソースコードを利用し、開発してください。次のリリースまでに向けて立てられた不具合修正の計画や実装予定の機能などは Issue を参照してください ([in the issues tracker](https://github.com/elixir-lang/elixir/issues)) 。Elixir フォーラム内の [Elixir News](https://elixirforum.com/c/elixir-news) はもちろんのこと、主要な機能や変更などについてはメーリングリスト ([the Elixir mailing list](https://groups.google.com/group/elixir-lang-core)) からも皆さんにお知らせします。
 
-Elixir v1.0 was released in September 2014 and a new minor version is released every 6 months, around January and July of every year. New Elixir versions are [announced on our official blog](https://elixir-lang.org/blog/) with a summary of the main changes and a link to the complete CHANGELOG. Our [compatibility and deprecation policies](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#content) are documented.
+Elixir v1.0 は 2014 年 9 月にリリースされました。それ以降、マイナーバージョンアップを半年に一度の頻度でリリースしており、毎年度の 1 月と 7 月あたりになります。新バージョンリリースの際には [Official blog](https://elixir-lang.org/blog/) にて変更履歴や主な変更などの概要といった内容とともにアナウンスがあります。互換性や廃止された施策についてはこちらに纏めてあります [Compatibility and Deprecation Policies](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#content) 。
 
 Since v1.0, the language development has become more focused. We believe there is a limited amount of features a language can provide without hindering its learning and without causing fragmentation in the community. Therefore the Elixir team focuses on language features that:
 
