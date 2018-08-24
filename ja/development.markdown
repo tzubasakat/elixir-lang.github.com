@@ -6,17 +6,17 @@ layout: default
 
 # {{ page.title }}
 
-In this section we outline the language's past and future development.
+このセクションでは、Elixir が歩んできたこれまでの過去と、今後の開発における未来についてお話しましょう。
 
-[Plataformatec](http://plataformatec.com.br/), a software consultancy, created Elixir in 2012 as a Research and Development project led by José Valim. Elixir's goal is to be a productive language for writing maintainable and reliable software.
+2012 年。Elixir は、ソフトウェアコンサルティング事業を行っている[Plataformatec](http://plataformatec.com.br/)社にて、その共同設立者のうち一人であるジョゼ・ヴァリム(José Valim)氏の総指揮のもと、研究開発プロジェクトとして作成されました。Elixir は、生産性と保守性の高いコード、そして信頼性の高いソフトウェア開発を目標にして生まれた言語です。
 
-Elixir runs on top of the Erlang Virtual Machine, which provides a scalable and fault-tolerant foundation. Elixir was designed to leverage this foundation without performance costs and aims to contribute to the wider ecosystem whenever possible.
+Elixir は Erlang 仮想マシン上で実行されます。高い拡張性と堅牢性を兼ね備えており、パフォーマンスの為に高コストを費やすことなくそれらを実現できること、そして可能な際には必ず広範なエコシステムを提供することを目標として設計されています。
 
-Elixir's source code is under the [Apache 2 License](https://github.com/elixir-lang/elixir/blob/master/LICENSE) and is maintained by the Elixir Core team, composed of six members: Aleksei Magusev, Andrea Leopardi, Eric Meadows-Jönsson, James Fish, José Valim, and Michał Muskała. The Elixir team works towards an even understanding of the Elixir codebase across all members so it never depends on a single person. The source code and information for contributors can be found on [the language repository](https://github.com/elixir-lang/elixir). 
+Elixir のソースコードは[Apache 2 ライセンス](https://github.com/elixir-lang/elixir/blob/master/LICENSE)の下にあり、Aleksei Magusev, Andrea Leopardi, Eric Meadows-Jönsson, James Fish, José Valim, そして Michał Muskała らの Elixir Core team によって管理されています。Elixir team のメンバー達は、誰かひとりが抱える負担を大きくしてしまうことのないよう、全員が足並みを揃え協力しあって仕事に取り組んでいます。ソースコードやその他の情報はこちらからご覧いただけますので参照してください。[Elixir-Lang ソースコードリポジトリ](https://github.com/elixir-lang/elixir). 
 
-The language development is open, both in terms of source code and of collaborations. All features and bug fixes planned for the next releases can be found [in the issues tracker](https://github.com/elixir-lang/elixir/issues). Features that may cause a larger impact on the language are first proposed to the community in [the Elixir mailing list](https://groups.google.com/group/elixir-lang-core) as well as in [the "Elixir News" section in the Elixir Forum](https://elixirforum.com/c/elixir-news).
+言語開発についてはオープンです。規約を遵守してソースコードを利用し、開発してください。次のリリースまでに向けて立てられた不具合修正の計画や実装予定の機能などは Issue を参照してください ([in the issues tracker](https://github.com/elixir-lang/elixir/issues)) 。Elixir フォーラム内の [Elixir News](https://elixirforum.com/c/elixir-news) はもちろんのこと、主要な機能や変更などについてはメーリングリスト ([the Elixir mailing list](https://groups.google.com/group/elixir-lang-core)) からも皆さんにお知らせします。
 
-Elixir v1.0 was released in September 2014 and a new minor version is released every 6 months, around January and July of every year. New Elixir versions are [announced on our official blog](https://elixir-lang.org/blog/) with a summary of the main changes and a link to the complete CHANGELOG. Our [compatibility and deprecation policies](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#content) are documented.
+Elixir v1.0 は 2014 年 9 月にリリースされました。それ以降、マイナーバージョンアップを半年に一度の頻度でリリースしており、毎年度の 1 月と 7 月あたりになります。新バージョンリリースの際には [Official blog](https://elixir-lang.org/blog/) にて変更履歴や主な変更などの概要といった内容とともにアナウンスがあります。互換性や廃止された施策についてはこちらに纏めてあります [Compatibility and Deprecation Policies](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#content) 。
 
 Since v1.0, the language development has become more focused. We believe there is a limited amount of features a language can provide without hindering its learning and without causing fragmentation in the community. Therefore the Elixir team focuses on language features that:
 
