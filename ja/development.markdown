@@ -23,7 +23,7 @@ v1.0 以降、この言語の開発に関心が集まるようになりました
   1. 言語それ自体の開発の為に必要不可欠であること
   2. その言語が持ってこそ最大に活かせる機能において、コミュニティに重要な特徴的概念をもたらすこと
 
-To remain focused, Elixir trusts its ecosystem to bring diversity and broaden its use cases to a wider audience. Therefore the language was designed to be extensible: the constructs available to build the language are also available for developers to extend the language and bring it to different domains. Projects such as [the Phoenix web framework](http://phoenixframework.org) and [the Nerves embedded framework](http://nerves-project.org) are two of such examples.
+Elixir 自らが持つエコシステムを、その多様性の生産や使用事例の拡張を幅広い人々に対して委ねることが、関心を持ち続けてもらう為に必要となります。それ故にこの言語は拡張性を考慮して設計されており、言語構築に利用できる構成物は、開発者が言語を拡張する為に利用する事も異分野へ応用する事も可能です。[the Phoenix web framework](http://phoenixframework.org) や [the Nerves embedded framework](http://nerves-project.org) などがその例でしょう。
 
 Elixir also relies on a vibrant community to support its growth. The community is behind the meetups, events, learning resources, open source projects, and more. See the sidebar, the [Learning Resources](/learning.html) and [the Hex Package Manager website](https://hex.pm/) for some examples and more information.
 
