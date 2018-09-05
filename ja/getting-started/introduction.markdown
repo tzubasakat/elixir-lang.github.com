@@ -8,7 +8,7 @@ redirect_from: /getting_started/1.html
 
 {% include toc.html %}
 
-Welcome!
+さあ、一緒に Elixir を盛り上げていきましょう！
 
 In this tutorial, we are going to teach you about Elixir fundamentals - the language syntax, how to define modules, how to manipulate the characteristics of common data structures, and more. This chapter will focus on ensuring that Elixir is installed and that you can successfully run Elixir's Interactive Shell, called IEx.
 

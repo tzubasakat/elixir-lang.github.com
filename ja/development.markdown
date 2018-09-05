@@ -23,10 +23,10 @@ v1.0 以降、この言語の開発に関心が集まるようになりました
   1. 言語それ自体の開発の為に必要不可欠であること
   2. その言語が持ってこそ最大に活かせる機能において、コミュニティに重要な特徴的概念をもたらすこと
 
-Elixir 自らが持つエコシステムを、その多様性の生産や使用事例の拡張を幅広い人々に対して委ねることが、関心を持ち続けてもらう為に必要となります。それ故にこの言語は拡張性を考慮して設計されており、言語構築に利用できる構成物は、開発者が言語を拡張する為に利用する事も異分野へ応用する事も可能です。[the Phoenix web framework](http://phoenixframework.org) や [the Nerves embedded framework](http://nerves-project.org) などがその例でしょう。
+Elixir 自らが持つエコシステムを、その多様性の生産や使用事例の拡張を幅広い人々に対して委ねることが、関心を持ち続けてもらう為に必要となります。それ故にこの言語は拡張性を考慮して設計されており、言語構築に利用できる構成物は、開発者が言語を拡張する為に利用する事も、異分野へ応用する事も可能です。[the Phoenix web framework](http://phoenixframework.org) や [the Nerves embedded framework](http://nerves-project.org) などがその例でしょう。
 
-Elixir also relies on a vibrant community to support its growth. The community is behind the meetups, events, learning resources, open source projects, and more. See the sidebar, the [Learning Resources](/learning.html) and [the Hex Package Manager website](https://hex.pm/) for some examples and more information.
+コミュニティでは、ミートアップ、イベント、学習リソース、オープンソースプロジェクト等など、様々な活動を支援しています。そんな活気あふれるコミュニティの力を、Elixir は更なる発展の為にも必要としています。サイドメニューや [Learning Resources](/learning.html) 、そして [the Hex Package Manager website](https://hex.pm/) 等もぜひご覧ください。詳細な情報もそちらでご入手いただけます。
 
-The best way to support the language is by getting involved in its community and contributing to the ecosystem.
+言語を支援する為に最も最良な方法、それはコミュニティに参加してそのエコシステムに貢献することです。
 
-Welcome!
+さあ、一緒に Elixir を盛り上げていきましょう！
