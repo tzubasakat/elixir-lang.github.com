@@ -21,7 +21,7 @@ v1.0 以降、この言語の開発に関心が集まるようになりました
   1. 言語それ自体の開発の為に必要不可欠であること
   2. その言語が持ってこそ最大に活かせる機能において、コミュニティに重要な特徴的概念をもたらすこと
 
-The language development is open, both in terms of source code and of collaborations. All features and bug fixes planned for the next releases can be found [in the issues tracker](https://github.com/elixir-lang/elixir/issues). Features that may cause a larger impact on the ecosystem are first proposed to the community in [the Elixir mailing list](https://groups.google.com/group/elixir-lang-core) as well as in [the "Elixir News" section in the Elixir Forum](https://elixirforum.com/c/elixir-news). 
+言語開発についてはオープンです。規約を遵守してソースコードを利用し、開発してください。次のリリースまでに向けて立てられた不具合修正の計画や実装予定の機能などは Issue を参照してください ([in the issues tracker](https://github.com/elixir-lang/elixir/issues)) 。Elixir フォーラム内の [Elixir News](https://elixirforum.com/c/elixir-news) はもちろんのこと、主要な機能や変更などについてはメーリングリスト ([the Elixir mailing list](https://groups.google.com/group/elixir-lang-core)) からも皆さんにお知らせします。 
 
 コミュニティーメンバーはElixirへの新機能の提案を歓迎します。提案を送る前に、どのやり方がベストかについてコミュニティからフィードバックを集めることが推奨されます。しかしながら、Elixir Coreチーム提案する場合は、Elixirのメーリングリストを使わなければなりません。これには議論や提案の改善がよく含まれます。Elixir Coreチームは提案を受け入れるか拒否するかについて最終的な判断をします。コミュニティーメンバーはコミュニティから支持を得ることが推奨されますが、人気があることが提案が受け入れられることを意味するものではありません。
 
