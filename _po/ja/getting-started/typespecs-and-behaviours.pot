@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 22:49+0900\n"
+"POT-Creation-Date: 2018-09-09 15:13+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,7 +101,7 @@ msgid "  @spec multiply(number, number) :: {number, String.t}\n"
 msgstr ""
 
 #: ../../../getting-started/typespecs-and-behaviours.markdown:50
-msgid "As you can see in the example, tuples are a compound type and each tuple is identified by the types inside it. To understand why `String.t` is not written as `string`, have another look at the [notes in the typespecs docs](https://hexdocs.pm/elixir/typespecs.html#notes)."
+msgid "As you can see in the example, tuples are a compound type and each tuple is identified by the types inside it. To understand why `String.t` is not written as `string`, have another look at the [typespecs docs](https://hexdocs.pm/elixir/typespecs.html#the-string-type)."
 msgstr ""
 
 #: ../../../getting-started/typespecs-and-behaviours.markdown:52

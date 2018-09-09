@@ -57,11 +57,11 @@ msgstr ""
 
 msgid ""
 "```elixir\n"
-"require Logger"
+"defmodule KVServer do\n"
+"  require Logger"
 msgstr ""
 
 msgid ""
-"defmodule KVServer do\n"
 "  def accept(port) do\n"
 "    # The options below mean:\n"
 "    #\n"
@@ -448,12 +448,6 @@ msgid ""
 msgstr ""
 
 msgid "Here is the full echo server implementation:"
-msgstr ""
-
-msgid ""
-"```elixir\n"
-"defmodule KVServer do\n"
-"  require Logger"
 msgstr ""
 
 msgid ""

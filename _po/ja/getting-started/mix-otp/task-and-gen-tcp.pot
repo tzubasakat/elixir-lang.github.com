@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 22:49+0900\n"
+"POT-Creation-Date: 2018-09-09 15:13+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,13 +63,14 @@ msgid "Let's implement those steps. Move to the `apps/kv_server` application, op
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:26
+#: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:250
 msgid "```elixir\n"
-"require Logger"
+"defmodule KVServer do\n"
+"  require Logger"
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:29
-msgid "defmodule KVServer do\n"
-"  def accept(port) do\n"
+#: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:30
+msgid "  def accept(port) do\n"
 "    # The options below mean:\n"
 "    #\n"
 "    # 1. `:binary` - receives data as binaries (instead of lists)\n"
@@ -404,12 +405,6 @@ msgstr ""
 
 #: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:248
 msgid "Here is the full echo server implementation:"
-msgstr ""
-
-#: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:250
-msgid "```elixir\n"
-"defmodule KVServer do\n"
-"  require Logger"
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:254
