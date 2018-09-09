@@ -13,13 +13,13 @@
     - title: Pattern matching
       slug: pattern-matching
 
-    - title: case, cond and if
+    - title: case, cond, and if
       slug: case-cond-and-if
 
-    - title: Binaries, strings and char lists
+    - title: Binaries, strings, and charlists
       slug: binaries-strings-and-char-lists
 
-    - title: Keywords and maps
+    - title: Keywords lists and maps
       slug: keywords-and-maps
 
     - title: Modules and Functions
@@ -37,7 +37,7 @@
     - title: IO and the file system
       slug: io-and-the-file-system
 
-    - title: alias, require and import
+    - title: alias, require, and import
       slug: alias-require-and-import
 
     - title: Module attributes
@@ -55,7 +55,7 @@
     - title: Sigils
       slug: sigils
 
-    - title: try, catch and rescue
+    - title: try, catch, and rescue
       slug: try-catch-and-rescue
 
     - title: Typespecs and behaviours
@@ -86,7 +86,7 @@
     - title: Supervisor and Application
       slug: supervisor-and-application
 
-    - title: DynamicSupervisor
+    - title: Dynamic supervisors
       slug: dynamic-supervisor
 
     - title: ETS
@@ -114,5 +114,5 @@
     - title: Macros
       slug: macros
 
-    - title: Domain Specific Languages
+    - title: Domain-specific languages
       slug: domain-specific-languages
