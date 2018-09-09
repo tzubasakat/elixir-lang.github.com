@@ -23,7 +23,7 @@ v1.0 以降、この言語の開発に関心が集まるようになりました
 
 The language development is open, both in terms of source code and of collaborations. All features and bug fixes planned for the next releases can be found [in the issues tracker](https://github.com/elixir-lang/elixir/issues). Features that may cause a larger impact on the ecosystem are first proposed to the community in [the Elixir mailing list](https://groups.google.com/group/elixir-lang-core) as well as in [the "Elixir News" section in the Elixir Forum](https://elixirforum.com/c/elixir-news). 
 
-Community members are welcome to propose new features for Elixir. Before submitting a proposal, members are encouraged to gather feedback from around the community in whatever venues seem best. However, in order for a proposal to be considered for inclusion by the Elixir Core team, it must go through the Elixir mailing list. This often includes discussion and refinement of the proposal. The Elixir Core team has the final say on whether a proposal is accepted or rejected. While members are encouraged to gain support from the rest of the community, popularity does not mean that a proposal will be accepted.
+コミュニティーメンバーはElixirへの新機能の提案を歓迎します。提案を送る前に、どのやり方がベストかについてコミュニティからフィードバックを集めることが推奨されます。しかしながら、Elixir Coreチーム提案する場合は、Elixirのメーリングリストを使わなければなりません。これには議論や提案の改善がよく含まれます。Elixir Coreチームは提案を受け入れるか拒否するかについて最終的な判断をします。コミュニティーメンバーはコミュニティから支持を得ることが推奨されますが、人気があることが提案が受け入れられることを意味するものではありません。
 
 Elixir 自らが持つエコシステムを、その多様性の生産や使用事例の拡張を幅広い人々に対して委ねることが、関心を持ち続けてもらう為に必要となります。それ故にこの言語は拡張性を考慮して設計されており、言語構築に利用できる構成物は、開発者が言語を拡張する為に利用する事も、異分野へ応用する事も可能です。[the Phoenix web framework](http://phoenixframework.org) や [the Nerves embedded framework](http://nerves-project.org) などがその例でしょう。
 
