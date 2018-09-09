@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 22:49+0900\n"
+"POT-Creation-Date: 2018-09-09 15:13+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -337,7 +337,7 @@ msgid "```console\n"
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/ets.markdown:212
-msgid "The `--trace` option is useful when your tests are deadlocking or there are race conditions, as it runs all tests synchronously (`async: true` has no effect) and shows detailed information about each test. This time we should be down to one or two intermittent failures:"
+msgid "The `--trace` option is useful when your tests are deadlocking or there are race conditions, as it runs all tests synchronously (`async: true` has no effect) and shows detailed information about each test. You may see one or two intermittent failures:"
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/ets.markdown:214
@@ -354,18 +354,22 @@ msgid "```\n"
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/ets.markdown:225
-msgid "According to the failure message, we are expecting that the bucket no longer exists on the table, but it still does! This problem is the opposite of the one we have just solved: while previously there was a delay between the command to create a bucket and updating the table, now there is a delay between the bucket process dying and its entry being removed from the table."
+msgid "According to the failure message, we are expecting that the bucket no longer exists on the table, but it still does! This problem is the opposite of the one we have just solved: while previously there was a delay between the command to create a bucket and updating the table, now there is a delay between the bucket process dying and its entry being removed from the table. Since this is a race condition, you may not be able to reproduce it on your machine, but it is there."
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/ets.markdown:227
-msgid "Unfortunately this time we cannot simply change `handle_info/2`, the operation responsible for cleaning the ETS table, to a synchronous operation. Instead, we need to find a way to guarantee the registry has processed the `:DOWN` notification sent when the bucket crashed."
+msgid "Last time we fixed the race condition by replacing the asynchronous operation, a `cast`, by a `call`, which is synchronous. Unfortunately, the `handle_info/2` callback we are using to receive the `:DOWN` message and delete the entry from the ETS table does not have a synchronous equivalent. This time, we need to find a way to guarantee the registry has processed the `:DOWN` notification sent when the bucket process terminated."
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/ets.markdown:229
-msgid "An easy way to do so is by sending a synchronous request to the registry: because messages are processed in order, if the registry replies to a request sent after the `Agent.stop` call, it means that the `:DOWN` message has been processed. Let's do so by creating a \"bogus\" bucket, which is a synchronous request, after `Agent.stop` in both tests:"
+msgid "An easy way to do so is by sending a synchronous request to the registry before we do the bucket lookup. The `Agent.stop/2` operation is synchronous and only returns after the bucket process terminates and all `:DOWN` messages are delivered. Therefore, once `Agent.stop/2` returns, the registry has already received the `:DOWN` message but it may not have processed it yet. In order to guarantee the processing of the `:DOWN` message, we can do a synchronous request. Since messages are processed in order, once the registry replies to the synchronous request, then the `:DOWN` message will definitely have been processed."
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:232
+#: ../../../../getting-started/mix-otp/ets.markdown:231
+msgid "Let's do so by creating a \"bogus\" bucket, which is a synchronous request, after `Agent.stop/2` in both tests:"
+msgstr ""
+
+#: ../../../../getting-started/mix-otp/ets.markdown:233
 msgid "```elixir\n"
 "  test \"removes buckets on exit\", %{registry: registry} do\n"
 "    KV.Registry.create(registry, \"shopping\")\n"
@@ -373,25 +377,25 @@ msgid "```elixir\n"
 "    Agent.stop(bucket)"
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:238
+#: ../../../../getting-started/mix-otp/ets.markdown:239
 msgid "    # Do a call to ensure the registry processed the DOWN message\n"
 "    _ = KV.Registry.create(registry, \"bogus\")\n"
 "    assert KV.Registry.lookup(registry, \"shopping\") == :error\n"
 "  end"
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:243
+#: ../../../../getting-started/mix-otp/ets.markdown:244
 msgid "  test \"removes bucket on crash\", %{registry: registry} do\n"
 "    KV.Registry.create(registry, \"shopping\")\n"
 "    {:ok, bucket} = KV.Registry.lookup(registry, \"shopping\")"
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:247
+#: ../../../../getting-started/mix-otp/ets.markdown:248
 msgid "    # Stop the bucket with non-normal reason\n"
 "    Agent.stop(bucket, :shutdown)"
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:250
+#: ../../../../getting-started/mix-otp/ets.markdown:251
 msgid "    # Do a call to ensure the registry processed the DOWN message\n"
 "    _ = KV.Registry.create(registry, \"bogus\")\n"
 "    assert KV.Registry.lookup(registry, \"shopping\") == :error\n"
@@ -399,19 +403,42 @@ msgid "    # Do a call to ensure the registry processed the DOWN message\n"
 "```"
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:256
+#: ../../../../getting-started/mix-otp/ets.markdown:257
 msgid "Our tests should now (always) pass!"
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:258
+#: ../../../../getting-started/mix-otp/ets.markdown:259
+msgid "Note that the purpose of the test is to check whether the registry processes the bucket's shutdown message correctly. The fact that the `KV.Registry.lookup/2` sends us a valid bucket does not mean that the bucket is still alive by the time you call it. For example, it might have crashed for some reason. The following test depicts this situation:"
+msgstr ""
+
+#: ../../../../getting-started/mix-otp/ets.markdown:261
+msgid "```elixir\n"
+"  test \"bucket can crash at any time\", %{registry: registry} do\n"
+"    KV.Registry.create(registry, \"shopping\")\n"
+"    {:ok, bucket} = KV.Registry.lookup(registry, \"shopping\")"
+msgstr ""
+
+#: ../../../../getting-started/mix-otp/ets.markdown:266
+msgid "    # Simulate a bucket crash by explicitly and synchronously shutting it down.\n"
+"    Agent.stop(bucket, :shutdown)"
+msgstr ""
+
+#: ../../../../getting-started/mix-otp/ets.markdown:269
+msgid "    # Now trying to call the dead process causes a :noproc exit\n"
+"    catch_exit KV.Bucket.put(bucket, \"milk\", 3)\n"
+"  end\n"
+"```"
+msgstr ""
+
+#: ../../../../getting-started/mix-otp/ets.markdown:274
 msgid "This concludes our optimization chapter. We have used ETS as a cache mechanism where reads can happen from any processes but writes are still serialized through a single process. More importantly, we have also learned that once data can be read asynchronously, we need to be aware of the race conditions it might introduce."
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:260
+#: ../../../../getting-started/mix-otp/ets.markdown:276
 msgid "In practice, if you find yourself in a position where you need a process registry for dynamic processes, you should use [the `Registry` module](https://hexdocs.pm/elixir/Registry.html) provided as part of Elixir. It provides functionality similar to the one we have built using a GenServer + `:ets` while also being able to perform both writes and reads concurrently. [It has been benchmarked to scale across all cores even on machines with 40 cores](https://elixir-lang.org/blog/2017/01/05/elixir-v1-4-0-released/)."
 msgstr ""
 
-#: ../../../../getting-started/mix-otp/ets.markdown:262
+#: ../../../../getting-started/mix-otp/ets.markdown:278
 msgid "Next, let's discuss external and internal dependencies and how Mix helps us manage large codebases."
 msgstr ""
 

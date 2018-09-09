@@ -7,7 +7,7 @@ title: Debugging
 
 {% include toc.html %}
 
-There are a number of ways one can debug their code in Elixir. In this chapter we will cover some of the more common ways of doing so.
+There are a number of ways to debug code in Elixir. In this chapter we will cover some of the more common ways of doing so.
 
 ## IO.inspect/2
 
@@ -154,7 +154,7 @@ We have just scratched the surface of what the Erlang VM has to offer, for examp
   * Mix ships with many tasks under the `profile` namespace, such as `cprof` and `fprof`
   * And more
 
-The community has also created their own tools, often to aid in production, other times in development:
+The community has also created its own tools, often to aid in production, other times in development:
 
   * [wObserver](https://github.com/shinyscorpion/wObserver) observes production nodes through a web interface.
   * [visualixir](https://github.com/koudelka/visualixir) is a development-time process message visualizer.

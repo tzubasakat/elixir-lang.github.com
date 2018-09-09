@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 22:49+0900\n"
+"POT-Creation-Date: 2018-09-09 15:13+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgid "# Invokes the custom code defined in Foo as an extension point\n"
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:26
-msgid "We are going to explore them in detail now. Keep in mind the first three are called directives because they have **lexical scope**, while `use` is a common extension point."
+msgid "We are going to explore them in detail now. Keep in mind the first three are called directives because they have **lexical scope**, while `use` is a common extension point that allows the used module to inject code."
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:28
@@ -236,7 +236,7 @@ msgid "## use"
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:135
-msgid "The `use` macro is frequently used by developers to bring external functionality into the current lexical scope, often modules."
+msgid "The `use` macro is frequently used as an extension point. This means that, when you use a module `FooBar`, you allow that module to inject *any* code in the current module, such as importing itself or other modules, defining new functions, setting a module state, etc."
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:137
@@ -283,18 +283,22 @@ msgid "```elixir\n"
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:166
-msgid "## Understanding Aliases"
+msgid "Since `use` allows any code to run, we can't really know the side-effects of using a module without reading its documentation. For this reason, `import` and `alias` are often preferred, as their semantics are defined by the language."
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:168
-msgid "At this point, you may be wondering: what exactly is an Elixir alias and how is it represented?"
+msgid "## Understanding Aliases"
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:170
-msgid "An alias in Elixir is a capitalized identifier (like `String`, `Keyword`, etc) which is converted to an atom during compilation. For instance, the `String` alias translates by default to the atom `:\"Elixir.String\"`:"
+msgid "At this point, you may be wondering: what exactly is an Elixir alias and how is it represented?"
 msgstr ""
 
 #: ../../../getting-started/alias-require-and-import.markdown:172
+msgid "An alias in Elixir is a capitalized identifier (like `String`, `Keyword`, etc) which is converted to an atom during compilation. For instance, the `String` alias translates by default to the atom `:\"Elixir.String\"`:"
+msgstr ""
+
+#: ../../../getting-started/alias-require-and-import.markdown:174
 msgid "```iex\n"
 "iex> is_atom(String)\n"
 "true\n"
@@ -305,30 +309,30 @@ msgid "```iex\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:181
+#: ../../../getting-started/alias-require-and-import.markdown:183
 msgid "By using the `alias/2` directive, we are changing the atom the alias expands to."
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:183
+#: ../../../getting-started/alias-require-and-import.markdown:185
 msgid "Aliases expand to atoms because in the Erlang <abbr title=\"Virtual Machine\">VM</abbr> (and consequently Elixir) modules are always represented by atoms. For example, that's the mechanism we use to call Erlang modules:"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:185
+#: ../../../getting-started/alias-require-and-import.markdown:187
 msgid "```iex\n"
 "iex> :lists.flatten([1, [2], 3])\n"
 "[1, 2, 3]\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:190
+#: ../../../getting-started/alias-require-and-import.markdown:192
 msgid "## Module nesting"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:192
+#: ../../../getting-started/alias-require-and-import.markdown:194
 msgid "Now that we have talked about aliases, we can talk about nesting and how it works in Elixir. Consider the following example:"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:194
+#: ../../../getting-started/alias-require-and-import.markdown:196
 msgid "```elixir\n"
 "defmodule Foo do\n"
 "  defmodule Bar do\n"
@@ -337,11 +341,11 @@ msgid "```elixir\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:201
+#: ../../../getting-started/alias-require-and-import.markdown:203
 msgid "The example above will define two modules: `Foo` and `Foo.Bar`. The second can be accessed as `Bar` inside `Foo` as long as they are in the same lexical scope. The code above is exactly the same as:"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:203
+#: ../../../getting-started/alias-require-and-import.markdown:205
 msgid "```elixir\n"
 "defmodule Elixir.Foo do\n"
 "  defmodule Elixir.Foo.Bar do\n"
@@ -351,33 +355,33 @@ msgid "```elixir\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:211
+#: ../../../getting-started/alias-require-and-import.markdown:213
 msgid "If, later, the `Bar` module is moved outside the `Foo` module definition, it must be referenced by its full name (`Foo.Bar`) or an alias must be set using the `alias` directive discussed above."
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:213
+#: ../../../getting-started/alias-require-and-import.markdown:215
 msgid "**Note**: in Elixir, you don't have to define the `Foo` module before being able to define the `Foo.Bar` module, as the language translates all module names to atoms. You can define arbitrarily-nested modules without defining any module in the chain (e.g., `Foo.Bar.Baz` without defining `Foo` or `Foo.Bar` first)."
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:215
+#: ../../../getting-started/alias-require-and-import.markdown:217
 msgid "As we will see in later chapters, aliases also play a crucial role in macros, to guarantee they are hygienic."
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:217
+#: ../../../getting-started/alias-require-and-import.markdown:219
 msgid "## Multi alias/import/require/use"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:219
+#: ../../../getting-started/alias-require-and-import.markdown:221
 msgid "From Elixir v1.2, it is possible to alias, import or require multiple modules at once. This is particularly useful once we start nesting modules, which is very common when building Elixir applications. For example, imagine you have an application where all modules are nested under `MyApp`, you can alias the modules `MyApp.Foo`, `MyApp.Bar` and `MyApp.Baz` at once as follows:"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:221
+#: ../../../getting-started/alias-require-and-import.markdown:223
 msgid "```elixir\n"
 "alias MyApp.{Foo, Bar, Baz}\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/alias-require-and-import.markdown:225
+#: ../../../getting-started/alias-require-and-import.markdown:227
 msgid "With this, we have finished our tour of Elixir modules. The last topic to cover is module attributes."
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 22:49+0900\n"
+"POT-Creation-Date: 2018-09-09 15:13+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "{% include toc.html %}"
 msgstr ""
 
 #: ../../../getting-started/debugging.markdown:10
-msgid "There are a number of ways one can debug their code in Elixir. In this chapter we will cover some of the more common ways of doing so."
+msgid "There are a number of ways to debug code in Elixir. In this chapter we will cover some of the more common ways of doing so."
 msgstr ""
 
 #: ../../../getting-started/debugging.markdown:12
@@ -267,7 +267,7 @@ msgid "  * Alongside the observer application, Erlang also includes a `:crashdum
 msgstr ""
 
 #: ../../../getting-started/debugging.markdown:157
-msgid "The community has also created their own tools, often to aid in production, other times in development:"
+msgid "The community has also created its own tools, often to aid in production, other times in development:"
 msgstr ""
 
 #: ../../../getting-started/debugging.markdown:159

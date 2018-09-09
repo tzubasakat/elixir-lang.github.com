@@ -512,6 +512,8 @@ msgid ""
 "  [104, 101, 108, 108, 111]\n"
 "Reference modules\n"
 "  List\n"
+"Implemented protocols\n"
+"  ...\n"
 "```"
 msgstr ""
 

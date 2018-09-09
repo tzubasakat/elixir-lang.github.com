@@ -175,8 +175,8 @@ msgstr ""
 
 msgid ""
 "Sets, maps, and other dictionaries can also be given to the `:into` option. In"
-" general, `:into` accepts any structure that implements the `Collectable` prot"
-"ocol."
+" general, `:into` accepts any structure that implements the [`Collectable`](ht"
+"tps://hexdocs.pm/elixir/Collectable.html) protocol."
 msgstr ""
 
 msgid ""

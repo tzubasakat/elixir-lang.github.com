@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 22:49+0900\n"
+"POT-Creation-Date: 2018-09-09 15:13+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,7 +254,7 @@ msgid "## `iodata` and `chardata`"
 msgstr ""
 
 #: ../../../getting-started/io-and-the-file-system.markdown:153
-msgid "In all of the examples above, we used binaries when writing to files. In the chapter [\"Binaries, strings and char lists\"](/getting-started/binaries-strings-and-char-lists.html), we mentioned how strings are made of bytes while char lists are lists with Unicode codepoints."
+msgid "In all of the examples above, we used binaries when writing to files. In the chapter [\"Binaries, strings, and charlists\"](/getting-started/binaries-strings-and-char-lists.html), we mentioned how strings are made of bytes while charlists are lists with Unicode codepoints."
 msgstr ""
 
 #: ../../../getting-started/io-and-the-file-system.markdown:155
