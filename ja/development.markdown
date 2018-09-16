@@ -16,7 +16,7 @@ Elixir のソースコードは[Apache 2 ライセンス](https://github.com/eli
 
 Elixir v1.0 は 2014 年 9 月にリリースされました。それ以降、マイナーバージョンアップを半年に一度の頻度でリリースしており、毎年度の 1月と 7 月あたりになります。新しいリリースは購読専用の [アナウンスメーリングリスト](https://groups.google.com/group/elixir-lang-ann) にて完全なCHANGELOGと一緒にアナウンスされます。すべてのセキュリティリリースは ["[security]"タグが付けられています](https://groups.google.com/forum/#!searchin/elixir-lang-ann/%5Bsecurity%5D%7Csort:date)。 セキュリティ脆弱性については [elixir-security@googlegroups.com](mailto:elixir-security@googlegroups.com) に報告するべきです。互換性や廃止された施策についてはこちらに纏めてありますので参考にしてください [Compatibility and Deprecation Policies](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#content) 。
 
-v1.0 以降、この言語の開発に関心が集まるようになりました。私達は、コミュニティの人々の気持ちが離ればなれになったり、学習の妨げになったりする事なく、ある一つの言語が提供できる機能量というものには限りがあると考えています。それ故に私たち Elixir team は言語機能について以下のことに注意を払っています。
+v1.0 以降、この言語の開発は小さく一貫したコアを提供することに集中するようになりました。Elixir チームは以下の言語仕様に焦点をあてています。
 
   1. 言語それ自体の開発の為に必要不可欠であること
   2. その言語が持ってこそ最大に活かせる機能において、コミュニティに重要な特徴的概念をもたらすこと

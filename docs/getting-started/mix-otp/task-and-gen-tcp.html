@@ -371,13 +371,13 @@ you are looking for?
 
 <p>With this change, we are saying that we want to run <code class="highlighter-rouge">KVServer.accept(4040)</code> as a task. We are hardcoding the port for now but this could be changed in a few ways, for example, by reading the port out of the system environment when starting the application:</p>
 
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code><span class="n">port</span> <span class="o">=</span> <span class="no">String</span><span class="o">.</span><span class="n">to_integer</span><span class="p">(</span><span class="no">System</span><span class="o">.</span><span class="n">get_env</span><span class="p">(</span><span class="sd">"</span><span class="s2">PORT"</span><span class="p">)</span> <span class="o">||</span> <span class="k">raise</span> <span class="sd">"</span><span class="s2">missing $PORT environment variable"</span><span class="p">)</span>
+<div class="language-elixir highlighter-rouge"><pre class="highlight"><code><span class="n">port</span> <span class="o">=</span> <span class="no">String</span><span class="o">.</span><span class="n">to_integer</span><span class="p">(</span><span class="no">System</span><span class="o">.</span><span class="n">get_env</span><span class="p">(</span><span class="sd">"</span><span class="s2">PORT"</span><span class="p">)</span> <span class="o">||</span> <span class="sd">"</span><span class="s2">4040"</span><span class="p">)</span>
 <span class="c1"># ...</span>
 <span class="p">{</span><span class="no">Task</span><span class="p">,</span> <span class="k">fn</span> <span class="o">-&gt;</span> <span class="no">KVServer</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="n">port</span><span class="p">)</span> <span class="k">end</span><span class="p">}</span>
 </code></pre>
 </div>
 
-<p>Insert these changes in your code and now you may start your application using the following command <code class="highlighter-rouge">PORT=4040 mix run --no-halt</code>, notice how we are passing the port as a variable.</p>
+<p>Insert these changes in your code and now you may start your application using the following command <code class="highlighter-rouge">PORT=4321 mix run --no-halt</code>, notice how we are passing the port as a variable, but still defaults to 4040 if none is given.</p>
 
 <p>Now that the server is part of the supervision tree, it should start automatically when we run the application. Start your server, now passing the port, and once again use the <code class="highlighter-rouge">telnet</code> client to make sure that everything still works:</p>
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-09 16:07+0900\n"
+"POT-Creation-Date: 2018-09-16 21:14+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "Elixir v1.0 was released in September 2014 and a new minor version is rel
 msgstr ""
 
 #: ../../development.markdown:19
-msgid "Since v1.0, the language development has become more focused. We believe there is a limited amount of features a language can provide without hindering its learning and without causing fragmentation in the community. Therefore the Elixir team focuses on language features that:"
+msgid "Since v1.0, the language development has become focused to provide a compact and consistent core. The Elixir team focuses on language features that:"
 msgstr ""
 
 #: ../../development.markdown:21
@@ -67,7 +67,7 @@ msgid "Community members are welcome to propose new features for Elixir. Before 
 msgstr ""
 
 #: ../../development.markdown:28
-msgid "To remain focused, Elixir trusts its ecosystem to bring diversity and broaden its use cases to a wider audience. Therefore the language was designed to be extensible: the constructs available to build the language are also available for developers to extend the language and bring it to different domains. Projects such as [the Phoenix web framework](http://phoenixframework.org) and [the Nerves embedded framework](http://nerves-project.org) are two of such examples."
+msgid "To remain focused, Elixir trusts its ecosystem to bring diversity and broaden its use cases. Therefore the language was designed to be extensible: the constructs available to build the language are also available for developers to extend the language and bring it to different domains. Projects such as [the Phoenix web framework](http://phoenixframework.org) and [the Nerves embedded framework](http://nerves-project.org) are two of such examples."
 msgstr ""
 
 #: ../../development.markdown:30

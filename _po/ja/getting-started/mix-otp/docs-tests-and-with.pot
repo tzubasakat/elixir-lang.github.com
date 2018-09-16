@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-09 15:13+0900\n"
+"POT-Creation-Date: 2018-09-16 21:14+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -700,7 +700,7 @@ msgid "     13:44:10.035 [info]  Application kv exited: :stopped\n"
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/docs-tests-and-with.markdown:447
-msgid "With this simple integration test, we start to see why integration tests may be slow. Not only this test cannot run asynchronously, it also requires the expensive setup of stopping and starting the `:kv` application."
+msgid "With this simple integration test, we start to see why integration tests may be slow. Not only this test cannot run asynchronously, it also requires the expensive setup of stopping and starting the `:kv` application. In fact, your test suite may even fail and run into timeouts. If that's the case, you can tweak the `:gen_tcp.recv(socket, 0)` call to pass a third argument, which is the timeout in milliseconds. In the next chapter we will learn about application configuration, which we could use to make the timeout configurable, if desired."
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/docs-tests-and-with.markdown:449
@@ -708,6 +708,6 @@ msgid "At the end of the day, it is up to you and your team to figure out the be
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/docs-tests-and-with.markdown:451
-msgid "In the next chapter, we will finally make our system distributed by adding a bucket routing mechanism. We'll also learn about application configuration."
+msgid "Let's move to the last chapter. We will finally make our system distributed by adding a bucket routing mechanism. We'll also learn about application configuration."
 msgstr ""
 
