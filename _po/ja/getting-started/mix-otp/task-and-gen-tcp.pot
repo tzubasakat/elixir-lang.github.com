@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-09 16:00+0900\n"
+"POT-Creation-Date: 2018-09-16 21:14+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,14 +259,14 @@ msgstr ""
 
 #: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:148
 msgid "```elixir\n"
-"port = String.to_integer(System.get_env(\"PORT\") || raise \"missing $PORT environment variable\")\n"
+"port = String.to_integer(System.get_env(\"PORT\") || \"4040\")\n"
 "# ...\n"
 "{Task, fn -> KVServer.accept(port) end}\n"
 "```"
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:154
-msgid "Insert these changes in your code and now you may start your application using the following command `PORT=4040 mix run --no-halt`, notice how we are passing the port as a variable."
+msgid "Insert these changes in your code and now you may start your application using the following command `PORT=4321 mix run --no-halt`, notice how we are passing the port as a variable, but still defaults to 4040 if none is given."
 msgstr ""
 
 #: ../../../../getting-started/mix-otp/task-and-gen-tcp.markdown:156
