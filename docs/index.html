@@ -171,14 +171,14 @@
   </div>
 
   <div class="hentry post">
-    <h3>Tooling features</h3>
+    <h3>ツールの特徴</h3>
   </div>
 
   <div class="hentry post">
-    <h4>A growing ecosystem</h4>
+    <h4>成長するエコシステム</h4>
 
     <div class="entry-summary">
-      <p>Elixir ships with a great set of tools to ease development. <a href="https://hexdocs.pm/mix/">Mix is a build tool</a> that allows you to easily create projects, manage tasks, run tests and more:</p>
+      <p>Elixirは開発を容易にするための素晴らしいツールを提供します。 <a href="https://hexdocs.pm/mix/">ビルドツールであるMix</a> は、プロジェクトの作成、タスクの管理、テストの実行などを容易にする手段を提供します。</p>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">$ mix new my_app
 $ cd my_app
@@ -188,35 +188,35 @@ $ mix test
 Finished in 0.04 seconds (0.04s on load, 0.00s on tests)
 1 tests, 0 failures</code></pre></figure>
 
-      <p>Mix is also able to manage dependencies and integrates nicely with the <a href="https://hex.pm/">Hex package manager</a>, which provides dependency resolution and the ability to remotely fetch packages.</p>
+      <p>Mixは依存性の管理も行うことができ、 <a href="https://hex.pm/">Hex パッケージマネージャ</a> と良く統合されています。Hexは依存性の解決と、パッケージのダウンロード機能を提供します。</p>
     </div>
   </div>
 
   <div class="hentry post">
-    <h4>Interactive development</h4>
+    <h4>対話型の開発</h4>
 
     <div class="entry-summary">
-      <p>Tools like <a href="https://hexdocs.pm/iex/">IEx (Elixir&rsquo;s interactive shell)</a> are able to leverage many aspects of the language and platform to provide auto-complete, debugging tools, code reloading, as well as nicely formatted documentation:</p>
+      <p><a href="https://hexdocs.pm/iex/">IEx (Elixirの対話型シェル)</a> のようなツールは、言語とプラットフォームの多くの側面を利用して、オートコンプリート、デバッグツール、コードの再読込、よく整形されたドキュメントを提供することができます。</p>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">$ iex
 Interactive Elixir - press Ctrl+C to exit (type h() ENTER for help)
-iex&gt; h String.trim           # Prints the documentation for function
-iex&gt; i "Hello, World"        # Prints information about the given data type
-iex&gt; break! String.trim/1    # Sets a breakpoint in the String.trim/1 function
-iex&gt; recompile               # Recompiles the current project on the fly</code></pre></figure>
+iex&gt; h String.trim           # 関数のドキュメントを表示する
+iex&gt; i "Hello, World"      # 与えられたデータ型についてのドキュメントを表示する
+iex&gt; break! String.trim/1    # String.trim/1 関数にブレークポイントを設定する
+iex&gt; recompile               # その場で現在のプロジェクトを再コンパイルする</code></pre></figure>
     </div>
   </div>
 
   <div class="hentry post">
-    <h4>Erlang compatible</h4>
+    <h4>Erlang との互換性</h4>
 
     <div class="entry-summary">
-      <p>Elixir runs on the Erlang VM giving developers complete access to Erlang&rsquo;s ecosystem, used by companies like <a href="https://www.heroku.com">Heroku</a>, <a href="https://www.whatsapp.com">WhatsApp</a>, <a href="https://klarna.com">Klarna</a> and many more to build distributed, fault-tolerant applications. An Elixir programmer can invoke any Erlang function with no runtime cost:</p>
+      <p>Erlang VM 上で動作するElixirは、<a href="https://www.heroku.com">Heroku</a>や<a href="https://www.whatsapp.com">WhatsApp</a>、<a href="https://klarna.com">Klarna</a>といった会社が分散型でフォールトトレラントなアプリケーションを構築するために使っている、Erlangエコシステムへの完全なアクセスを開発者に提供します。Elixirプログラマーは実行時の追加コスト無しにすべてのErlang関数を実行することができます。</p>
 
 <figure class="highlight"><pre><code class="language-iex" data-lang="iex">iex&gt; :crypto.hash(:md5, "Using crypto from Erlang OTP")
 &lt;&lt;192, 223, 75, 115, ...&gt;&gt;</code></pre></figure>
 
-      <p>To learn more about Elixir, check our <a href="/getting-started/introduction.html">getting started guide</a>. We also have <a href="/docs.html">online documentation available</a> and a <a href="/crash-course.html">Crash Course for Erlang developers</a>.</p>
+      <p>Elixirをもっと知るために、<a href="/getting-started/introduction.html">getting started guide</a>をお読みください。<a href="/docs.html">オンラインドキュメント</a> も提供していますし、<a href="/crash-course.html">Erlang開発者のための速習講座</a>もあります。</p>
     </div>
   </div>
 </div>
