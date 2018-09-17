@@ -10,32 +10,33 @@ redirect_from: /getting_started/1.html
 
 さあ、一緒に Elixir を盛り上げていきましょう！
 
-In this tutorial, we are going to teach you about Elixir fundamentals - the language syntax, how to define modules, how to manipulate the characteristics of common data structures, and more. This chapter will focus on ensuring that Elixir is installed and that you can successfully run Elixir's Interactive Shell, called IEx.
+このチュートリアルでは、あなたが Elixir を始めるにあたって重要となる文法、モジュール定義、普遍的なデータ構造の扱い方などの基礎についてお伝えします。この章では、Elixir を確実にインストールし、 "IEx" と呼ばれるインタラクティブ・シェルが正常に動作するように手順をご案内します。
 
-Our requirements are:
+必要構成
 
-  * Elixir - Version 1.5.0 onwards
-  * Erlang - Version 19.0 onwards
+  * Elixir - Version 1.5.0 以上
+  * Erlang - Version 19.0 以上
 
-Let's get started!
 
-> If you find any errors in the tutorial or on the website, [please report a bug or send a pull request to our issue tracker](https://github.com/elixir-lang/elixir-lang.github.com).
+さあ、はじめましょう！
 
-> The Elixir guides are also available in EPUB format:
+このチュートリアル、またはウェブサイトに誤りを見つけた場合、[バグ報告、もしくは Issue tracker 宛に Pull Request ](https://github.com/elixir-lang/elixir-lang.github.com)をお願いします。
+
+> このチュートリアルは電子書籍(EPUB形式)でもご覧になれます。
 >
 >   * [Getting started guide](https://repo.hex.pm/guides/elixir/elixir-getting-started-guide.epub)
 >   * [Mix and OTP guide](https://repo.hex.pm/guides/elixir/mix-and-otp.epub)
 >   * [Meta-programming guide](https://repo.hex.pm/guides/elixir/meta-programming-in-elixir.epub)
 
-## Installation
+## インストール
 
-If you haven't yet installed Elixir, visit our [installation page](/install.html). Once you are done, you can run `elixir --version` to get the current Elixir version.
+もしも Elixir のインストールがまだでしたら、[Elixir のインストール](/install.html)を参考にしてください。そうしましたら、`elixir --version` で現在のバージョンを確認できます。
 
-## Interactive mode
+## インタラクティヴ・モード
 
-When you install Elixir, you will have three new executables: `iex`, `elixir` and `elixirc`. If you compiled Elixir from source or are using a packaged version, you can find these inside the `bin` directory.
+Elixir のインストールが終わりましたら、 `iex`, `elixir`, `elixirc` コマンドが実行できるようになります。ソースコードからコンパイルしたもの、もしくはパッケージ版をご利用の場合は、これらコマンドが `bin` ディレクトリ内にあります。
 
-For now, let's start by running `iex` (or `iex.bat` if you are on Windows) which stands for Interactive Elixir. In interactive mode, we can type any Elixir expression and get its result. Let's warm up with some basic expressions.
+それでは `iex` コマンド (Windows をお使いの場合は `iex.bat`) を実行してインタラクティヴ・モードで起動してみましょう。インタラクティヴ・モードでは、Elixir のどんな式でも入力することができ、その結果を得られます。試しに簡単な式で準備運動してみましょう。
 
 Open up `iex` and type the following expressions:
 
