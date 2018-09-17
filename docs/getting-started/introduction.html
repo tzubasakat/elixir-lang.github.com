@@ -262,7 +262,7 @@
 
 <p>それでは <code class="highlighter-rouge">iex</code> コマンド (Windows をお使いの場合は <code class="highlighter-rouge">iex.bat</code>) を実行してインタラクティヴ・モードで起動してみましょう。インタラクティヴ・モードでは、Elixir のどんな式でも入力することができ、その結果を得られます。試しに簡単な式で準備運動してみましょう。</p>
 
-<p>Open up <code class="highlighter-rouge">iex</code> and type the following expressions:</p>
+<p><code class="highlighter-rouge">iex</code> コマンドを起動したら、以下のように入力してみてください。</p>
 
 <pre><code class="language-iex">Erlang/OTP 19 [erts-8.1] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
 
@@ -273,54 +273,55 @@ iex(2)&gt; "hello" &lt;&gt; " world"
 "hello world"
 </code></pre>
 
-<p>Please note that some details like version numbers may differ a bit in your session; that’s not important. From now on <code class="highlighter-rouge">iex</code> sessions will be stripped down to focus on the code. To exit <code class="highlighter-rouge">iex</code> press <code class="highlighter-rouge">Ctrl+C</code> twice.</p>
+<p>あなたの環境で表示されるバージョンはここで示しているものと少し異なるかも知れませんが、特に問題はないので気になさらず進めてください。今後、 <code class="highlighter-rouge">iex</code> ではコードに着目していきましょう。<code class="highlighter-rouge">iex</code> を終了したい時は、 <code class="highlighter-rouge">Ctrl + C</code> を二度押してください。</p>
 
-<p>It seems we are ready to go! We will use the interactive shell quite a lot in the next chapters to get a bit more familiar with the language constructs and basic types, starting in the next chapter.</p>
+<p>問題なさそうですね。それでは進めて行きましょう！インタラクティヴ・シェルを使い、次章からは皆さんお馴染みの言語構文や基本的な型についてもふんだんに触れていきたいと思います。</p>
 
 <blockquote>
-  <p>Note: if you are on Windows, you can also try <code class="highlighter-rouge">iex.bat --werl</code> which may provide a better experience depending on which console you are using.</p>
+  <p>Note: Windows をお使いの場合、あなたが使用するコンソールによっては <code class="highlighter-rouge">iex.bat --werl</code> をお使い頂けるかも知れません。</p>
 </blockquote>
 
 <blockquote>
-  <p>Note: if you want to find and execute a given script in PATH so it will be loaded in <code class="highlighter-rouge">iex</code> use: <code class="highlighter-rouge">iex -S SCRIPTNAME</code>.  Later you’ll learn about <a href="/getting-started/mix-otp/introduction-to-mix.html">Mix</a>, Elixir’s build tool, and how you can compile and load entire applications with <code class="highlighter-rouge">iex -S mix run</code>. See <a href="/getting-started/mix-otp/supervisor-and-application.html">Supervisor and application</a> for more details.</p>
+  <p>Note: <code class="highlighter-rouge">iex</code> 内でスクリプトファイルを実行するには、 <code class="highlighter-rouge">iex -S SCRIPTNAME</code> とします。あとで <a href="/getting-started/mix-otp/introduction-to-mix.html">Mix</a> や Elixir ビルドツール、そしてコンパイル方法とそのアプリケーションを <code class="highlighter-rouge">iex -S mix run</code> で起動する方法についても学んでいきます。</p>
 </blockquote>
 
-<h2 id="running-scripts">Running scripts</h2>
+<h2 id="スクリプトの実行">スクリプトの実行</h2>
 
-<p>After getting familiar with the basics of the language you may want to try writing simple programs. This can be accomplished by putting the following Elixir code into a file:</p>
+<p>基本が分かってくると、簡単なプログラムを書いてみたくなることでしょう。それでは、その願いを叶える為に、まず以下のコードをファイルに入力してみましょう。</p>
 
 <div class="language-elixir highlighter-rouge"><pre class="highlight"><code><span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="sd">"</span><span class="s2">Hello world from Elixir"</span>
 </code></pre>
 </div>
 
-<p>Save it as <code class="highlighter-rouge">simple.exs</code> and execute it with <code class="highlighter-rouge">elixir</code>:</p>
+<p><code class="highlighter-rouge">simple.exs</code> というファイル名で保存し、 <code class="highlighter-rouge">elixir</code> コマンドで実行してみてください。如何でしょう。</p>
 
 <div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">elixir</span><span class="kv"> simple.exs
 </span>Hello world from Elixir
 </code></pre>
 </div>
 
-<p>Later on we will learn how to compile Elixir code (in <a href="/getting-started/modules-and-functions.html">Chapter 8</a>) and how to use the Mix build tool (in the <a href="/getting-started/mix-otp/introduction-to-mix.html">Mix &amp; OTP guide</a>). For now, let’s move on to <a href="/getting-started/basic-types.html">Chapter 2</a>.</p>
+<p>後ほど Elixir コードのコンパイル方法と Mix ビルドツール (<a href="/getting-started/mix-otp/introduction-to-mix.html">Mix &amp; OTP ガイド</a>) の使い方を学びましょう。今はとりあえず <a href="/getting-started/basic-types.html">第2章</a> に進みます。</p>
 
-<h2 id="asking-questions">Asking questions</h2>
+<h2 id="質問方法">質問方法</h2>
 
-<p>When going through this getting started guide, it is common to have questions; after all, that is part of the learning process! There are many places you could ask them to learn more about Elixir:</p>
+<p>この入門ガイドを終えたあなたも、よく抱かれる疑問を質問をしたいその一人であることでしょう。それも学習プロセスのうちです。あなたが Elixir を学ぶにあたって疑問や問題を質問できる場はたくさんあります。</p>
 
 <ul>
-  <li><a href="irc://irc.freenode.net/elixir-lang">#elixir-lang on freenode IRC</a></li>
-  <li><a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a></li>
-  <li><a href="http://elixirforum.com">Elixir Forum</a></li>
-  <li><a href="https://stackoverflow.com/questions/tagged/elixir">elixir tag on StackOverflow</a></li>
+  <li><a href="irc://irc.freenode.net/elixir-lang">#elixir-lang on freenode IRC (英語)</a></li>
+  <li><a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack (英語)</a></li>
+  <li><a href="http://elixirforum.com">Elixir Forum (英語)</a></li>
+  <li><a href="https://stackoverflow.com/questions/tagged/elixir">elixir (英語 StackOverflow)</a></li>
+  <li><a href="https://ja.stackoverflow.com/questions/tagged/elixir">elixir (日本語 StackOverflow)</a></li>
 </ul>
 
-<p>When asking questions, remember these two tips:</p>
+<p>質問する際は以下の二点を念頭においてください。</p>
 
 <ul>
   <li>
-    <p>Instead of asking “how to do X in Elixir”, ask “how to solve Y in Elixir”. In other words, don’t ask how to implement a particular solution, instead describe the problem at hand. Stating the problem gives more context and less bias for a correct answer.</p>
+    <p>「Elixir で××のやり方を教えてください」や「Elixir で△△の解決法を教えてください」といった質問はおやめください。それはつまり、何かある特定の解決法を求めるのではなく、今あなたが直面している問題を述べてくださいという意味です。的確な回答をもらう為に、その問題の背景や状況を詳しく記して、なるべく客観的に説明してください。</p>
   </li>
   <li>
-    <p>In case things are not working as expected, please include as much information as you can in your report, for example: your Elixir version, the code snippet and the error message alongside the error stacktrace. Use sites like <a href="https://gist.github.com/">Gist</a> to paste this information.</p>
+    <p>何かが意図した通りに動作しない場合、把握できる限りの情報を含め記してください。例えば Elixir のバージョン、問題のコードやスタックトレースに表示されるエラーメッセージの抜粋などです。コードを抜粋する際は <a href="https://gist.github.com/">Gist</a> などを利用するといいでしょう。</p>
   </li>
 </ul>
 
