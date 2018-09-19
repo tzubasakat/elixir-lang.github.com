@@ -10,34 +10,35 @@ redirect_from: /getting_started/1.html
 
 さあ、一緒に Elixir を盛り上げていきましょう！
 
-In this tutorial, we are going to teach you about Elixir fundamentals - the language syntax, how to define modules, how to manipulate the characteristics of common data structures, and more. This chapter will focus on ensuring that Elixir is installed and that you can successfully run Elixir's Interactive Shell, called IEx.
+このチュートリアルでは、あなたが Elixir を始めるにあたって重要となる文法、モジュール定義、普遍的なデータ構造の扱い方などの基礎についてお伝えします。この章では、Elixir を確実にインストールし、 "IEx" と呼ばれるインタラクティブ・シェルが正常に動作するように手順をご案内します。
 
-Our requirements are:
+必要構成
 
-  * Elixir - Version 1.5.0 onwards
-  * Erlang - Version 19.0 onwards
+  * Elixir - Version 1.5.0 以上
+  * Erlang - Version 19.0 以上
 
-Let's get started!
 
-> If you find any errors in the tutorial or on the website, [please report a bug or send a pull request to our issue tracker](https://github.com/elixir-lang/elixir-lang.github.com).
+さあ、はじめましょう！
 
-> The Elixir guides are also available in EPUB format:
+このチュートリアル、またはウェブサイトに誤りを見つけた場合、[バグ報告、もしくは Issue tracker 宛に Pull Request ](https://github.com/elixir-lang/elixir-lang.github.com)をお願いします。
+
+> このチュートリアルは電子書籍(EPUB形式)でもご覧になれます。
 >
 >   * [Getting started guide](https://repo.hex.pm/guides/elixir/elixir-getting-started-guide.epub)
 >   * [Mix and OTP guide](https://repo.hex.pm/guides/elixir/mix-and-otp.epub)
 >   * [Meta-programming guide](https://repo.hex.pm/guides/elixir/meta-programming-in-elixir.epub)
 
-## Installation
+## インストール
 
-If you haven't yet installed Elixir, visit our [installation page](/install.html). Once you are done, you can run `elixir --version` to get the current Elixir version.
+もしも Elixir のインストールがまだでしたら、[Elixir のインストール](/install.html)を参考にしてください。そうしましたら、`elixir --version` で現在のバージョンを確認できます。
 
-## Interactive mode
+## インタラクティヴ・モード
 
-When you install Elixir, you will have three new executables: `iex`, `elixir` and `elixirc`. If you compiled Elixir from source or are using a packaged version, you can find these inside the `bin` directory.
+Elixir のインストールが終わりましたら、 `iex`, `elixir`, `elixirc` コマンドが実行できるようになります。ソースコードからコンパイルしたもの、もしくはパッケージ版をご利用の場合は、これらコマンドが `bin` ディレクトリ内にあります。
 
-For now, let's start by running `iex` (or `iex.bat` if you are on Windows) which stands for Interactive Elixir. In interactive mode, we can type any Elixir expression and get its result. Let's warm up with some basic expressions.
+それでは `iex` コマンド (Windows をお使いの場合は `iex.bat`) を実行してインタラクティヴ・モードで起動してみましょう。インタラクティヴ・モードでは、Elixir のどんな式でも入力することができ、その結果を得られます。試しに簡単な式で準備運動してみましょう。
 
-Open up `iex` and type the following expressions:
+`iex` コマンドを起動したら、以下のように入力してみてください。
 
 ```iex
 Erlang/OTP 19 [erts-8.1] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
@@ -49,42 +50,43 @@ iex(2)> "hello" <> " world"
 "hello world"
 ```
 
-Please note that some details like version numbers may differ a bit in your session; that's not important. From now on `iex` sessions will be stripped down to focus on the code. To exit `iex` press `Ctrl+C` twice.
+あなたの環境で表示されるバージョンはここで示しているものと少し異なるかも知れませんが、特に問題はないので気になさらず進めてください。今後、 `iex` ではコードに着目していきましょう。`iex` を終了したい時は、 `Ctrl + C` を二度押してください。
 
-It seems we are ready to go! We will use the interactive shell quite a lot in the next chapters to get a bit more familiar with the language constructs and basic types, starting in the next chapter.
+問題なさそうですね。それでは進めて行きましょう！インタラクティヴ・シェルを使い、次章からは皆さんお馴染みの言語構文や基本的な型についてもふんだんに触れていきたいと思います。
 
-> Note: if you are on Windows, you can also try `iex.bat --werl` which may provide a better experience depending on which console you are using.
+> Note: Windows をお使いの場合、あなたが使用するコンソールによっては `iex.bat --werl` をお使い頂けるかも知れません。
 
-> Note: if you want to find and execute a given script in PATH so it will be loaded in `iex` use: `iex -S SCRIPTNAME`.  Later you'll learn about [Mix](/getting-started/mix-otp/introduction-to-mix.html), Elixir's build tool, and how you can compile and load entire applications with `iex -S mix run`. See [Supervisor and application](/getting-started/mix-otp/supervisor-and-application.html) for more details.
+> Note: `iex` 内でスクリプトファイルを実行するには、 `iex -S SCRIPTNAME` とします。あとで [Mix](/getting-started/mix-otp/introduction-to-mix.html) や Elixir ビルドツール、そしてコンパイル方法とそのアプリケーションを `iex -S mix run` で起動する方法についても学んでいきます。
 
-## Running scripts
+## スクリプトの実行
 
-After getting familiar with the basics of the language you may want to try writing simple programs. This can be accomplished by putting the following Elixir code into a file:
+基本が分かってくると、簡単なプログラムを書いてみたくなることでしょう。それでは、その願いを叶える為に、まず以下のコードをファイルに入力してみましょう。
 
 ```elixir
 IO.puts "Hello world from Elixir"
 ```
 
-Save it as `simple.exs` and execute it with `elixir`:
+`simple.exs` というファイル名で保存し、 `elixir` コマンドで実行してみてください。如何でしょう。
 
 ```console
 $ elixir simple.exs
 Hello world from Elixir
 ```
 
-Later on we will learn how to compile Elixir code (in [Chapter 8](/getting-started/modules-and-functions.html)) and how to use the Mix build tool (in the [Mix & OTP guide](/getting-started/mix-otp/introduction-to-mix.html)). For now, let's move on to [Chapter 2](/getting-started/basic-types.html).
+後ほど Elixir コードのコンパイル方法と Mix ビルドツール ([Mix & OTP ガイド](/getting-started/mix-otp/introduction-to-mix.html)) の使い方を学びましょう。今はとりあえず [第2章](/getting-started/basic-types.html) に進みます。
 
-## Asking questions
+## 質問方法
 
-When going through this getting started guide, it is common to have questions; after all, that is part of the learning process! There are many places you could ask them to learn more about Elixir:
+この入門ガイドを終えたあなたも、よく抱かれる疑問を質問をしたいその一人であることでしょう。それも学習プロセスのうちです。あなたが Elixir を学ぶにあたって疑問や問題を質問できる場はたくさんあります。
 
-  * [#elixir-lang on freenode IRC](irc://irc.freenode.net/elixir-lang)
-  * [Elixir on Slack](https://elixir-slackin.herokuapp.com/)
-  * [Elixir Forum](http://elixirforum.com)
-  * [elixir tag on StackOverflow](https://stackoverflow.com/questions/tagged/elixir)
+  * [#elixir-lang on freenode IRC (英語)](irc://irc.freenode.net/elixir-lang)
+  * [Elixir on Slack (英語)](https://elixir-slackin.herokuapp.com/)
+  * [Elixir Forum (英語)](http://elixirforum.com)
+  * [elixir (英語 StackOverflow)](https://stackoverflow.com/questions/tagged/elixir)
+  * [elixir (日本語 StackOverflow)](https://ja.stackoverflow.com/questions/tagged/elixir)
 
-When asking questions, remember these two tips:
+質問する際は以下の二点を念頭においてください。
 
-  * Instead of asking "how to do X in Elixir", ask "how to solve Y in Elixir". In other words, don't ask how to implement a particular solution, instead describe the problem at hand. Stating the problem gives more context and less bias for a correct answer.
+  * 「Elixir で××のやり方を教えてください」や「Elixir で△△の解決法を教えてください」といった質問はおやめください。それはつまり、何かある特定の解決法を求めるのではなく、今あなたが直面している問題を述べてくださいという意味です。的確な回答をもらう為に、その問題の背景や状況を詳しく記して、なるべく客観的に説明してください。
 
-  * In case things are not working as expected, please include as much information as you can in your report, for example: your Elixir version, the code snippet and the error message alongside the error stacktrace. Use sites like [Gist](https://gist.github.com/) to paste this information.
+  * 何かが意図した通りに動作しない場合、把握できる限りの情報を含め記してください。例えば Elixir のバージョン、問題のコードやスタックトレースに表示されるエラーメッセージの抜粋などです。コードを抜粋する際は [Gist](https://gist.github.com/) などを利用するといいでしょう。

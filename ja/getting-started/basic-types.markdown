@@ -22,7 +22,7 @@ iex> {1, 2, 3}  # tuple
 
 ## Basic arithmetic
 
-Open up `iex` and type the following expressions:
+`iex` コマンドを起動したら、以下のように入力してみてください。
 
 ```iex
 iex> 1 + 2

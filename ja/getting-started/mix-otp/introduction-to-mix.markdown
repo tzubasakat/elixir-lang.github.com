@@ -45,7 +45,7 @@ In this chapter, we will create our first project using Mix and explore differen
 >
 > The final code for the application built in this guide is in [this repository](https://github.com/josevalim/kv_umbrella) and can be used as a reference.
 
-> The Elixir guides are also available in EPUB format:
+> このチュートリアルは電子書籍(EPUB形式)でもご覧になれます。
 >
 >   * [Getting started guide](https://repo.hex.pm/guides/elixir/elixir-getting-started-guide.epub)
 >   * [Mix and OTP guide](https://repo.hex.pm/guides/elixir/mix-and-otp.epub)
