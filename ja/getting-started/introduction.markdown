@@ -8,9 +8,9 @@ redirect_from: /getting_started/1.html
 
 {% include toc.html %}
 
-さあ、一緒に Elixir を盛り上げていきましょう！
+さぁ、はじめよう！
 
-このチュートリアルでは、あなたが Elixir を始めるにあたって重要となる文法、モジュール定義、普遍的なデータ構造の扱い方などの基礎についてお伝えします。この章では、Elixir を確実にインストールし、 "IEx" と呼ばれるインタラクティブ・シェルが正常に動作するように手順をご案内します。
+このチュートリアルでは、あなたが Elixir を始めるにあたって重要となる文法、モジュール定義、普遍的なデータ構造の扱い方などの基礎についてお伝えします。この章では、Elixir を確実にインストールし、 "IEx" と呼ばれるインタラクティヴ・シェルが正常に動作するように手順をご案内します。
 
 必要構成
 
@@ -18,7 +18,7 @@ redirect_from: /getting_started/1.html
   * Erlang - Version 19.0 以上
 
 
-さあ、はじめましょう！
+レッツ・スタート！
 
 このチュートリアル、またはウェブサイトに誤りを見つけた場合、[バグ報告、もしくは Issue tracker 宛に Pull Request ](https://github.com/elixir-lang/elixir-lang.github.com)をお願いします。
 
@@ -82,8 +82,8 @@ Hello world from Elixir
   * [#elixir-lang on freenode IRC (英語)](irc://irc.freenode.net/elixir-lang)
   * [Elixir on Slack (英語)](https://elixir-slackin.herokuapp.com/)
   * [Elixir Forum (英語)](http://elixirforum.com)
-  * [elixir (英語 StackOverflow)](https://stackoverflow.com/questions/tagged/elixir)
-  * [elixir (日本語 StackOverflow)](https://ja.stackoverflow.com/questions/tagged/elixir)
+  * [英語 StackOverflow (Elixir)](https://stackoverflow.com/questions/tagged/elixir)
+  * [日本語 StackOverflow (Elixir)](https://ja.stackoverflow.com/questions/tagged/elixir)
 
 質問する際は以下の二点を念頭においてください。
 
