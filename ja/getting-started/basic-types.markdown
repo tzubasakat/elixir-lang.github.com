@@ -7,7 +7,7 @@ title: Basic types
 
 {% include toc.html %}
 
-In this chapter we will learn more about Elixir basic types: integers, floats, booleans, atoms, strings, lists and tuples. Some basic types are:
+この章では、Integers、Floats、Booleans、Atoms、Strings、Lists、Tuples など Elixir の基本的なデータ型について学んでいきます。
 
 ```iex
 iex> 1          # integer
@@ -20,9 +20,9 @@ iex> [1, 2, 3]  # list
 iex> {1, 2, 3}  # tuple
 ```
 
-## Basic arithmetic
+## 四則演算
 
-`iex` コマンドを起動したら、以下のように入力してみてください。
+`iex` を起動して以下の演算を試してください。
 
 ```iex
 iex> 1 + 2
@@ -33,7 +33,7 @@ iex> 10 / 2
 5.0
 ```
 
-Notice that `10 / 2` returned a float `5.0` instead of an integer `5`. This is expected. In Elixir, the operator `/` always returns a float. If you want to do integer division or get the division remainder, you can invoke the `div` and `rem` functions:
+`10 / 2` の結果が Integer の `5` ではなく `5.0` という Float として得られたはずです。Elixir において `/` は常に Float を返します。除算や剰余で整数を得たい場合には、`div` や `rem` 関数を使用できます。
 
 ```iex
 iex> div(10, 2)
@@ -44,9 +44,9 @@ iex> rem 10, 3
 1
 ```
 
-Notice that Elixir allows you to drop the parentheses when invoking named functions. This feature gives a cleaner syntax when writing declarations and control-flow constructs.
+Elixr は関数を呼び出す際の括弧を省略できます。これにより、宣言と制御構造での文法的な見晴らしをクリアにします。
 
-Elixir also supports shortcut notations for entering binary, octal, and hexadecimal numbers:
+2 進法、8 進法、および 16 進法もサポートしています。
 
 ```iex
 iex> 0b1010
@@ -57,7 +57,7 @@ iex> 0x1F
 31
 ```
 
-Float numbers require a dot followed by at least one digit and also support `e` for scientific notation:
+浮動小数点数は数値と小数点に続いて小数を必要とし、指数表記の `e` も使用できます。
 
 ```iex
 iex> 1.0
@@ -66,9 +66,9 @@ iex> 1.0e-10
 1.0e-10
 ```
 
-Floats in Elixir are 64-bit double precision.
+Elixir の Floats は倍精度浮動小数点数です。
 
-You can invoke the `round` function to get the closest integer to a given float, or the `trunc` function to get the integer part of a float.
+`round` や `trunc` 関数では、引数として与えられた Float をもとに最も近い仮数を得られます。
 
 ```iex
 iex> round(3.58)
