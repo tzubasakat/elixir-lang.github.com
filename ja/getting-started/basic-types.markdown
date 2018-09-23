@@ -57,7 +57,7 @@ iex> 0x1F
 31
 ```
 
-浮動小数点数は数値と小数点に続いて小数を必要とし、指数表記の `e` も使用できます。
+浮動小数点数は仮数と小数点に続いて小数を必要とし、指数表記の `e` も使用できます。
 
 ```iex
 iex> 1.0
@@ -77,9 +77,9 @@ iex> trunc(3.58)
 3
 ```
 
-## Identifying functions
+## 関数の確認
 
-Functions in Elixir are identified by both their name and their arity. The arity of a function describes the number of arguments that the function takes. From this point on we will use both the function name and its arity to describe functions throughout the documentation. `round/1` identifies the function which is named `round` and takes 1 argument, whereas `round/2` identifies a different (nonexistent) function with the same name but with an arity of `2`.
+Elixir における関数は、その関数名とアリティで成り立ちます。アリティはその関数が受け取る引数の数を示します。これ以降は関数を説明するにあたって、関数名とそのアリティの両方を添えて記述していきます。`round/1` は `round` という関数とその関数が受け取る引数の数 `1` を示します。一方で、例えば `round/2` という関数があった場合に、それは関数名として同名ではあるものの、前者とは異なって引数を `2` 受け取る別の関数です。
 
 ## Booleans
 

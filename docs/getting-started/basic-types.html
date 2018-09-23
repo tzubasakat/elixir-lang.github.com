@@ -227,7 +227,7 @@
 
 <div id="toc" class="toc"></div>
 
-<p>In this chapter we will learn more about Elixir basic types: integers, floats, booleans, atoms, strings, lists and tuples. Some basic types are:</p>
+<p>この章では、Integers、Floats、Booleans、Atoms、Strings、Lists、Tuples など Elixir の基本的なデータ型について学んでいきます。</p>
 
 <pre><code class="language-iex">iex&gt; 1          # integer
 iex&gt; 0x1F       # integer
@@ -239,9 +239,9 @@ iex&gt; [1, 2, 3]  # list
 iex&gt; {1, 2, 3}  # tuple
 </code></pre>
 
-<h2 id="basic-arithmetic">Basic arithmetic</h2>
+<h2 id="四則演算">四則演算</h2>
 
-<p><code class="highlighter-rouge">iex</code> コマンドを起動したら、以下のように入力してみてください。</p>
+<p><code class="highlighter-rouge">iex</code> を起動して以下の演算を試してください。</p>
 
 <pre><code class="language-iex">iex&gt; 1 + 2
 3
@@ -251,7 +251,7 @@ iex&gt; 10 / 2
 5.0
 </code></pre>
 
-<p>Notice that <code class="highlighter-rouge">10 / 2</code> returned a float <code class="highlighter-rouge">5.0</code> instead of an integer <code class="highlighter-rouge">5</code>. This is expected. In Elixir, the operator <code class="highlighter-rouge">/</code> always returns a float. If you want to do integer division or get the division remainder, you can invoke the <code class="highlighter-rouge">div</code> and <code class="highlighter-rouge">rem</code> functions:</p>
+<p><code class="highlighter-rouge">10 / 2</code> の結果が Integer の <code class="highlighter-rouge">5</code> ではなく <code class="highlighter-rouge">5.0</code> という Float として得られたはずです。Elixir において <code class="highlighter-rouge">/</code> は常に Float を返します。除算や剰余で整数を得たい場合には、<code class="highlighter-rouge">div</code> や <code class="highlighter-rouge">rem</code> 関数を使用できます。</p>
 
 <pre><code class="language-iex">iex&gt; div(10, 2)
 5
@@ -261,9 +261,9 @@ iex&gt; rem 10, 3
 1
 </code></pre>
 
-<p>Notice that Elixir allows you to drop the parentheses when invoking named functions. This feature gives a cleaner syntax when writing declarations and control-flow constructs.</p>
+<p>Elixr は関数を呼び出す際の括弧を省略できます。これにより、宣言と制御構造での文法的な見晴らしをクリアにします。</p>
 
-<p>Elixir also supports shortcut notations for entering binary, octal, and hexadecimal numbers:</p>
+<p>2 進法、8 進法、および 16 進法もサポートしています。</p>
 
 <pre><code class="language-iex">iex&gt; 0b1010
 10
@@ -273,7 +273,7 @@ iex&gt; 0x1F
 31
 </code></pre>
 
-<p>Float numbers require a dot followed by at least one digit and also support <code class="highlighter-rouge">e</code> for scientific notation:</p>
+<p>浮動小数点数は仮数と小数点に続いて小数を必要とし、指数表記の <code class="highlighter-rouge">e</code> も使用できます。</p>
 
 <pre><code class="language-iex">iex&gt; 1.0
 1.0
@@ -281,9 +281,9 @@ iex&gt; 1.0e-10
 1.0e-10
 </code></pre>
 
-<p>Floats in Elixir are 64-bit double precision.</p>
+<p>Elixir の Floats は倍精度浮動小数点数です。</p>
 
-<p>You can invoke the <code class="highlighter-rouge">round</code> function to get the closest integer to a given float, or the <code class="highlighter-rouge">trunc</code> function to get the integer part of a float.</p>
+<p><code class="highlighter-rouge">round</code> や <code class="highlighter-rouge">trunc</code> 関数では、引数として与えられた Float をもとに最も近い仮数を得られます。</p>
 
 <pre><code class="language-iex">iex&gt; round(3.58)
 4
@@ -291,9 +291,9 @@ iex&gt; trunc(3.58)
 3
 </code></pre>
 
-<h2 id="identifying-functions">Identifying functions</h2>
+<h2 id="関数の確認">関数の確認</h2>
 
-<p>Functions in Elixir are identified by both their name and their arity. The arity of a function describes the number of arguments that the function takes. From this point on we will use both the function name and its arity to describe functions throughout the documentation. <code class="highlighter-rouge">round/1</code> identifies the function which is named <code class="highlighter-rouge">round</code> and takes 1 argument, whereas <code class="highlighter-rouge">round/2</code> identifies a different (nonexistent) function with the same name but with an arity of <code class="highlighter-rouge">2</code>.</p>
+<p>Elixir における関数は、その関数名とアリティで成り立ちます。アリティはその関数が受け取る引数の数を示します。これ以降は関数を説明するにあたって、関数名とそのアリティの両方を添えて記述していきます。<code class="highlighter-rouge">round/1</code> は <code class="highlighter-rouge">round</code> という関数とその関数が受け取る引数の数 <code class="highlighter-rouge">1</code> を示します。一方で、例えば <code class="highlighter-rouge">round/2</code> という関数があった場合に、それは関数名として同名ではあるものの、前者とは異なって引数を <code class="highlighter-rouge">2</code> 受け取る別の関数です。</p>
 
 <h2 id="booleans">Booleans</h2>
 
