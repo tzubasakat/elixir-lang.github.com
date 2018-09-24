@@ -81,9 +81,9 @@ iex> trunc(3.58)
 
 Elixir における関数は、その関数名とアリティで成り立ちます。アリティはその関数が受け取る引数の数を示します。これ以降は関数を説明するにあたって、関数名とそのアリティの両方を添えて記述していきます。`round/1` は `round` という関数とその関数が受け取る引数の数 `1` を示します。一方で、例えば `round/2` という関数があった場合に、それは関数名として同名ではあるものの、前者とは異なって引数を `2` 受け取る別の関数です。
 
-## Booleans
+## 論理演算子
 
-Elixir supports `true` and `false` as booleans:
+Elixir では `true` と `false` を Boolean としています。
 
 ```iex
 iex> true
@@ -92,7 +92,7 @@ iex> true == false
 false
 ```
 
-Elixir provides a bunch of predicate functions to check for a value type. For example, the `is_boolean/1` function can be used to check if a value is a boolean or not:
+述語的な名前を持った一連の関数 (Predicate functions) を使って、値の型をチェックすることも出来ます。例えば `is_boolean/1` 関数は、値が Boolean か否かをチェックする為に使用します。
 
 ```iex
 iex> is_boolean(true)
@@ -101,9 +101,9 @@ iex> is_boolean(1)
 false
 ```
 
-You can also use `is_integer/1`, `is_float/1` or `is_number/1` to check, respectively, if an argument is an integer, a float, or either.
+さらに、`is_integer/1` や `is_float/1` 、`is_number/1` なども同様に、それぞれの引数が整数・浮動小数点数・数値であるかをチェックできます。
 
-> Note: At any moment you can type `h()` in the shell to print information on how to use the shell. The `h` helper can also be used to access documentation for any function. For example, typing `h is_integer/1` is going to print the documentation for the `is_integer/1` function. It also works with operators and other constructs (try `h ==/2`).
+> Note: `h()` でシェルの使い方に関する情報を表示できます。`h` ヘルパーは関数に関するドキュメントを参照する際にも使用できます。
 
 ## Atoms
 

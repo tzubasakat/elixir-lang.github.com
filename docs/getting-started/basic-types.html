@@ -295,9 +295,9 @@ iex&gt; trunc(3.58)
 
 <p>Elixir における関数は、その関数名とアリティで成り立ちます。アリティはその関数が受け取る引数の数を示します。これ以降は関数を説明するにあたって、関数名とそのアリティの両方を添えて記述していきます。<code class="highlighter-rouge">round/1</code> は <code class="highlighter-rouge">round</code> という関数とその関数が受け取る引数の数 <code class="highlighter-rouge">1</code> を示します。一方で、例えば <code class="highlighter-rouge">round/2</code> という関数があった場合に、それは関数名として同名ではあるものの、前者とは異なって引数を <code class="highlighter-rouge">2</code> 受け取る別の関数です。</p>
 
-<h2 id="booleans">Booleans</h2>
+<h2 id="論理演算子">論理演算子</h2>
 
-<p>Elixir supports <code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">false</code> as booleans:</p>
+<p>Elixir では <code class="highlighter-rouge">true</code> と <code class="highlighter-rouge">false</code> を Boolean としています。</p>
 
 <pre><code class="language-iex">iex&gt; true
 true
@@ -305,7 +305,7 @@ iex&gt; true == false
 false
 </code></pre>
 
-<p>Elixir provides a bunch of predicate functions to check for a value type. For example, the <code class="highlighter-rouge">is_boolean/1</code> function can be used to check if a value is a boolean or not:</p>
+<p>述語的な名前を持った一連の関数 (Predicate functions) を使って、値の型をチェックすることも出来ます。例えば <code class="highlighter-rouge">is_boolean/1</code> 関数は、値が Boolean か否かをチェックする為に使用します。</p>
 
 <pre><code class="language-iex">iex&gt; is_boolean(true)
 true
@@ -313,10 +313,10 @@ iex&gt; is_boolean(1)
 false
 </code></pre>
 
-<p>You can also use <code class="highlighter-rouge">is_integer/1</code>, <code class="highlighter-rouge">is_float/1</code> or <code class="highlighter-rouge">is_number/1</code> to check, respectively, if an argument is an integer, a float, or either.</p>
+<p>さらに、<code class="highlighter-rouge">is_integer/1</code> や <code class="highlighter-rouge">is_float/1</code> 、<code class="highlighter-rouge">is_number/1</code> なども同様に、それぞれの引数が整数・浮動小数点数・数値であるかをチェックできます。</p>
 
 <blockquote>
-  <p>Note: At any moment you can type <code class="highlighter-rouge">h()</code> in the shell to print information on how to use the shell. The <code class="highlighter-rouge">h</code> helper can also be used to access documentation for any function. For example, typing <code class="highlighter-rouge">h is_integer/1</code> is going to print the documentation for the <code class="highlighter-rouge">is_integer/1</code> function. It also works with operators and other constructs (try <code class="highlighter-rouge">h ==/2</code>).</p>
+  <p>Note: <code class="highlighter-rouge">h()</code> でシェルの使い方に関する情報を表示できます。<code class="highlighter-rouge">h</code> ヘルパーは関数に関するドキュメントを参照する際にも使用できます。</p>
 </blockquote>
 
 <h2 id="atoms">Atoms</h2>
