@@ -1,6 +1,6 @@
 ---
 layout: getting-started
-title: Introduction
+title: はじめに
 redirect_from: /getting_started/1.html
 ---
 
