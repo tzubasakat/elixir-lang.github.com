@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>try, catch, and rescue - Elixir</title>
+  <title>try、catch、rescue - Elixir</title>
   <link href="http://feeds.feedburner.com/ElixirLang" rel="alternate" title="Elixir's Blog" type="application/atom+xml" />
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
@@ -25,12 +25,12 @@
   ga('send', 'pageview');
   </script>
   <!-- Begin Jekyll SEO tag v2.2.3 -->
-<meta property="og:title" content="try, catch, and rescue" />
+<meta property="og:title" content="try、catch、rescue" />
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="https://elixir-lang.org/ja/getting-started/try-catch-and-rescue.html" />
 <meta property="og:url" content="https://elixir-lang.org/ja/getting-started/try-catch-and-rescue.html" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebPage","headline":"try, catch, and rescue","url":"https://elixir-lang.org/ja/getting-started/try-catch-and-rescue.html"}</script>
+{"@context":"http://schema.org","@type":"WebPage","headline":"try、catch、rescue","url":"https://elixir-lang.org/ja/getting-started/try-catch-and-rescue.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -98,7 +98,7 @@
      <h3 class="widget-title">Getting Started</h3>
       <ol>
         
-          <li><a class="spec" href="/getting-started/introduction.html" title="Introduction">Introduction</a></li>
+          <li><a class="spec" href="/getting-started/introduction.html" title="はじめに">はじめに</a></li>
         
           <li><a class="spec" href="/getting-started/basic-types.html" title="Basic types">Basic types</a></li>
         
@@ -134,7 +134,7 @@
         
           <li><a class="spec" href="/getting-started/sigils.html" title="Sigils">Sigils</a></li>
         
-          <li><a class="spec" href="/getting-started/try-catch-and-rescue.html" title="try, catch, and rescue">try, catch, and rescue</a></li>
+          <li><a class="spec" href="/getting-started/try-catch-and-rescue.html" title="try、catch、rescue">try、catch、rescue</a></li>
         
           <li><a class="spec" href="/getting-started/typespecs-and-behaviours.html" title="Typespecs and behaviours">Typespecs and behaviours</a></li>
         
@@ -223,34 +223,34 @@
 
 <div id="content">
   <article>
-    <h1 id="try-catch-and-rescue">try, catch, and rescue</h1>
+    <h1 id="trycatchrescue">try、catch、rescue</h1>
 
 <div id="toc" class="toc"></div>
 
-<p>Elixir has three error mechanisms: errors, throws, and exits. In this chapter, we will explore each of them and include remarks about when each should be used.</p>
+<p>Elixir は3つのエラー機構を持っています。エラー、スロー、イグジットです。この章では、それらがいつ使われるべきかをみていきましょう。</p>
 
-<h2 id="errors">Errors</h2>
+<h2 id="エラー">エラー</h2>
 
-<p>Errors (or <em>exceptions</em>) are used when exceptional things happen in the code. A sample error can be retrieved by trying to add a number into an atom:</p>
+<p>エラー（または例外）はコード内で予期しない出来事が起きた時に使われます。例えば数値をアトムに加えようとした時に、エラーを発生させることが出来ます。</p>
 
 <pre><code class="language-iex">iex&gt; :foo + 1
 ** (ArithmeticError) bad argument in arithmetic expression
      :erlang.+(:foo, 1)
 </code></pre>
 
-<p>A runtime error can be raised any time by using <code class="highlighter-rouge">raise/1</code>:</p>
+<p>ランタイムエラーは <code class="highlighter-rouge">raise/1</code> を使うことでいつでも発生させることが出来ます。</p>
 
 <pre><code class="language-iex">iex&gt; raise "oops"
 ** (RuntimeError) oops
 </code></pre>
 
-<p>Other errors can be raised with <code class="highlighter-rouge">raise/2</code> passing the error name and a list of keyword arguments:</p>
+<p>それ以外のエラーは <code class="highlighter-rouge">raise/2</code> にエラー名とキーワード引数のリストを渡すことで発生させることが出来ます。</p>
 
 <pre><code class="language-iex">iex&gt; raise ArgumentError, message: "invalid argument foo"
 ** (ArgumentError) invalid argument foo
 </code></pre>
 
-<p>You can also define your own errors by creating a module and using the <code class="highlighter-rouge">defexception</code> construct inside it; this way, you’ll create an error with the same name as the module it’s defined in. The most common case is to define a custom exception with a message field:</p>
+<p>モジュールを作り、その中で <code class="highlighter-rouge">defexception/1</code> マクロを使うことで、独自のエラーを定義することもできます。この方法では、モジュールと同じ名前のエラーを作ることが出来ます。最も一般的な使用法は、独自のメッセージ付きエラーを定義することです。</p>
 
 <pre><code class="language-iex">iex&gt; defmodule MyError do
 iex&gt;   defexception message: "default message"
@@ -261,7 +261,7 @@ iex&gt; raise MyError, message: "custom message"
 ** (MyError) custom message
 </code></pre>
 
-<p>Errors can be <strong>rescued</strong> using the <code class="highlighter-rouge">try/rescue</code> construct:</p>
+<p>エラーは <code class="highlighter-rouge">tru/rescue</code> 構造を用いることで <strong>捕捉</strong> することが出来ます。</p>
 
 <pre><code class="language-iex">iex&gt; try do
 ...&gt;   raise "oops"
@@ -271,9 +271,9 @@ iex&gt; raise MyError, message: "custom message"
 %RuntimeError{message: "oops"}
 </code></pre>
 
-<p>The example above rescues the runtime error and returns the error itself which is then printed in the <code class="highlighter-rouge">iex</code> session.</p>
+<p>上の例ではランタイムエラーを補足し、 <code class="highlighter-rouge">ies</code> セッション内でエラーが表示されるように、そのエラー自身を返しています。</p>
 
-<p>If you don’t have any use for the error, you don’t have to provide it:</p>
+<p>もしエラーを使う必要がないのであれば、エラー自身を返す必要はありません。</p>
 
 <pre><code class="language-iex">iex&gt; try do
 ...&gt;   raise "oops"
@@ -283,7 +283,7 @@ iex&gt; raise MyError, message: "custom message"
 "Error!"
 </code></pre>
 
-<p>In practice, however, Elixir developers rarely use the <code class="highlighter-rouge">try/rescue</code> construct. For example, many languages would force you to rescue an error when a file cannot be opened successfully. Elixir instead provides a <code class="highlighter-rouge">File.read/1</code> function which returns a tuple containing information about whether the file was opened successfully:</p>
+<p>しかし実際のところ、Elixirで開発中に <code class="highlighter-rouge">try/rescue</code> 構造を使うことはほとんどないでしょう。例えば、多くの言語ではファイルを開けなかったときにエラーになるので、あなたがそれを捕捉しなければならないようになっています。一方Elixirが提供する <code class="highlighter-rouge">File.read/1</code> 関数は、ファイルを開くことに成功したかどうかの情報を含んだタプルを返します。</p>
 
 <pre><code class="language-iex">iex&gt; File.read "hello"
 {:error, :enoent}
@@ -293,7 +293,7 @@ iex&gt; File.read "hello"
 {:ok, "world"}
 </code></pre>
 
-<p>There is no <code class="highlighter-rouge">try/rescue</code> here. In case you want to handle multiple outcomes of opening a file, you can use pattern matching within the <code class="highlighter-rouge">case</code> construct:</p>
+<p>そこに <code class="highlighter-rouge">try/rescue</code> は存在しません。ファイルを開く時の複数の結果を取り扱いたい場合は、 <code class="highlighter-rouge">case</code> 構造と一緒にパターンマッチングを使うことが出来ます。</p>
 
 <pre><code class="language-iex">iex&gt; case File.read "hello" do
 ...&gt;   {:ok, body}      -&gt; IO.puts "Success: #{body}"
@@ -301,18 +301,18 @@ iex&gt; File.read "hello"
 ...&gt; end
 </code></pre>
 
-<p>At the end of the day, it’s up to your application to decide if an error while opening a file is exceptional or not. That’s why Elixir doesn’t impose exceptions on <code class="highlighter-rouge">File.read/1</code> and many other functions. Instead, it leaves it up to the developer to choose the best way to proceed.</p>
+<p>要するに、ファイルを開くときのエラーが例外かそうでないかを決めるのはあなたのアプリケーション次第です。だからこそElixirは <code class="highlighter-rouge">File.read/1</code> やその他の関数で例外を強制しません。その代りに、最も良い例外の処理方法を開発者に委ねます。</p>
 
-<p>For the cases where you do expect a file to exist (and the lack of that file is truly an <em>error</em>) you may use <code class="highlighter-rouge">File.read!/1</code>:</p>
+<p>ファイルが存在することを期待している時（そしてそのファイルが存在しないときは本当にエラーである時）、 <code class="highlighter-rouge">File.read!/1</code> を使うでしょう。</p>
 
 <pre><code class="language-iex">iex&gt; File.read! "unknown"
 ** (File.Error) could not read file unknown: no such file or directory
     (elixir) lib/file.ex:272: File.read!/1
 </code></pre>
 
-<p>Many functions in the standard library follow the pattern of having a counterpart that raises an exception instead of returning tuples to match against. The convention is to create a function (<code class="highlighter-rouge">foo</code>) which returns <code class="highlighter-rouge"><span class="p">{</span><span class="err">:ok,</span><span class="w"> </span><span class="err">result</span><span class="p">}</span></code> or <code class="highlighter-rouge"><span class="p">{</span><span class="err">:error,</span><span class="w"> </span><span class="err">reason</span><span class="p">}</span></code> tuples and another function (<code class="highlighter-rouge">foo!</code>, same name but with a trailing <code class="highlighter-rouge">!</code>) that takes the same arguments as <code class="highlighter-rouge">foo</code> but which raises an exception if there’s an error. <code class="highlighter-rouge">foo!</code> should return the result (not wrapped in a tuple) if everything goes fine. The <a href="https://hexdocs.pm/elixir/File.html"><code class="highlighter-rouge">File</code> module</a> is a good example of this convention.</p>
+<p>標準ライブラリ内の多くの関数は、マッチするタプルを返す代わりに例外を発生させる、という反対のパターンに従います。規約では、 <code class="highlighter-rouge">foo</code> 関数を作るときは <code class="highlighter-rouge"><span class="p">{</span><span class="err">:ok,</span><span class="w"> </span><span class="err">result</span><span class="p">}</span></code> か <code class="highlighter-rouge"><span class="p">{</span><span class="err">:error,</span><span class="w"> </span><span class="err">reason</span><span class="p">}</span></code> タプルを返し、 <code class="highlighter-rouge">foo!</code> という、 <code class="highlighter-rouge">foo</code> と同じ名前に <code class="highlighter-rouge">!</code> がつき <code class="highlighter-rouge">foo</code> と同じ引数を取る関数は、エラーが生じたときは例外を発生させます。 <code class="highlighter-rouge">foo!</code> はすべてが上手く行った時は、タプルで囲わない結果を返すべきです。 <a href="https://hexdocs.pm/elixir/File.html"><code class="highlighter-rouge">File</code> モジュール</a>  はこの規約についての良い例です。</p>
 
-<p>In Elixir, we avoid using <code class="highlighter-rouge">try/rescue</code> because <strong>we don’t use errors for control flow</strong>. We take errors literally: they are reserved for unexpected and/or exceptional situations. In case you actually need flow control constructs, <em>throws</em> should be used. That’s what we are going to see next.</p>
+<p>Elixirでは、 <code class="highlighter-rouge">try/rescue</code> の使用を避けています。なぜなら、 <strong>フローを制御するためにエラーを使わないから</strong> です。私達はエラーを文字通りに受け取ります。エラーは予期しないまたは予期した例外的状況のために用意されています。フローを制御する構造が必要な場合は、 <em>スロー</em> が使われるべきです。それでは次にスローを見ていきましょう。</p>
 
 <h2 id="throws">Throws</h2>
 

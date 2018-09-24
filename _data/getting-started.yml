@@ -1,7 +1,7 @@
 - title: Getting Started
   dir: /getting-started/
   pages:
-    - title: Introduction
+    - title: はじめに
       slug: introduction
 
     - title: Basic types
@@ -55,7 +55,7 @@
     - title: Sigils
       slug: sigils
 
-    - title: try, catch, and rescue
+    - title: try、catch、rescue
       slug: try-catch-and-rescue
 
     - title: Typespecs and behaviours

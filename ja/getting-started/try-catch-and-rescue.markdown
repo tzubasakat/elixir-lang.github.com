@@ -1,17 +1,17 @@
 ---
 layout: getting-started
-title: try, catch, and rescue
+title: try、catch、rescue
 ---
 
 # {{ page.title }}
 
 {% include toc.html %}
 
-Elixir has three error mechanisms: errors, throws, and exits. In this chapter, we will explore each of them and include remarks about when each should be used.
+Elixir は3つのエラー機構を持っています。エラー、スロー、イグジットです。この章では、それらがいつ使われるべきかをみていきましょう。
 
-## Errors
+## エラー
 
-Errors (or *exceptions*) are used when exceptional things happen in the code. A sample error can be retrieved by trying to add a number into an atom:
+エラー（または例外）はコード内で予期しない出来事が起きた時に使われます。例えば数値をアトムに加えようとした時に、エラーを発生させることが出来ます。
 
 ```iex
 iex> :foo + 1
@@ -19,21 +19,21 @@ iex> :foo + 1
      :erlang.+(:foo, 1)
 ```
 
-A runtime error can be raised any time by using `raise/1`:
+ランタイムエラーは `raise/1` を使うことでいつでも発生させることが出来ます。
 
 ```iex
 iex> raise "oops"
 ** (RuntimeError) oops
 ```
 
-Other errors can be raised with `raise/2` passing the error name and a list of keyword arguments:
+それ以外のエラーは `raise/2` にエラー名とキーワード引数のリストを渡すことで発生させることが出来ます。
 
 ```iex
 iex> raise ArgumentError, message: "invalid argument foo"
 ** (ArgumentError) invalid argument foo
 ```
 
-You can also define your own errors by creating a module and using the `defexception` construct inside it; this way, you'll create an error with the same name as the module it's defined in. The most common case is to define a custom exception with a message field:
+モジュールを作り、その中で `defexception/1` マクロを使うことで、独自のエラーを定義することもできます。この方法では、モジュールと同じ名前のエラーを作ることが出来ます。最も一般的な使用法は、独自のメッセージ付きエラーを定義することです。
 
 ```iex
 iex> defmodule MyError do
@@ -45,7 +45,7 @@ iex> raise MyError, message: "custom message"
 ** (MyError) custom message
 ```
 
-Errors can be **rescued** using the `try/rescue` construct:
+エラーは `tru/rescue` 構造を用いることで **捕捉** することが出来ます。
 
 ```iex
 iex> try do
@@ -56,9 +56,9 @@ iex> try do
 %RuntimeError{message: "oops"}
 ```
 
-The example above rescues the runtime error and returns the error itself which is then printed in the `iex` session.
+上の例ではランタイムエラーを補足し、 `ies` セッション内でエラーが表示されるように、そのエラー自身を返しています。
 
-If you don't have any use for the error, you don't have to provide it:
+もしエラーを使う必要がないのであれば、エラー自身を返す必要はありません。
 
 ```iex
 iex> try do
@@ -69,7 +69,7 @@ iex> try do
 "Error!"
 ```
 
-In practice, however, Elixir developers rarely use the `try/rescue` construct. For example, many languages would force you to rescue an error when a file cannot be opened successfully. Elixir instead provides a `File.read/1` function which returns a tuple containing information about whether the file was opened successfully:
+しかし実際のところ、Elixirで開発中に `try/rescue` 構造を使うことはほとんどないでしょう。例えば、多くの言語ではファイルを開けなかったときにエラーになるので、あなたがそれを捕捉しなければならないようになっています。一方Elixirが提供する `File.read/1` 関数は、ファイルを開くことに成功したかどうかの情報を含んだタプルを返します。
 
 ```iex
 iex> File.read "hello"
@@ -80,7 +80,7 @@ iex> File.read "hello"
 {:ok, "world"}
 ```
 
-There is no `try/rescue` here. In case you want to handle multiple outcomes of opening a file, you can use pattern matching within the `case` construct:
+そこに `try/rescue` は存在しません。ファイルを開く時の複数の結果を取り扱いたい場合は、 `case` 構造と一緒にパターンマッチングを使うことが出来ます。
 
 ```iex
 iex> case File.read "hello" do
@@ -89,9 +89,9 @@ iex> case File.read "hello" do
 ...> end
 ```
 
-At the end of the day, it's up to your application to decide if an error while opening a file is exceptional or not. That's why Elixir doesn't impose exceptions on `File.read/1` and many other functions. Instead, it leaves it up to the developer to choose the best way to proceed.
+要するに、ファイルを開くときのエラーが例外かそうでないかを決めるのはあなたのアプリケーション次第です。だからこそElixirは `File.read/1` やその他の関数で例外を強制しません。その代りに、最も良い例外の処理方法を開発者に委ねます。
 
-For the cases where you do expect a file to exist (and the lack of that file is truly an *error*) you may use `File.read!/1`:
+ファイルが存在することを期待している時（そしてそのファイルが存在しないときは本当にエラーである時）、 `File.read!/1` を使うでしょう。
 
 ```iex
 iex> File.read! "unknown"
@@ -99,9 +99,9 @@ iex> File.read! "unknown"
     (elixir) lib/file.ex:272: File.read!/1
 ```
 
-Many functions in the standard library follow the pattern of having a counterpart that raises an exception instead of returning tuples to match against. The convention is to create a function (`foo`) which returns `{:ok, result}` or `{:error, reason}` tuples and another function (`foo!`, same name but with a trailing `!`) that takes the same arguments as `foo` but which raises an exception if there's an error. `foo!` should return the result (not wrapped in a tuple) if everything goes fine. The [`File` module](https://hexdocs.pm/elixir/File.html) is a good example of this convention.
+標準ライブラリ内の多くの関数は、マッチするタプルを返す代わりに例外を発生させる、という反対のパターンに従います。規約では、 `foo` 関数を作るときは `{:ok, result}` か `{:error, reason}` タプルを返し、 `foo!` という、 `foo` と同じ名前に `!` がつき `foo` と同じ引数を取る関数は、エラーが生じたときは例外を発生させます。 `foo!` はすべてが上手く行った時は、タプルで囲わない結果を返すべきです。 [`File` モジュール](https://hexdocs.pm/elixir/File.html)  はこの規約についての良い例です。
 
-In Elixir, we avoid using `try/rescue` because **we don't use errors for control flow**. We take errors literally: they are reserved for unexpected and/or exceptional situations. In case you actually need flow control constructs, *throws* should be used. That's what we are going to see next.
+Elixirでは、 `try/rescue` の使用を避けています。なぜなら、 **フローを制御するためにエラーを使わないから** です。私達はエラーを文字通りに受け取ります。エラーは予期しないまたは予期した例外的状況のために用意されています。フローを制御する構造が必要な場合は、 *スロー* が使われるべきです。それでは次にスローを見ていきましょう。
 
 ## Throws
 
