@@ -103,11 +103,11 @@ iex> File.read! "unknown"
 
 Elixirでは、 `try/rescue` の使用を避けています。なぜなら、 **フローを制御するためにエラーを使わないから** です。私達はエラーを文字通りに受け取ります。エラーは予期しないまたは予期した例外的状況のために用意されています。フローを制御する構造が必要な場合は、 *スロー* が使われるべきです。それでは次にスローを見ていきましょう。
 
-## Throws
+## スロー
 
-In Elixir, a value can be thrown and later be caught. `throw` and `catch` are reserved for situations where it is not possible to retrieve a value unless by using `throw` and `catch`.
+Elixirでは、ある値を投げ、後で捕まえることができます。`trhow` と `catch` を使わなければ値を取ることが出来ない状況のために、 `throw` と `catch` は予約されています。
 
-Those situations are quite uncommon in practice except when interfacing with libraries that do not provide a proper API. For example, let's imagine the `Enum` module did not provide any API for finding a value and that we needed to find the first multiple of 13 in a list of numbers:
+それらの状況は、適切なAPIが提供されていないライブラリに直面しなければ、実際にはかなり珍しいことです。例えば、 `Enum` モジュールが値を探すためのAPIを何一つ用意しておらず、数字のリストから最初の13の倍数を探す必要がある場合を想像してみてください。
 
 ```iex
 iex> try do
@@ -121,25 +121,25 @@ iex> try do
 "Got -39"
 ```
 
-Since `Enum` *does* provide a proper API, in practice `Enum.find/2` is the way to go:
+`Enum` が適切なAPIを *提供している* のであれば、実際には `Enum.find/2` を使うのがベストです。
 
 ```iex
 iex> Enum.find -50..50, &(rem(&1, 13) == 0)
 -39
 ```
 
-## Exits
+## イグジット
 
-All Elixir code runs inside processes that communicate with each other. When a process dies of "natural causes" (e.g., unhandled exceptions), it sends an `exit` signal. A process can also die by explicitly sending an exit signal:
+すべてのElixirのコードは、お互いに通信をし合うプロセス群の中で動作します。プロセスが"自然な原因"（未処理の例外など）で死んだ時、プロセスは `exit` 信号を送ります。プロセスは明示的に `exit` 信号を送ることで殺すことも出来ます。
 
 ```iex
 iex> spawn_link fn -> exit(1) end
 ** (EXIT from #PID<0.56.0>) evaluator process exited with reason: 1
 ```
 
-In the example above, the linked process died by sending an `exit` signal with a value of 1. The Elixir shell automatically handles those messages and prints them to the terminal.
+上の例ではリンクしていたプロセスが、1という値と一緒に `exit` 信号が送られ、死にました。Elixirシェルは自動的にこれらのメッセージを処理し、ターミナル上に表示します。
 
-`exit` can also be "caught" using `try/catch`:
+`exit` は `try/catch` を使うことで "捕まえる\
 
 ```iex
 iex> try do
@@ -150,15 +150,15 @@ iex> try do
 "not really"
 ```
 
-Using `try/catch` is already uncommon and using it to catch exits is even rarer.
+`try/catch` を使うことは珍しく、それを使ってイグジットを捕まえることはさらに稀です。
 
-`exit` signals are an important part of the fault tolerant system provided by the Erlang <abbr title="Virtual Machine">VM</abbr>. Processes usually run under supervision trees which are themselves processes that listen to `exit` signals from the supervised processes. Once an exit signal is received, the supervision strategy kicks in and the supervised process is restarted.
+`exit` 信号はErlang <abbr title="Virtual Machine">VM</abbr> によって提供される耐障害性の重要な要素です。プロセス群は通常、監視プロセス群からの `exit` 信号を待ち受けている、監視ツリーの元で動作します。ひとたび `exit` 信号を受け取ると、監視ストラテジーが実行に移され、監視されているプロセスは再起動されます。
 
-It is exactly this supervision system that makes constructs like `try/catch` and `try/rescue` so uncommon in Elixir. Instead of rescuing an error, we'd rather "fail fast" since the supervision tree will guarantee our application will go back to a known initial state after the error.
+Elixirで `try/catch` と `try/rescue` の構造を珍しくするのは、この監視の仕組のおかげです。エラーの後に既知の初期状態にアプリケーションを戻してくれることを監視ツリーが保証してくれるので、エラーを救う代わりに、むしろ "エラー時はただちにシステムを停止" させるのです。
 
-## After
+## アフター
 
-Sometimes it's necessary to ensure that a resource is cleaned up after some action that could potentially raise an error. The `try/after` construct allows you to do that. For example, we can open a file and use an `after` clause to close it--even if something goes wrong:
+潜在的にエラーを起こす可能性のあるアクションの後に、リソースが片付けられていることを確実にすることが、時々必要になります。 `try/after` 構造はそれをできるようにします。例えば、ファイルを開いた時に `after` 句を使って、失敗したとしてもファイルを閉じることができます。
 
 ```iex
 iex> {:ok, file} = File.open "sample", [:utf8, :write]
@@ -171,11 +171,11 @@ iex> try do
 ** (RuntimeError) oops, something went wrong
 ```
 
-The `after` clause will be executed regardless of whether or not the tried block succeeds. Note, however, that if a linked process exits,
-this process will exit and the `after` clause will not get run. Thus `after` provides only a soft guarantee. Luckily, files in Elixir are also linked to the current processes and therefore they will always get closed if the current process crashes, independent of the
-`after` clause. You will find the same to be true for other resources like ETS tables, sockets, ports and more.
+`after` 句は思考されたブロックが成功したかどうかに関わらず実行されます。しかしリンクされたプロセスが終了した場合は、
+このプロセスが終了し `after` 句が実行されることはない、ということに注意してください。したがって、 `after` は簡易な保証しか提供しません。運良くElixir内のファイルが現在のプロセス群にリンクされており、そのために現在のプロセスがクラッシュした時に常にファイルが閉じられたとしても、 
+`after` 句とは別の話です。ETSテーブルやソケット、ポートなどその他のリソースについても同じことが言えます。
 
-Sometimes you may want to wrap the entire body of a function in a `try` construct, often to guarantee some code will be executed afterwards. In such cases, Elixir allows you to omit the `try` line:
+時々、最後にいくつかのコードが実行されることを保証するために、関数内のすべてのコードを `try` 構造で囲みたいと思うかもしれません。そのような場合は、Elixirでは `try` 行を省略することができます。
 
 ```iex
 iex> defmodule RunAfter do
@@ -190,11 +190,11 @@ cleaning up!
 ** (RuntimeError) oops
 ```
 
-Elixir will automatically wrap the function body in a `try` whenever one of `after`, `rescue` or `catch` is specified.
+Elixirは `after`、`rescue`、`catch` のいずれかが指定されている時は、自動的に関数の本体を `try` で囲みます。
 
-## Else
+## エルス
 
-If an `else` block is present, it will match on the results of the `try` block whenever the `try` block finishes without a throw or an error.
+`else` ブロックが存在する場合は、`try` ブロックがエラーもスローもなく終了する度に、`try` ブロックの結果とマッチします。
 
 ```iex
 iex> x = 2
@@ -213,11 +213,11 @@ iex> try do
 :small
 ```
 
-Exceptions in the `else` block are not caught. If no pattern inside the `else` block matches, an exception will be raised; this exception is not caught by the current `try/catch/rescue/after` block.
+`else` ブロック内の例外は捕捉されません。`else` ブロック内のどのパターンともマッチしない場合、例外が起こされます。この例外は現在の `try/catch/rescue/after` ブロックでは捕捉されません。
 
-## Variables scope
+## 変数のスコープ
 
-It is important to bear in mind that variables defined inside `try/catch/rescue/after` blocks do not leak to the outer context. This is because the `try` block may fail and as such the variables may never be bound in the first place. In other words, this code is invalid:
+`try/catch/rescue/after` ブロックの中で定義された変数は、その外側のコンテキストに漏れることがないということを心に留めておいてください。`try` ブロックは失敗するかもしれず、ブロック内の変数がそもそも見つかることが無いかもしれないからです。この不正なコードの例で見てみましょう。
 
 ```iex
 iex> try do
@@ -230,7 +230,7 @@ iex> what_happened
 ** (RuntimeError) undefined function: what_happened/0
 ```
 
-Instead, you can store the value of the `try` expression:
+その代りに、`try` 式の値を保存することが出来ます。
 
 ```iex
 iex> what_happened =
@@ -244,4 +244,4 @@ iex> what_happened
 :rescued
 ```
 
-This finishes our introduction to `try`, `catch`, and `rescue`. You will find they are used less frequently in Elixir than in other languages, although they may be handy in some situations where a library or some particular code is not playing "by the rules".
+`try`、`catch`、`rescue` についての紹介はこれで終わりです。他の言語と比べてElixirでは、それらがそれほど頻繁に使われないことにあなたは気づくでしょう。しかし、ライブラリや "ルールに従っていない" 一部のコードの中においては、役に立つかもしれません。
