@@ -347,7 +347,7 @@ iex&gt; File.read "hello"
 
 <p>上の例ではリンクしていたプロセスが、1という値と一緒に <code class="highlighter-rouge">exit</code> 信号が送られ、死にました。Elixirシェルは自動的にこれらのメッセージを処理し、ターミナル上に表示します。</p>
 
-<p><code class="highlighter-rouge">exit</code> は <code class="highlighter-rouge">try/catch</code> を使うことで “捕まえる\</p>
+<p><code class="highlighter-rouge">exit</code> は <code class="highlighter-rouge">try/catch</code> を使うことでも “捕まえる” ことができます。</p>
 
 <pre><code class="language-iex">iex&gt; try do
 ...&gt;   exit "I am exiting"

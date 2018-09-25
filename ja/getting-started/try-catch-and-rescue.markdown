@@ -139,7 +139,7 @@ iex> spawn_link fn -> exit(1) end
 
 上の例ではリンクしていたプロセスが、1という値と一緒に `exit` 信号が送られ、死にました。Elixirシェルは自動的にこれらのメッセージを処理し、ターミナル上に表示します。
 
-`exit` は `try/catch` を使うことで "捕まえる\
+`exit` は `try/catch` を使うことでも "捕まえる" ことができます。
 
 ```iex
 iex> try do

@@ -24346,7 +24346,7 @@ msgid ""
 msgstr ""
 
 msgid "`exit` can also be \"caught\" using `try/catch`:"
-msgstr "`exit` は `try/catch` を使うことで \"捕まえる\\"
+msgstr "`exit` は `try/catch` を使うことでも \"捕まえる\" ことができます。"
 
 msgid ""
 "`exit` signals are an important part of the fault tolerant system provided by "
