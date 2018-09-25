@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 17:30+0900\n"
+"POT-Creation-Date: 2018-09-25 17:35+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,7 +218,7 @@ msgid "## Exits"
 msgstr ""
 
 #: ../../../getting-started/try-catch-and-rescue.markdown:133
-msgid "All Elixir code runs inside processes that communicate with each other. When a process dies of \"natural causes\" (e.g., unhandled exceptions), it sends an `exit` signal. A process can also die by explicitly sending an exit signal:"
+msgid "All Elixir code runs inside processes that communicate with each other. When a process dies of \"natural causes\" (e.g., unhandled exceptions), it sends an `exit` signal. A process can also die by explicitly sending an `exit` signal:"
 msgstr ""
 
 #: ../../../getting-started/try-catch-and-rescue.markdown:135
@@ -252,7 +252,7 @@ msgid "Using `try/catch` is already uncommon and using it to catch exits is even
 msgstr ""
 
 #: ../../../getting-started/try-catch-and-rescue.markdown:155
-msgid "`exit` signals are an important part of the fault tolerant system provided by the Erlang <abbr title=\"Virtual Machine\">VM</abbr>. Processes usually run under supervision trees which are themselves processes that listen to `exit` signals from the supervised processes. Once an exit signal is received, the supervision strategy kicks in and the supervised process is restarted."
+msgid "`exit` signals are an important part of the fault tolerant system provided by the Erlang <abbr title=\"Virtual Machine\">VM</abbr>. Processes usually run under supervision trees which are themselves processes that listen to `exit` signals from the supervised processes. Once an `exit` signal is received, the supervision strategy kicks in and the supervised process is restarted."
 msgstr ""
 
 #: ../../../getting-started/try-catch-and-rescue.markdown:157
