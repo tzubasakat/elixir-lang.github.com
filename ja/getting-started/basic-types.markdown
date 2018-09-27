@@ -81,9 +81,9 @@ iex> trunc(3.58)
 
 Elixir における関数は、その関数名とアリティで成り立ちます。アリティはその関数が受け取る引数の数を示します。これ以降は関数を説明するにあたって、関数名とそのアリティの両方を添えて記述していきます。`round/1` は `round` という関数とその関数が受け取る引数の数 `1` を示します。一方で、例えば `round/2` という関数があった場合に、それは関数名として同名ではあるものの、前者とは異なって引数を `2` 受け取る別の関数です。
 
-## 論理演算子
+## 真偽値
 
-Elixir では `true` と `false` を Boolean としています。
+Elixir では `true` と `false` を 真偽値 としています。
 
 ```iex
 iex> true
@@ -92,7 +92,7 @@ iex> true == false
 false
 ```
 
-述語的な名前を持った一連の関数 (Predicate functions) を使って、値の型をチェックすることも出来ます。例えば `is_boolean/1` 関数は、値が Boolean か否かをチェックする為に使用します。
+述語的な名前を持った一連の関数 (Predicate functions) を使って、値の型をチェックすることも出来ます。例えば `is_boolean/1` 関数は、値が真偽値か否かをチェックする為に使用します。
 
 ```iex
 iex> is_boolean(true)
@@ -105,9 +105,9 @@ false
 
 > Note: `h()` でシェルの使い方に関する情報を表示できます。`h` ヘルパーは関数に関するドキュメントを参照する際にも使用できます。
 
-## Atoms
+## アトム
 
-An atom is a constant whose name is its own value. Some other languages call these symbols:
+アトムは他のいくつかの言語で言うところのシンボルに相当し、それ自身が定数でもあります。
 
 ```iex
 iex> :hello
@@ -116,7 +116,7 @@ iex> :hello == :world
 false
 ```
 
-The booleans `true` and `false` are, in fact, atoms:
+実は `true` と `false` もアトムです。
 
 ```iex
 iex> true == :true
@@ -127,7 +127,7 @@ iex> is_boolean(:false)
 true
 ```
 
-Finally, Elixir has a construct called aliases which we will explore later. Aliases start in upper case and are also atoms:
+後で触れますが、Elixir はエイリアスと呼ばれる機能を持っています。エイリアスは大文字から始め、それもまた同時にアトムなのです。
 
 ```iex
 iex> is_atom(Hello)

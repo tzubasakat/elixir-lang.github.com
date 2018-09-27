@@ -295,9 +295,9 @@ iex&gt; trunc(3.58)
 
 <p>Elixir における関数は、その関数名とアリティで成り立ちます。アリティはその関数が受け取る引数の数を示します。これ以降は関数を説明するにあたって、関数名とそのアリティの両方を添えて記述していきます。<code class="highlighter-rouge">round/1</code> は <code class="highlighter-rouge">round</code> という関数とその関数が受け取る引数の数 <code class="highlighter-rouge">1</code> を示します。一方で、例えば <code class="highlighter-rouge">round/2</code> という関数があった場合に、それは関数名として同名ではあるものの、前者とは異なって引数を <code class="highlighter-rouge">2</code> 受け取る別の関数です。</p>
 
-<h2 id="論理演算子">論理演算子</h2>
+<h2 id="真偽値">真偽値</h2>
 
-<p>Elixir では <code class="highlighter-rouge">true</code> と <code class="highlighter-rouge">false</code> を Boolean としています。</p>
+<p>Elixir では <code class="highlighter-rouge">true</code> と <code class="highlighter-rouge">false</code> を 真偽値 としています。</p>
 
 <pre><code class="language-iex">iex&gt; true
 true
@@ -305,7 +305,7 @@ iex&gt; true == false
 false
 </code></pre>
 
-<p>述語的な名前を持った一連の関数 (Predicate functions) を使って、値の型をチェックすることも出来ます。例えば <code class="highlighter-rouge">is_boolean/1</code> 関数は、値が Boolean か否かをチェックする為に使用します。</p>
+<p>述語的な名前を持った一連の関数 (Predicate functions) を使って、値の型をチェックすることも出来ます。例えば <code class="highlighter-rouge">is_boolean/1</code> 関数は、値が真偽値か否かをチェックする為に使用します。</p>
 
 <pre><code class="language-iex">iex&gt; is_boolean(true)
 true
@@ -319,9 +319,9 @@ false
   <p>Note: <code class="highlighter-rouge">h()</code> でシェルの使い方に関する情報を表示できます。<code class="highlighter-rouge">h</code> ヘルパーは関数に関するドキュメントを参照する際にも使用できます。</p>
 </blockquote>
 
-<h2 id="atoms">Atoms</h2>
+<h2 id="アトム">アトム</h2>
 
-<p>An atom is a constant whose name is its own value. Some other languages call these symbols:</p>
+<p>アトムは他のいくつかの言語で言うところのシンボルに相当し、それ自身が定数でもあります。</p>
 
 <pre><code class="language-iex">iex&gt; :hello
 :hello
@@ -329,7 +329,7 @@ iex&gt; :hello == :world
 false
 </code></pre>
 
-<p>The booleans <code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">false</code> are, in fact, atoms:</p>
+<p>実は <code class="highlighter-rouge">true</code> と <code class="highlighter-rouge">false</code> もアトムです。</p>
 
 <pre><code class="language-iex">iex&gt; true == :true
 true
@@ -339,7 +339,7 @@ iex&gt; is_boolean(:false)
 true
 </code></pre>
 
-<p>Finally, Elixir has a construct called aliases which we will explore later. Aliases start in upper case and are also atoms:</p>
+<p>後で触れますが、Elixir はエイリアスと呼ばれる機能を持っています。エイリアスは大文字から始め、それもまた同時にアトムなのです。</p>
 
 <pre><code class="language-iex">iex&gt; is_atom(Hello)
 true
