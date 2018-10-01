@@ -134,25 +134,25 @@ iex> is_atom(Hello)
 true
 ```
 
-## Strings
+## 文字列
 
-Strings in Elixir are delimited by double quotes, and they are encoded in UTF-8:
+文字列リテラルはダブルクォーテーションで囲み、UTF-8 でエンコードされます。
 
 ```iex
 iex> "hellö"
 "hellö"
 ```
 
-> Note: if you are running on Windows, there is a chance your terminal does not use UTF-8 by default. You can change the encoding of your current session by running `chcp 65001` before entering IEx.
+> Note: Windows をお使いの方は、デフォルトで UTF-8 を使用できない可能性があります。これを変更するには、 IEx を起動する前に、`chcp 65001` を実行してください。
 
-Elixir also supports string interpolation:
+Elixir は文字列内での式展開もサポートしています。
 
 ```iex
 iex> "hellö #{:world}"
 "hellö world"
 ```
 
-Strings can have line breaks in them. You can introduce them using escape sequences:
+文字列内では改行することができ、エスケープシーケンスも利用できます。
 
 ```iex
 iex> "hello
@@ -162,7 +162,7 @@ iex> "hello\nworld"
 "hello\nworld"
 ```
 
-You can print a string using the `IO.puts/1` function from the `IO` module:
+文字列の出力には `IO` モジュールの `IO.puts/1` 関数を使用します。
 
 ```iex
 iex> IO.puts "hello\nworld"
@@ -171,30 +171,30 @@ world
 :ok
 ```
 
-Notice that the `IO.puts/1` function returns the atom `:ok` after printing.
+`IO.puts/1` 関数がアトムの `:ok` を返していることにも留意してください。
 
-Strings in Elixir are represented internally by binaries which are sequences of bytes:
+Elixir における文字列は、内部的にバイト列での表現もなされています。
 
 ```iex
 iex> is_binary("hellö")
 true
 ```
 
-We can also get the number of bytes in a string:
+文字列のバイト数も得られます。
 
 ```iex
 iex> byte_size("hellö")
 6
 ```
 
-Notice that the number of bytes in that string is 6, even though it has 5 characters. That's because the character "ö" takes 2 bytes to be represented in UTF-8. We can get the actual length of the string, based on the number of characters, by using the `String.length/1` function:
+上記の文字列は 5 字ですが、バイト数としては 6 が得られました。 "ö" を UTF-8 で表す為には 2 バイトを要するからです。`String.length/1` を使用すると、その文字数に基づいた文字列の長さを得ることもできます。
 
 ```iex
 iex> String.length("hellö")
 5
 ```
 
-The [String module](https://hexdocs.pm/elixir/String.html) contains a bunch of functions that operate on strings as defined in the Unicode standard:
+[String モジュール](https://hexdocs.pm/elixir/String.html) には、Unicode に基づいて定義された文字列を操作する為の様々な関数が含まれています。
 
 ```iex
 iex> String.upcase("hellö")

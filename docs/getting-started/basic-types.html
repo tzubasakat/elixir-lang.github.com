@@ -345,25 +345,25 @@ true
 true
 </code></pre>
 
-<h2 id="strings">Strings</h2>
+<h2 id="文字列">文字列</h2>
 
-<p>Strings in Elixir are delimited by double quotes, and they are encoded in UTF-8:</p>
+<p>文字列リテラルはダブルクォーテーションで囲み、UTF-8 でエンコードされます。</p>
 
 <pre><code class="language-iex">iex&gt; "hellö"
 "hellö"
 </code></pre>
 
 <blockquote>
-  <p>Note: if you are running on Windows, there is a chance your terminal does not use UTF-8 by default. You can change the encoding of your current session by running <code class="highlighter-rouge">chcp 65001</code> before entering IEx.</p>
+  <p>Note: Windows をお使いの方は、デフォルトで UTF-8 を使用できない可能性があります。これを変更するには、 IEx を起動する前に、<code class="highlighter-rouge">chcp 65001</code> を実行してください。</p>
 </blockquote>
 
-<p>Elixir also supports string interpolation:</p>
+<p>Elixir は文字列内での式展開もサポートしています。</p>
 
 <pre><code class="language-iex">iex&gt; "hellö #{:world}"
 "hellö world"
 </code></pre>
 
-<p>Strings can have line breaks in them. You can introduce them using escape sequences:</p>
+<p>文字列内では改行することができ、エスケープシーケンスも利用できます。</p>
 
 <pre><code class="language-iex">iex&gt; "hello
 ...&gt; world"
@@ -372,7 +372,7 @@ iex&gt; "hello\nworld"
 "hello\nworld"
 </code></pre>
 
-<p>You can print a string using the <code class="highlighter-rouge">IO.puts/1</code> function from the <code class="highlighter-rouge">IO</code> module:</p>
+<p>文字列の出力には <code class="highlighter-rouge">IO</code> モジュールの <code class="highlighter-rouge">IO.puts/1</code> 関数を使用します。</p>
 
 <pre><code class="language-iex">iex&gt; IO.puts "hello\nworld"
 hello
@@ -380,27 +380,27 @@ world
 :ok
 </code></pre>
 
-<p>Notice that the <code class="highlighter-rouge">IO.puts/1</code> function returns the atom <code class="highlighter-rouge">:ok</code> after printing.</p>
+<p><code class="highlighter-rouge">IO.puts/1</code> 関数がアトムの <code class="highlighter-rouge">:ok</code> を返していることにも留意してください。</p>
 
-<p>Strings in Elixir are represented internally by binaries which are sequences of bytes:</p>
+<p>Elixir における文字列は、内部的にバイト列での表現もなされています。</p>
 
 <pre><code class="language-iex">iex&gt; is_binary("hellö")
 true
 </code></pre>
 
-<p>We can also get the number of bytes in a string:</p>
+<p>文字列のバイト数も得られます。</p>
 
 <pre><code class="language-iex">iex&gt; byte_size("hellö")
 6
 </code></pre>
 
-<p>Notice that the number of bytes in that string is 6, even though it has 5 characters. That’s because the character “ö” takes 2 bytes to be represented in UTF-8. We can get the actual length of the string, based on the number of characters, by using the <code class="highlighter-rouge">String.length/1</code> function:</p>
+<p>上記の文字列は 5 字ですが、バイト数としては 6 が得られました。 “ö” を UTF-8 で表す為には 2 バイトを要するからです。<code class="highlighter-rouge">String.length/1</code> を使用すると、その文字数に基づいた文字列の長さを得ることもできます。</p>
 
 <pre><code class="language-iex">iex&gt; String.length("hellö")
 5
 </code></pre>
 
-<p>The <a href="https://hexdocs.pm/elixir/String.html">String module</a> contains a bunch of functions that operate on strings as defined in the Unicode standard:</p>
+<p><a href="https://hexdocs.pm/elixir/String.html">String モジュール</a> には、Unicode に基づいて定義された文字列を操作する為の様々な関数が含まれています。</p>
 
 <pre><code class="language-iex">iex&gt; String.upcase("hellö")
 "HELLÖ"
