@@ -201,9 +201,9 @@ iex> String.upcase("hellö")
 "HELLÖ"
 ```
 
-## Anonymous functions
+## 無名関数
 
-Anonymous functions can be created inline and are delimited by the keywords `fn` and `end`:
+無名関数は `fn` と `end` で囲んだ内側で定義されます。
 
 ```iex
 iex> add = fn a, b -> a + b end
@@ -212,17 +212,17 @@ iex> add.(1, 2)
 3
 iex> is_function(add)
 true
-iex> is_function(add, 2) # check if add is a function that expects exactly 2 arguments
+iex> is_function(add, 2) # add が 2 つの引数を期待する関数であるのかを確かめる
 true
-iex> is_function(add, 1) # check if add is a function that expects exactly 1 argument
+iex> is_function(add, 1) # add が 1 つの引数を期待する関数であるのかを確かめる
 false
 ```
 
-Functions are "first class citizens" in Elixir meaning they can be passed as arguments to other functions in the same way as integers and strings. In the example, we have passed the function in the variable `add` to the `is_function/1` function which correctly returned `true`. We can also check the arity of the function by calling `is_function/2`.
+「Elixir における関数が"第一級オブジェクト"である」ということは、関数そのものも Integer や String と同様に他の関数へ引数として渡すことが出来るという意味です。例として、私達は先ほど変数 `add` にバインドした関数を、引数が関数であれば `true` を返すという `is_function/1` 関数に渡しました。さらには `is_function/2` 関数を使用してアリティを確かめることも出来ました。
 
-Note that a dot (`.`) between the variable and parentheses is required to invoke an anonymous function. The dot ensures there is no ambiguity between calling an anonymous function named `add` and a named function `add/2`. In this sense, Elixir makes a clear distinction between anonymous functions and named functions. We will explore those differences in [Chapter 8](/getting-started/modules-and-functions.html).
+無名関数の実行には変数と括弧の間にドット (`.`) を必要とします。このドットによって、 `add` という無名関数の呼び出しと `add/2` という関数の呼び出しを区別し、曖昧がないことを保証します。そういった意味で Elixir は無名関数と通常の関数とを明確に区別します。それについて詳しくは [第 8 章](/getting-started/modules-and-functions.html) で取り上げます。
 
-Anonymous functions are closures and as such they can access variables that are in scope when the function is defined. Let's define a new anonymous function that uses the `add` anonymous function we have previously defined:
+無名関数はクロージャであり、関数が定義された際のスコープ内にある変数へはそのままアクセスできます。それでは、先ほど定義した `add` を内包する無名関数を新たに定義してみましょう。
 
 ```iex
 iex> double = fn a -> add.(a, a) end
@@ -231,7 +231,7 @@ iex> double.(2)
 4
 ```
 
-Keep in mind a variable assigned inside a function does not affect its surrounding environment:
+関数内部に置かれた変数は、その周囲の環境には影響がないことに注意してください。
 
 ```iex
 iex> x = 42

@@ -406,9 +406,9 @@ true
 "HELLÖ"
 </code></pre>
 
-<h2 id="anonymous-functions">Anonymous functions</h2>
+<h2 id="無名関数">無名関数</h2>
 
-<p>Anonymous functions can be created inline and are delimited by the keywords <code class="highlighter-rouge">fn</code> and <code class="highlighter-rouge">end</code>:</p>
+<p>無名関数は <code class="highlighter-rouge">fn</code> と <code class="highlighter-rouge">end</code> で囲んだ内側で定義されます。</p>
 
 <pre><code class="language-iex">iex&gt; add = fn a, b -&gt; a + b end
 #Function&lt;12.71889879/2 in :erl_eval.expr/5&gt;
@@ -416,17 +416,17 @@ iex&gt; add.(1, 2)
 3
 iex&gt; is_function(add)
 true
-iex&gt; is_function(add, 2) # check if add is a function that expects exactly 2 arguments
+iex&gt; is_function(add, 2) # add が 2 つの引数を期待する関数であるのかを確かめる
 true
-iex&gt; is_function(add, 1) # check if add is a function that expects exactly 1 argument
+iex&gt; is_function(add, 1) # add が 1 つの引数を期待する関数であるのかを確かめる
 false
 </code></pre>
 
-<p>Functions are “first class citizens” in Elixir meaning they can be passed as arguments to other functions in the same way as integers and strings. In the example, we have passed the function in the variable <code class="highlighter-rouge">add</code> to the <code class="highlighter-rouge">is_function/1</code> function which correctly returned <code class="highlighter-rouge">true</code>. We can also check the arity of the function by calling <code class="highlighter-rouge">is_function/2</code>.</p>
+<p>「Elixir における関数が”第一級オブジェクト”である」ということは、関数そのものも Integer や String と同様に他の関数へ引数として渡すことが出来るという意味です。例として、私達は先ほど変数 <code class="highlighter-rouge">add</code> にバインドした関数を、引数が関数であれば <code class="highlighter-rouge">true</code> を返すという <code class="highlighter-rouge">is_function/1</code> 関数に渡しました。さらには <code class="highlighter-rouge">is_function/2</code> 関数を使用してアリティを確かめることも出来ました。</p>
 
-<p>Note that a dot (<code class="highlighter-rouge">.</code>) between the variable and parentheses is required to invoke an anonymous function. The dot ensures there is no ambiguity between calling an anonymous function named <code class="highlighter-rouge">add</code> and a named function <code class="highlighter-rouge">add/2</code>. In this sense, Elixir makes a clear distinction between anonymous functions and named functions. We will explore those differences in <a href="/getting-started/modules-and-functions.html">Chapter 8</a>.</p>
+<p>無名関数の実行には変数と括弧の間にドット (<code class="highlighter-rouge">.</code>) を必要とします。このドットによって、 <code class="highlighter-rouge">add</code> という無名関数の呼び出しと <code class="highlighter-rouge">add/2</code> という関数の呼び出しを区別し、曖昧がないことを保証します。そういった意味で Elixir は無名関数と通常の関数とを明確に区別します。それについて詳しくは <a href="/getting-started/modules-and-functions.html">第 8 章</a> で取り上げます。</p>
 
-<p>Anonymous functions are closures and as such they can access variables that are in scope when the function is defined. Let’s define a new anonymous function that uses the <code class="highlighter-rouge">add</code> anonymous function we have previously defined:</p>
+<p>無名関数はクロージャであり、関数が定義された際のスコープ内にある変数へはそのままアクセスできます。それでは、先ほど定義した <code class="highlighter-rouge">add</code> を内包する無名関数を新たに定義してみましょう。</p>
 
 <pre><code class="language-iex">iex&gt; double = fn a -&gt; add.(a, a) end
 #Function&lt;6.71889879/1 in :erl_eval.expr/5&gt;
@@ -434,7 +434,7 @@ iex&gt; double.(2)
 4
 </code></pre>
 
-<p>Keep in mind a variable assigned inside a function does not affect its surrounding environment:</p>
+<p>関数内部に置かれた変数は、その周囲の環境には影響がないことに注意してください。</p>
 
 <pre><code class="language-iex">iex&gt; x = 42
 42
