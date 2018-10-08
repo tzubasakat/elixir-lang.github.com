@@ -38,7 +38,7 @@ Elixir のインストールが終わりましたら、 `iex`, `elixir`, `elixir
 
 それでは `iex` コマンド (Windows をお使いの場合は `iex.bat`) を実行してインタラクティヴ・モードで起動してみましょう。インタラクティヴ・モードでは、Elixir のどんな式でも入力することができ、その結果を得られます。試しに簡単な式で準備運動してみましょう。
 
-`iex` コマンドを起動したら、以下のように入力してみてください。
+`iex` を起動して以下の演算を試してください。
 
 ```iex
 Erlang/OTP 19 [erts-8.1] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]

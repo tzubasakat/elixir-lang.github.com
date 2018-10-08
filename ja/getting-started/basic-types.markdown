@@ -7,7 +7,7 @@ title: Basic types
 
 {% include toc.html %}
 
-In this chapter we will learn more about Elixir basic types: integers, floats, booleans, atoms, strings, lists and tuples. Some basic types are:
+この章では、Integers、Floats、Booleans、Atoms、Strings、Lists、Tuples など Elixir の基本的なデータ型について学んでいきます。
 
 ```iex
 iex> 1          # integer
@@ -20,9 +20,9 @@ iex> [1, 2, 3]  # list
 iex> {1, 2, 3}  # tuple
 ```
 
-## Basic arithmetic
+## 四則演算
 
-`iex` コマンドを起動したら、以下のように入力してみてください。
+`iex` を起動して以下の演算を試してください。
 
 ```iex
 iex> 1 + 2
@@ -33,7 +33,7 @@ iex> 10 / 2
 5.0
 ```
 
-Notice that `10 / 2` returned a float `5.0` instead of an integer `5`. This is expected. In Elixir, the operator `/` always returns a float. If you want to do integer division or get the division remainder, you can invoke the `div` and `rem` functions:
+`10 / 2` の結果が Integer の `5` ではなく `5.0` という Float として得られたはずです。Elixir において `/` は常に Float を返します。除算や剰余で整数を得たい場合には、`div` や `rem` 関数を使用できます。
 
 ```iex
 iex> div(10, 2)
@@ -44,9 +44,9 @@ iex> rem 10, 3
 1
 ```
 
-Notice that Elixir allows you to drop the parentheses when invoking named functions. This feature gives a cleaner syntax when writing declarations and control-flow constructs.
+Elixr は関数を呼び出す際の括弧を省略できます。これにより、宣言と制御構造での文法的な見晴らしをクリアにします。
 
-Elixir also supports shortcut notations for entering binary, octal, and hexadecimal numbers:
+2 進法、8 進法、および 16 進法もサポートしています。
 
 ```iex
 iex> 0b1010
@@ -57,7 +57,7 @@ iex> 0x1F
 31
 ```
 
-Float numbers require a dot followed by at least one digit and also support `e` for scientific notation:
+浮動小数点数は仮数と小数点に続いて小数を必要とし、指数表記の `e` も使用できます。
 
 ```iex
 iex> 1.0
@@ -66,9 +66,9 @@ iex> 1.0e-10
 1.0e-10
 ```
 
-Floats in Elixir are 64-bit double precision.
+Elixir の Floats は倍精度浮動小数点数です。
 
-You can invoke the `round` function to get the closest integer to a given float, or the `trunc` function to get the integer part of a float.
+`round` や `trunc` 関数では、引数として与えられた Float をもとに最も近い仮数を得られます。
 
 ```iex
 iex> round(3.58)
@@ -77,13 +77,13 @@ iex> trunc(3.58)
 3
 ```
 
-## Identifying functions
+## 関数の確認
 
-Functions in Elixir are identified by both their name and their arity. The arity of a function describes the number of arguments that the function takes. From this point on we will use both the function name and its arity to describe functions throughout the documentation. `round/1` identifies the function which is named `round` and takes 1 argument, whereas `round/2` identifies a different (nonexistent) function with the same name but with an arity of `2`.
+Elixir における関数は、その関数名とアリティで成り立ちます。アリティはその関数が受け取る引数の数を示します。これ以降は関数を説明するにあたって、関数名とそのアリティの両方を添えて記述していきます。`round/1` は `round` という関数とその関数が受け取る引数の数 `1` を示します。一方で、例えば `round/2` という関数があった場合に、それは関数名として同名ではあるものの、前者とは異なって引数を `2` 受け取る別の関数です。
 
-## Booleans
+## 真偽値
 
-Elixir supports `true` and `false` as booleans:
+Elixir では `true` と `false` を 真偽値 としています。
 
 ```iex
 iex> true
@@ -92,7 +92,7 @@ iex> true == false
 false
 ```
 
-Elixir provides a bunch of predicate functions to check for a value type. For example, the `is_boolean/1` function can be used to check if a value is a boolean or not:
+述語的な名前を持った一連の関数 (Predicate functions) を使って、値の型をチェックすることも出来ます。例えば `is_boolean/1` 関数は、値が真偽値か否かをチェックする為に使用します。
 
 ```iex
 iex> is_boolean(true)
@@ -101,13 +101,13 @@ iex> is_boolean(1)
 false
 ```
 
-You can also use `is_integer/1`, `is_float/1` or `is_number/1` to check, respectively, if an argument is an integer, a float, or either.
+さらに、`is_integer/1` や `is_float/1` 、`is_number/1` なども同様に、それぞれの引数が整数・浮動小数点数・数値であるかをチェックできます。
 
-> Note: At any moment you can type `h()` in the shell to print information on how to use the shell. The `h` helper can also be used to access documentation for any function. For example, typing `h is_integer/1` is going to print the documentation for the `is_integer/1` function. It also works with operators and other constructs (try `h ==/2`).
+> Note: `h()` でシェルの使い方に関する情報を表示できます。`h` ヘルパーは関数に関するドキュメントを参照する際にも使用できます。
 
-## Atoms
+## アトム
 
-An atom is a constant whose name is its own value. Some other languages call these symbols:
+アトムは他のいくつかの言語で言うところのシンボルに相当し、それ自身が定数でもあります。
 
 ```iex
 iex> :hello
@@ -116,7 +116,7 @@ iex> :hello == :world
 false
 ```
 
-The booleans `true` and `false` are, in fact, atoms:
+実は `true` と `false` もアトムです。
 
 ```iex
 iex> true == :true
@@ -127,32 +127,32 @@ iex> is_boolean(:false)
 true
 ```
 
-Finally, Elixir has a construct called aliases which we will explore later. Aliases start in upper case and are also atoms:
+後で触れますが、Elixir はエイリアスと呼ばれる機能を持っています。エイリアスは大文字から始め、それもまた同時にアトムなのです。
 
 ```iex
 iex> is_atom(Hello)
 true
 ```
 
-## Strings
+## 文字列
 
-Strings in Elixir are delimited by double quotes, and they are encoded in UTF-8:
+文字列リテラルはダブルクォーテーションで囲み、UTF-8 でエンコードされます。
 
 ```iex
 iex> "hellö"
 "hellö"
 ```
 
-> Note: if you are running on Windows, there is a chance your terminal does not use UTF-8 by default. You can change the encoding of your current session by running `chcp 65001` before entering IEx.
+> Note: Windows をお使いの方は、デフォルトで UTF-8 を使用できない可能性があります。これを変更するには、 IEx を起動する前に、`chcp 65001` を実行してください。
 
-Elixir also supports string interpolation:
+Elixir は文字列内での式展開もサポートしています。
 
 ```iex
 iex> "hellö #{:world}"
 "hellö world"
 ```
 
-Strings can have line breaks in them. You can introduce them using escape sequences:
+文字列内では改行することができ、エスケープシーケンスも利用できます。
 
 ```iex
 iex> "hello
@@ -162,7 +162,7 @@ iex> "hello\nworld"
 "hello\nworld"
 ```
 
-You can print a string using the `IO.puts/1` function from the `IO` module:
+文字列の出力には `IO` モジュールの `IO.puts/1` 関数を使用します。
 
 ```iex
 iex> IO.puts "hello\nworld"
@@ -171,39 +171,39 @@ world
 :ok
 ```
 
-Notice that the `IO.puts/1` function returns the atom `:ok` after printing.
+`IO.puts/1` 関数がアトムの `:ok` を返していることにも留意してください。
 
-Strings in Elixir are represented internally by binaries which are sequences of bytes:
+Elixir における文字列は、内部的にバイト列での表現もなされています。
 
 ```iex
 iex> is_binary("hellö")
 true
 ```
 
-We can also get the number of bytes in a string:
+文字列のバイト数も得られます。
 
 ```iex
 iex> byte_size("hellö")
 6
 ```
 
-Notice that the number of bytes in that string is 6, even though it has 5 characters. That's because the character "ö" takes 2 bytes to be represented in UTF-8. We can get the actual length of the string, based on the number of characters, by using the `String.length/1` function:
+上記の文字列は 5 字ですが、バイト数としては 6 が得られました。 "ö" を UTF-8 で表す為には 2 バイトを要するからです。`String.length/1` を使用すると、その文字数に基づいた文字列の長さを得ることもできます。
 
 ```iex
 iex> String.length("hellö")
 5
 ```
 
-The [String module](https://hexdocs.pm/elixir/String.html) contains a bunch of functions that operate on strings as defined in the Unicode standard:
+[String モジュール](https://hexdocs.pm/elixir/String.html) には、Unicode に基づいて定義された文字列を操作する為の様々な関数が含まれています。
 
 ```iex
 iex> String.upcase("hellö")
 "HELLÖ"
 ```
 
-## Anonymous functions
+## 無名関数
 
-Anonymous functions can be created inline and are delimited by the keywords `fn` and `end`:
+無名関数は `fn` と `end` で囲んだ内側で定義されます。
 
 ```iex
 iex> add = fn a, b -> a + b end
@@ -212,17 +212,17 @@ iex> add.(1, 2)
 3
 iex> is_function(add)
 true
-iex> is_function(add, 2) # check if add is a function that expects exactly 2 arguments
+iex> is_function(add, 2) # add が 2 つの引数を期待する関数であるのかを確かめる
 true
-iex> is_function(add, 1) # check if add is a function that expects exactly 1 argument
+iex> is_function(add, 1) # add が 1 つの引数を期待する関数であるのかを確かめる
 false
 ```
 
-Functions are "first class citizens" in Elixir meaning they can be passed as arguments to other functions in the same way as integers and strings. In the example, we have passed the function in the variable `add` to the `is_function/1` function which correctly returned `true`. We can also check the arity of the function by calling `is_function/2`.
+「Elixir における関数が"第一級オブジェクト"である」ということは、関数そのものも Integer や String と同様に他の関数へ引数として渡すことが出来るという意味です。例として、私達は先ほど変数 `add` にバインドした関数を、引数が関数であれば `true` を返すという `is_function/1` 関数に渡しました。さらには `is_function/2` 関数を使用してアリティを確かめることも出来ました。
 
-Note that a dot (`.`) between the variable and parentheses is required to invoke an anonymous function. The dot ensures there is no ambiguity between calling an anonymous function named `add` and a named function `add/2`. In this sense, Elixir makes a clear distinction between anonymous functions and named functions. We will explore those differences in [Chapter 8](/getting-started/modules-and-functions.html).
+無名関数の実行には変数と括弧の間にドット (`.`) を必要とします。このドットによって、 `add` という無名関数の呼び出しと `add/2` という関数の呼び出しを区別し、曖昧がないことを保証します。そういった意味で Elixir は無名関数と通常の関数とを明確に区別します。それについて詳しくは [第 8 章](/getting-started/modules-and-functions.html) で取り上げます。
 
-Anonymous functions are closures and as such they can access variables that are in scope when the function is defined. Let's define a new anonymous function that uses the `add` anonymous function we have previously defined:
+無名関数はクロージャであり、関数が定義された際のスコープ内にある変数へはそのままアクセスできます。それでは、先ほど定義した `add` を内包する無名関数を新たに定義してみましょう。
 
 ```iex
 iex> double = fn a -> add.(a, a) end
@@ -231,7 +231,7 @@ iex> double.(2)
 4
 ```
 
-Keep in mind a variable assigned inside a function does not affect its surrounding environment:
+関数内部に置かれた変数は、その周囲の環境には影響がないことに注意してください。
 
 ```iex
 iex> x = 42
