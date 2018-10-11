@@ -242,9 +242,9 @@ iex> x
 42
 ```
 
-## (Linked) Lists
+## リスト
 
-Elixir uses square brackets to specify a list of values. Values can be of any type:
+リストを作るには角括弧を使って記述します。リストの要素はどんな型でも構いません。
 
 ```iex
 iex> [1, 2, true, 3]
@@ -253,7 +253,7 @@ iex> length [1, 2, 3]
 3
 ```
 
-Two lists can be concatenated or subtracted using the `++/2` and `--/2` operators respectively:
+`++/2` や `--/2` を使えば、2つのリストを足したり引いたり出来ます。
 
 ```iex
 iex> [1, 2, 3] ++ [4, 5, 6]
@@ -262,9 +262,9 @@ iex> [1, true, 2, false, 3, true] -- [true, false]
 [1, 2, 3, true]
 ```
 
-List operators never modify the existing list. Concatenating to or removing elements from a list returns a new list. We say that Elixir data structures are *immutable*. One advantage of immutability is that it leads to clearer code. You can freely pass the data around with the guarantee no one will change it - only transform it.
+リストへの操作は既にあるリストを改変しません。リストを足したり引いたりすると、新しく別のリストを返します。Elixir のデータ構造は *イミュータブル* です。イミュータブルであることのメリットとして、明快なコードを書けるということが挙げられます。このおかげで、データが非破壊であるという保証のもとに我々はデータの自由なやり取りを行うことが出来ます。
 
-Throughout the tutorial, we will talk a lot about the head and tail of a list. The head is the first element of a list and the tail is the remainder of the list. They can be retrieved with the functions `hd/1` and `tl/1`. Let's assign a list to a variable and retrieve its head and tail:
+このチュートリアルを通してリストの先頭と後尾について何度か触れました。先頭はリストの最初の要素であり、後尾はリストの残りの要素です。これらは `hd/1` と `tl/1` で取り出すことができます。では、リストに要素を加えて先頭や後尾からそれら要素を取り出してみましょう。
 
 ```iex
 iex> list = [1, 2, 3]
@@ -274,14 +274,14 @@ iex> tl(list)
 [2, 3]
 ```
 
-Getting the head or the tail of an empty list throws an error:
+空のリストから先頭や後尾の要素を得ようとするとエラーが返ってきます。
 
 ```iex
 iex> hd []
 ** (ArgumentError) argument error
 ```
 
-Sometimes you will create a list and it will return a value in single quotes. For example:
+作成したリストがシングルクォーテーションで要素を返すことがあります。
 
 ```iex
 iex> [11, 12, 13]
@@ -290,7 +290,7 @@ iex> [104, 101, 108, 108, 111]
 'hello'
 ```
 
-When Elixir sees a list of printable ASCII numbers, Elixir will print that as a charlist (literally a list of characters). Charlists are quite common when interfacing with existing Erlang code. Whenever you see a value in IEx and you are not quite sure what it is, you can use the `i/1` to retrieve information about it:
+出力可能な ASCII ナンバーが見つかると、Elixir はそれらを(文字リテラルのリスト)文字で出力します。
 
 ```iex
 iex> i 'hello'
@@ -308,14 +308,14 @@ Implemented protocols
   ...
 ```
 
-Keep in mind single-quoted and double-quoted representations are not equivalent in Elixir as they are represented by different types:
+Elixir においてシングルクォーテーションとダブルクォーテーションは同等ではなく、異なる型であるということを念頭においてください。
 
 ```iex
 iex> 'hello' == "hello"
 false
 ```
 
-Single quotes are charlists, double quotes are strings. We will talk more about them in the ["Binaries, strings and charlists"](/getting-started/binaries-strings-and-char-lists.html) chapter.
+シングルクォーテーションは文字リストであり、ダブルクォーテーションは文字列です。これについては ["バイナリ、文字列、文字リスト"](/getting-started/binaries-strings-and-char-lists.html) の章に譲ります。
 
 ## Tuples
 
