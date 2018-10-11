@@ -317,9 +317,9 @@ false
 
 シングルクォーテーションは文字リストであり、ダブルクォーテーションは文字列です。これについては ["バイナリ、文字列、文字リスト"](/getting-started/binaries-strings-and-char-lists.html) の章に譲ります。
 
-## Tuples
+## タプル
 
-Elixir uses curly brackets to define tuples. Like lists, tuples can hold any value:
+タプルを作るには波括弧を使用して記述します。タプルはリストと同じように要素を持ちます。
 
 ```iex
 iex> {:ok, "hello"}
@@ -328,7 +328,7 @@ iex> tuple_size {:ok, "hello"}
 2
 ```
 
-Tuples store elements contiguously in memory. This means accessing a tuple element by index or getting the tuple size is a fast operation. Indexes start from zero:
+タプルの要素はメモリ上で隣接して保存されます。これによって、インデックスで要素にアクセスしたりタプルのサイズを得ることが高速になります。インデックスはゼロから始めます。
 
 ```iex
 iex> tuple = {:ok, "hello"}
@@ -339,7 +339,7 @@ iex> tuple_size(tuple)
 2
 ```
 
-It is also possible to put an element at a particular index in a tuple with `put_elem/3`:
+`put_elem/3` を用いてタプル内の特定のインデックスに要素を追加することも出来ます。
 
 ```iex
 iex> tuple = {:ok, "hello"}
@@ -350,7 +350,7 @@ iex> tuple
 {:ok, "hello"}
 ```
 
-Notice that `put_elem/3` returned a new tuple. The original tuple stored in the `tuple` variable was not modified. Like lists, tuples are also immutable. Every operation on a tuple returns a new tuple, it never changes the given one.
+`put_elem/3` は新規にタプルを返します。オリジナルのタプルは要素を改変されることなく依然として `tuple` に保存されています。リストと同様にタプルもイミュータブルです。タプルに対する各操作は新規にタプルを作成することになりますので、元のタプルが改変されることはありません。
 
 ## Lists or tuples?
 
