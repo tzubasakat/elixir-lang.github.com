@@ -44,7 +44,7 @@ iex> rem 10, 3
 1
 ```
 
-Elixr は関数を呼び出す際の括弧を省略できます。これにより、宣言と制御構造での文法的な見晴らしをクリアにします。
+Elixir は関数を呼び出す際の括弧を省略できます。これにより、宣言と制御構造での文法的な見晴らしをクリアにします。
 
 2 進法、8 進法、および 16 進法もサポートしています。
 
@@ -242,7 +242,7 @@ iex> x
 42
 ```
 
-## リスト
+## (連結)リスト
 
 リストを作るには角括弧を使って記述します。リストの要素はどんな型でも構いません。
 
@@ -352,27 +352,27 @@ iex> tuple
 
 `put_elem/3` は新規にタプルを返します。オリジナルのタプルは要素を改変されることなく依然として `tuple` に保存されています。リストと同様にタプルもイミュータブルです。タプルに対する各操作は新規にタプルを作成することになりますので、元のタプルが改変されることはありません。
 
-## Lists or tuples?
+## List or Tuple
 
-What is the difference between lists and tuples?
+リストとタプルの違いは何でしょう？
 
-Lists are stored in memory as linked lists, meaning that each element in a list holds its value and points to the following element until the end of the list is reached. This means accessing the length of a list is a linear operation: we need to traverse the whole list in order to figure out its size.
+リストはメモリ上で連結リストとして保持されます。これはそのリストが終わりに達するまで、リスト内の各要素がその値とそれに次ぐ要素へのポインタを保持しているという事です。例えば、リストのサイズなどを数え上げる際にリスト内を走査するといったような、リストの長さに対してアクセスする線形演算を想定しています。
 
-Similarly, the performance of list concatenation depends on the length of the left-hand list:
+同様に、リストを連結する際のパフォーマンスは、左側のリストの長さに依存します。
 
 ```iex
 iex> list = [1, 2, 3]
 
-# This is fast as we only need to traverse `[0]` to prepend to `list`
+# `list` に対して `[0]` を先頭に追加するだけなので高速
 iex> [0] ++ list
 [0, 1, 2, 3]
 
-# This is slow as we need to traverse `list` to append 4
+# 4 を後尾に追加する為に `list` を走査するので低速
 iex> list ++ [4]
 [1, 2, 3, 4]
 ```
 
-Tuples, on the other hand, are stored contiguously in memory. This means getting the tuple size or accessing an element by index is fast. However, updating or adding elements to tuples is expensive because it requires creating a new tuple in memory:
+一方でタプルは、メモリ内で隣接して保持されます。それは、タプルのサイズを得たりインデックスから要素にアクセスするのが高速だということです。しかし、タプルに要素を追加したり更新するには、新たにメモリ内でタプルを作り直さねばならないというコストがかかります。
 
 ```iex
 iex> tuple = {:a, :b, :c, :d}
@@ -380,9 +380,9 @@ iex> put_elem(tuple, 2, :e)
 {:a, :b, :e, :d}
 ```
 
-Note that this applies only to the tuple itself, not its contents. For instance, when you update a tuple, all entries are shared between the old and the new tuple, except for the entry that has been replaced. In other words, tuples and lists in Elixir are capable of sharing their contents. This reduces the amount of memory allocation the language needs to perform and is only possible thanks to the immutable semantics of the language.
+ただし、新たに作り直されるのはタプルそれ自身であって、そのコンテンツではないことに注意してください。それは例えば、タプルを更新しても置き換えられたエントリーを除いたすべてのエントリーが古いタプルと新しいタプルで同じということです。言い換えると、 Elixir におけるリストとタプルはそれらコンテンツを共有可能ということを意味しており、言語が機能を果たす為に確保するメモリ量を抑えてくれます。それが可能なのも、この言語のイミュータブルなセマンティクスのおかげです。
 
-Those performance characteristics dictate the usage of those data structures. One very common use case for tuples is to use them to return extra information from a function. For example, `File.read/1` is a function that can be used to read file contents. It returns a tuple:
+それらの動作特性はデータ構造の慣習に影響します。タプルを使用した最も一般的な例のひとつに、関数から特殊な情報を得る為に使うということが挙げられます。例えば `File.read/1` はファイル内のコンテンツを読み出す関数ですが、その戻り値はタプルです。
 
 ```iex
 iex> File.read("path/to/existing/file")
@@ -391,7 +391,7 @@ iex> File.read("path/to/unknown/file")
 {:error, :enoent}
 ```
 
-If the path given to `File.read/1` exists, it returns a tuple with the atom `:ok` as the first element and the file contents as the second. Otherwise, it returns a tuple with `:error` and the error description.
+`File.read/1` に与えられたパスが存在しているのなら、最初の要素を `:ok` としてそれに次ぐ二つ目にファイル内のコンテンツを含むタプルを返します。
 
 Most of the time, Elixir is going to guide you to do the right thing. For example, there is an `elem/2` function to access a tuple item but there is no built-in equivalent for lists:
 
