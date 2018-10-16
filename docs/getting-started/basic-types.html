@@ -544,35 +544,35 @@ iex&gt; tuple
 
 <p><code class="highlighter-rouge">put_elem/3</code> は新規にタプルを返します。オリジナルのタプルは要素を改変されることなく依然として <code class="highlighter-rouge">tuple</code> に保存されています。リストと同様にタプルもイミュータブルです。タプルに対する各操作は新規にタプルを作成することになりますので、元のタプルが改変されることはありません。</p>
 
-<h2 id="list-or-tuple">List or Tuple</h2>
+<h2 id="リスト-or-タプル">リスト or タプル</h2>
 
 <p>リストとタプルの違いは何でしょう？</p>
 
-<p>リストはメモリ上で連結リストとして保持されます。これはそのリストが終わりに達するまで、リスト内の各要素がその値とそれに次ぐ要素へのポインタを保持しているという事です。例えば、リストのサイズなどを数え上げる際にリスト内を走査するといったような、リストの長さに対してアクセスする線形演算を想定しています。</p>
+<p>リストはメモリ上で連結リストとして保持されます。これは、そのリストが終わりに達するまで、リスト内の各要素がその値とそれに次ぐ要素へのポインタを保持しているという事です。例えば、リストのサイズなどを数え上げる際にリスト内を走査するといったような、リストの長さに対してアクセスする線形演算を想定しています。</p>
 
 <p>同様に、リストを連結する際のパフォーマンスは、左側のリストの長さに依存します。</p>
 
 <pre><code class="language-iex">iex&gt; list = [1, 2, 3]
 
-# `list` に対して `[0]` を先頭に追加するだけなので高速
+# `[0]` を走査だけで `list` の先頭へ追加できるので高速
 iex&gt; [0] ++ list
 [0, 1, 2, 3]
 
-# 4 を後尾に追加する為に `list` を走査するので低速
+# `4` を後尾へ追加する為に `list` の走査が必要なので低速
 iex&gt; list ++ [4]
 [1, 2, 3, 4]
 </code></pre>
 
-<p>一方でタプルは、メモリ内で隣接して保持されます。それは、タプルのサイズを得たりインデックスから要素にアクセスするのが高速だということです。しかし、タプルに要素を追加したり更新するには、新たにメモリ内でタプルを作り直さねばならないというコストがかかります。</p>
+<p>一方でタプルは、メモリ内で隣接して保持されます。それは、タプルのサイズを得たりインデックスから要素にアクセスするのが高速だということです。しかし、タプルに要素を追加したり更新するには、新たにメモリ内でタプルを作り直さねばならないという高いコストがかかります。</p>
 
 <pre><code class="language-iex">iex&gt; tuple = {:a, :b, :c, :d}
 iex&gt; put_elem(tuple, 2, :e)
 {:a, :b, :e, :d}
 </code></pre>
 
-<p>ただし、新たに作り直されるのはタプルそれ自身であって、そのコンテンツではないことに注意してください。それは例えば、タプルを更新しても置き換えられたエントリーを除いたすべてのエントリーが古いタプルと新しいタプルで同じということです。言い換えると、 Elixir におけるリストとタプルはそれらコンテンツを共有可能ということを意味しており、言語が機能を果たす為に確保するメモリ量を抑えてくれます。それが可能なのも、この言語のイミュータブルなセマンティクスのおかげです。</p>
+<p>ただし、新たに作り直されるのはタプルそれ自身であって、その中身ではないことに注意してください。それは例えば、タプルを更新しても置き換えられたエントリーを除いたすべてのエントリーが古いタプルと新しいタプルで同じということです。言い換えると、 Elixir におけるリストとタプルはそれらコンテンツを共有可能ということを意味しており、言語が機能を果たす為に確保するメモリ量を抑えてくれます。それが可能なのも、この言語のイミュータブルなセマンティクスのおかげです。</p>
 
-<p>それらの動作特性はデータ構造の慣習に影響します。タプルを使用した最も一般的な例のひとつに、関数から特殊な情報を得る為に使うということが挙げられます。例えば <code class="highlighter-rouge">File.read/1</code> はファイル内のコンテンツを読み出す関数ですが、その戻り値はタプルです。</p>
+<p>それら動作特性はデータ構造の慣習に影響します。タプルを使用した最も一般的な例のひとつに、関数から特殊な情報を得る為に使うということが挙げられます。例えば <code class="highlighter-rouge">File.read/1</code> はファイル内のコンテンツを読み出す関数ですが、その戻り値はタプルです。</p>
 
 <pre><code class="language-iex">iex&gt; File.read("path/to/existing/file")
 {:ok, "... contents ..."}
@@ -582,7 +582,7 @@ iex&gt; File.read("path/to/unknown/file")
 
 <p><code class="highlighter-rouge">File.read/1</code> に与えられたパスが存在しているのなら、最初の要素を <code class="highlighter-rouge">:ok</code> としてそれに次ぐ二つ目にファイル内のコンテンツを含むタプルを返します。</p>
 
-<p>Most of the time, Elixir is going to guide you to do the right thing. For example, there is an <code class="highlighter-rouge">elem/2</code> function to access a tuple item but there is no built-in equivalent for lists:</p>
+<p>殆どの場合、 Elixir は正しく動作する為にあなたをガイドするようになっています。例えば、 <code class="highlighter-rouge">elem/2</code> はタプルの要素にアクセスする為の関数ですが、リストに対するそれと等価のものは組み込まれていません。</p>
 
 <pre><code class="language-iex">iex&gt; tuple = {:ok, "hello"}
 {:ok, "hello"}
@@ -590,11 +590,11 @@ iex&gt; elem(tuple, 1)
 "hello"
 </code></pre>
 
-<p>When counting the elements in a data structure, Elixir also abides by a simple rule: the function is named <code class="highlighter-rouge">size</code> if the operation is in constant time (i.e. the value is pre-calculated) or <code class="highlighter-rouge">length</code> if the operation is linear (i.e. calculating the length gets slower as the input grows). As a mnemonic, both “length” and “linear” start with “l”.</p>
+<p>データ構造の要素を数え上げるといった操作をする時、Elixir の関数名は次のルールに従って命名されます。至ってシンプルなものです。その操作が一定時間内のもの(i.e. 値が事前計算されているなど)であれば <code class="highlighter-rouge">size</code> を添え、その操作が線形のもの(i.e. 入力値を得る毎に遅くなるような長さについて計算するなど)であれば <code class="highlighter-rouge">length</code> を添えます。</p>
 
-<p>For example, we have used 4 counting functions so far: <code class="highlighter-rouge">byte_size/1</code> (for the number of bytes in a string), <code class="highlighter-rouge">tuple_size/1</code> (for tuple size), <code class="highlighter-rouge">length/1</code> (for list length) and <code class="highlighter-rouge">String.length/1</code> (for the number of graphemes in a string). We use <code class="highlighter-rouge">byte_size</code> to get the number of bytes in a string – a cheap operation. Retrieving the number of Unicode characters, on the other hand, uses <code class="highlighter-rouge">String.length</code>, and may be expensive as it relies on a traversal of the entire string.</p>
+<p>例えば、次に挙げる 4 つのカウント機能を持った関数などがそうです。 <code class="highlighter-rouge">byte_size/1</code> (文字数を得る) 、 <code class="highlighter-rouge">tuple_size/1</code> (タプルの長さを得る) 、 <code class="highlighter-rouge">length</code> (リストの長さを得る) 、そして <code class="highlighter-rouge">String.length/1</code> (文字数を得る) です。ある文字列の数を得る <code class="highlighter-rouge">byte_size</code> 、これは Unicode 文字の数を取得します。別の手段として <code class="highlighter-rouge">String.length</code> を使えますが、文字列全体の走査に依存するので高いコストがかかります。</p>
 
-<p>Elixir also provides <code class="highlighter-rouge">Port</code>, <code class="highlighter-rouge">Reference</code>, and <code class="highlighter-rouge">PID</code> as data types (usually used in process communication), and we will take a quick look at them when talking about processes. For now, let’s take a look at some of the basic operators that go with our basic types.</p>
+<p>他にも、 Elixir は <code class="highlighter-rouge">Port</code> 、 <code class="highlighter-rouge">Reference</code> 、 <code class="highlighter-rouge">PID</code> というデータ型も提供しており、プロセス通信で頻繁に利用されます。プロセスについてお話しする際には簡単に取り上げますが、とりあえず今は基本的な型の扱い方を見ていきましょう。</p>
 
   </article><!-- .hfeed -->
 

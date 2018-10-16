@@ -352,27 +352,27 @@ iex> tuple
 
 `put_elem/3` は新規にタプルを返します。オリジナルのタプルは要素を改変されることなく依然として `tuple` に保存されています。リストと同様にタプルもイミュータブルです。タプルに対する各操作は新規にタプルを作成することになりますので、元のタプルが改変されることはありません。
 
-## List or Tuple
+## リスト or タプル
 
 リストとタプルの違いは何でしょう？
 
-リストはメモリ上で連結リストとして保持されます。これはそのリストが終わりに達するまで、リスト内の各要素がその値とそれに次ぐ要素へのポインタを保持しているという事です。例えば、リストのサイズなどを数え上げる際にリスト内を走査するといったような、リストの長さに対してアクセスする線形演算を想定しています。
+リストはメモリ上で連結リストとして保持されます。これは、そのリストが終わりに達するまで、リスト内の各要素がその値とそれに次ぐ要素へのポインタを保持しているという事です。例えば、リストのサイズなどを数え上げる際にリスト内を走査するといったような、リストの長さに対してアクセスする線形演算を想定しています。
 
 同様に、リストを連結する際のパフォーマンスは、左側のリストの長さに依存します。
 
 ```iex
 iex> list = [1, 2, 3]
 
-# `list` に対して `[0]` を先頭に追加するだけなので高速
+# `[0]` を走査だけで `list` の先頭へ追加できるので高速
 iex> [0] ++ list
 [0, 1, 2, 3]
 
-# 4 を後尾に追加する為に `list` を走査するので低速
+# `4` を後尾へ追加する為に `list` の走査が必要なので低速
 iex> list ++ [4]
 [1, 2, 3, 4]
 ```
 
-一方でタプルは、メモリ内で隣接して保持されます。それは、タプルのサイズを得たりインデックスから要素にアクセスするのが高速だということです。しかし、タプルに要素を追加したり更新するには、新たにメモリ内でタプルを作り直さねばならないというコストがかかります。
+一方でタプルは、メモリ内で隣接して保持されます。それは、タプルのサイズを得たりインデックスから要素にアクセスするのが高速だということです。しかし、タプルに要素を追加したり更新するには、新たにメモリ内でタプルを作り直さねばならないという高いコストがかかります。
 
 ```iex
 iex> tuple = {:a, :b, :c, :d}
@@ -380,9 +380,9 @@ iex> put_elem(tuple, 2, :e)
 {:a, :b, :e, :d}
 ```
 
-ただし、新たに作り直されるのはタプルそれ自身であって、そのコンテンツではないことに注意してください。それは例えば、タプルを更新しても置き換えられたエントリーを除いたすべてのエントリーが古いタプルと新しいタプルで同じということです。言い換えると、 Elixir におけるリストとタプルはそれらコンテンツを共有可能ということを意味しており、言語が機能を果たす為に確保するメモリ量を抑えてくれます。それが可能なのも、この言語のイミュータブルなセマンティクスのおかげです。
+ただし、新たに作り直されるのはタプルそれ自身であって、その中身ではないことに注意してください。それは例えば、タプルを更新しても置き換えられたエントリーを除いたすべてのエントリーが古いタプルと新しいタプルで同じということです。言い換えると、 Elixir におけるリストとタプルはそれらコンテンツを共有可能ということを意味しており、言語が機能を果たす為に確保するメモリ量を抑えてくれます。それが可能なのも、この言語のイミュータブルなセマンティクスのおかげです。
 
-それらの動作特性はデータ構造の慣習に影響します。タプルを使用した最も一般的な例のひとつに、関数から特殊な情報を得る為に使うということが挙げられます。例えば `File.read/1` はファイル内のコンテンツを読み出す関数ですが、その戻り値はタプルです。
+それら動作特性はデータ構造の慣習に影響します。タプルを使用した最も一般的な例のひとつに、関数から特殊な情報を得る為に使うということが挙げられます。例えば `File.read/1` はファイル内のコンテンツを読み出す関数ですが、その戻り値はタプルです。
 
 ```iex
 iex> File.read("path/to/existing/file")
@@ -393,7 +393,7 @@ iex> File.read("path/to/unknown/file")
 
 `File.read/1` に与えられたパスが存在しているのなら、最初の要素を `:ok` としてそれに次ぐ二つ目にファイル内のコンテンツを含むタプルを返します。
 
-Most of the time, Elixir is going to guide you to do the right thing. For example, there is an `elem/2` function to access a tuple item but there is no built-in equivalent for lists:
+殆どの場合、 Elixir は正しく動作する為にあなたをガイドするようになっています。例えば、 `elem/2` はタプルの要素にアクセスする為の関数ですが、リストに対するそれと等価のものは組み込まれていません。
 
 ```iex
 iex> tuple = {:ok, "hello"}
@@ -402,8 +402,8 @@ iex> elem(tuple, 1)
 "hello"
 ```
 
-When counting the elements in a data structure, Elixir also abides by a simple rule: the function is named `size` if the operation is in constant time (i.e. the value is pre-calculated) or `length` if the operation is linear (i.e. calculating the length gets slower as the input grows). As a mnemonic, both "length" and "linear" start with "l".
+データ構造の要素を数え上げるといった操作をする時、Elixir の関数名は次のルールに従って命名されます。至ってシンプルなものです。その操作が一定時間内のもの(i.e. 値が事前計算されているなど)であれば `size` を添え、その操作が線形のもの(i.e. 入力値を得る毎に遅くなるような長さについて計算するなど)であれば `length` を添えます。
 
-For example, we have used 4 counting functions so far: `byte_size/1` (for the number of bytes in a string), `tuple_size/1` (for tuple size), `length/1` (for list length) and `String.length/1` (for the number of graphemes in a string). We use `byte_size` to get the number of bytes in a string -- a cheap operation. Retrieving the number of Unicode characters, on the other hand, uses `String.length`, and may be expensive as it relies on a traversal of the entire string.
+例えば、次に挙げる 4 つのカウント機能を持った関数などがそうです。 `byte_size/1` (文字数を得る) 、 `tuple_size/1` (タプルの長さを得る) 、 `length` (リストの長さを得る) 、そして `String.length/1` (文字数を得る) です。ある文字列の数を得る `byte_size` 、これは Unicode 文字の数を取得します。別の手段として `String.length` を使えますが、文字列全体の走査に依存するので高いコストがかかります。
 
-Elixir also provides `Port`, `Reference`, and `PID` as data types (usually used in process communication), and we will take a quick look at them when talking about processes. For now, let's take a look at some of the basic operators that go with our basic types.
+他にも、 Elixir は `Port` 、 `Reference` 、 `PID` というデータ型も提供しており、プロセス通信で頻繁に利用されます。プロセスについてお話しする際には簡単に取り上げますが、とりあえず今は基本的な型の扱い方を見ていきましょう。
