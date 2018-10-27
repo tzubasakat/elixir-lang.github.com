@@ -44,7 +44,7 @@ iex> rem 10, 3
 1
 ```
 
-Elixr は関数を呼び出す際の括弧を省略できます。これにより、宣言と制御構造での文法的な見晴らしをクリアにします。
+Elixir は関数を呼び出す際の括弧を省略できます。これにより、宣言と制御構造での文法的な見晴らしをクリアにします。
 
 2 進法、8 進法、および 16 進法もサポートしています。
 
@@ -242,7 +242,7 @@ iex> x
 42
 ```
 
-## リスト
+## (連結)リスト
 
 リストを作るには角括弧を使って記述します。リストの要素はどんな型でも構いません。
 
@@ -352,27 +352,27 @@ iex> tuple
 
 `put_elem/3` は新規にタプルを返します。オリジナルのタプルは要素を改変されることなく依然として `tuple` に保存されています。リストと同様にタプルもイミュータブルです。タプルに対する各操作は新規にタプルを作成することになりますので、元のタプルが改変されることはありません。
 
-## Lists or tuples?
+## リスト or タプル
 
-What is the difference between lists and tuples?
+リストとタプルの違いは何でしょう？
 
-Lists are stored in memory as linked lists, meaning that each element in a list holds its value and points to the following element until the end of the list is reached. This means accessing the length of a list is a linear operation: we need to traverse the whole list in order to figure out its size.
+リストはメモリ上で連結リストとして保持されます。これは、そのリストが終わりに達するまで、リスト内の各要素がその値とそれに次ぐ要素へのポインタを保持しているという事です。例えば、リストのサイズなどを数え上げる際にリスト内を走査するといったような、リストの長さに対してアクセスする線形演算を想定しています。
 
-Similarly, the performance of list concatenation depends on the length of the left-hand list:
+同様に、リストを連結する際のパフォーマンスは、左側のリストの長さに依存します。
 
 ```iex
 iex> list = [1, 2, 3]
 
-# This is fast as we only need to traverse `[0]` to prepend to `list`
+# `[0]` を走査だけで `list` の先頭へ追加できるので高速
 iex> [0] ++ list
 [0, 1, 2, 3]
 
-# This is slow as we need to traverse `list` to append 4
+# `4` を後尾へ追加する為に `list` の走査が必要なので低速
 iex> list ++ [4]
 [1, 2, 3, 4]
 ```
 
-Tuples, on the other hand, are stored contiguously in memory. This means getting the tuple size or accessing an element by index is fast. However, updating or adding elements to tuples is expensive because it requires creating a new tuple in memory:
+一方でタプルは、メモリ内で隣接して保持されます。それは、タプルのサイズを得たりインデックスから要素にアクセスするのが高速だということです。しかし、タプルに要素を追加したり更新するには、新たにメモリ内でタプルを作り直さねばならないという高いコストがかかります。
 
 ```iex
 iex> tuple = {:a, :b, :c, :d}
@@ -380,9 +380,9 @@ iex> put_elem(tuple, 2, :e)
 {:a, :b, :e, :d}
 ```
 
-Note that this applies only to the tuple itself, not its contents. For instance, when you update a tuple, all entries are shared between the old and the new tuple, except for the entry that has been replaced. In other words, tuples and lists in Elixir are capable of sharing their contents. This reduces the amount of memory allocation the language needs to perform and is only possible thanks to the immutable semantics of the language.
+ただし、新たに作り直されるのはタプルそれ自身であって、その中身ではないことに注意してください。それは例えば、タプルを更新しても置き換えられたエントリーを除いたすべてのエントリーが古いタプルと新しいタプルで同じということです。言い換えると、 Elixir におけるリストとタプルはそれらコンテンツを共有可能ということを意味しており、言語が機能を果たす為に確保するメモリ量を抑えてくれます。それが可能なのも、この言語のイミュータブルなセマンティクスのおかげです。
 
-Those performance characteristics dictate the usage of those data structures. One very common use case for tuples is to use them to return extra information from a function. For example, `File.read/1` is a function that can be used to read file contents. It returns a tuple:
+それら動作特性はデータ構造の慣習に影響します。タプルを使用した最も一般的な例のひとつに、関数から特殊な情報を得る為に使うということが挙げられます。例えば `File.read/1` はファイル内のコンテンツを読み出す関数ですが、その戻り値はタプルです。
 
 ```iex
 iex> File.read("path/to/existing/file")
@@ -391,9 +391,9 @@ iex> File.read("path/to/unknown/file")
 {:error, :enoent}
 ```
 
-If the path given to `File.read/1` exists, it returns a tuple with the atom `:ok` as the first element and the file contents as the second. Otherwise, it returns a tuple with `:error` and the error description.
+`File.read/1` に与えられたパスが存在しているのなら、最初の要素を `:ok` としてそれに次ぐ二つ目にファイル内のコンテンツを含むタプルを返します。
 
-Most of the time, Elixir is going to guide you to do the right thing. For example, there is an `elem/2` function to access a tuple item but there is no built-in equivalent for lists:
+殆どの場合、 Elixir は正しく動作する為にあなたをガイドするようになっています。例えば、 `elem/2` はタプルの要素にアクセスする為の関数ですが、リストに対するそれと等価のものは組み込まれていません。
 
 ```iex
 iex> tuple = {:ok, "hello"}
@@ -402,8 +402,8 @@ iex> elem(tuple, 1)
 "hello"
 ```
 
-When counting the elements in a data structure, Elixir also abides by a simple rule: the function is named `size` if the operation is in constant time (i.e. the value is pre-calculated) or `length` if the operation is linear (i.e. calculating the length gets slower as the input grows). As a mnemonic, both "length" and "linear" start with "l".
+データ構造の要素を数え上げるといった操作をする時、Elixir の関数名は次のルールに従って命名されます。至ってシンプルなものです。その操作が一定時間内のもの(i.e. 値が事前計算されているなど)であれば `size` を添え、その操作が線形のもの(i.e. 入力値を得る毎に遅くなるような長さについて計算するなど)であれば `length` を添えます。
 
-For example, we have used 4 counting functions so far: `byte_size/1` (for the number of bytes in a string), `tuple_size/1` (for tuple size), `length/1` (for list length) and `String.length/1` (for the number of graphemes in a string). We use `byte_size` to get the number of bytes in a string -- a cheap operation. Retrieving the number of Unicode characters, on the other hand, uses `String.length`, and may be expensive as it relies on a traversal of the entire string.
+例えば、次に挙げる 4 つのカウント機能を持った関数などがそうです。 `byte_size/1` (文字数を得る) 、 `tuple_size/1` (タプルの長さを得る) 、 `length` (リストの長さを得る) 、そして `String.length/1` (文字数を得る) です。ある文字列の数を得る `byte_size` 、これは Unicode 文字の数を取得します。別の手段として `String.length` を使えますが、文字列全体の走査に依存するので高いコストがかかります。
 
-Elixir also provides `Port`, `Reference`, and `PID` as data types (usually used in process communication), and we will take a quick look at them when talking about processes. For now, let's take a look at some of the basic operators that go with our basic types.
+他にも、 Elixir は `Port` 、 `Reference` 、 `PID` というデータ型も提供しており、プロセス通信で頻繁に利用されます。プロセスについてお話しする際には簡単に取り上げますが、とりあえず今は基本的な型の扱い方を見ていきましょう。
