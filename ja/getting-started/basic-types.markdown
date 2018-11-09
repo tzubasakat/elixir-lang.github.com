@@ -1,6 +1,6 @@
 ---
 layout: getting-started
-title: Basic types
+title: 基本型
 ---
 
 # {{ page.title }}
