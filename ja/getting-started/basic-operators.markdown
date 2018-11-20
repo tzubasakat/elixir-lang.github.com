@@ -1,15 +1,15 @@
 ---
 layout: getting-started
-title: Basic operators
+title: 基本演算子
 ---
 
 # {{ page.title }}
 
 {% include toc.html %}
 
-In the [previous chapter](/getting-started/basic-types.html), we saw Elixir provides `+`, `-`, `*`, `/` as arithmetic operators, plus the functions `div/2` and `rem/2` for integer division and remainder.
+[前章](/getting-started/basic-types.html)では、Elixir で使用できる算数の演算子 `+`, `-`, `*`, `/` に加えて、除算の商と剰余を求める `div/2` と `rem/2` 関数を見てきました。
 
-Elixir also provides `++` and `--` to manipulate lists:
+Elixir はリストを操作する為に `++` と `--` も使えるようになっています。
 
 ```iex
 iex> [1, 2, 3] ++ [4, 5, 6]
@@ -18,14 +18,14 @@ iex> [1, 2, 3] -- [2]
 [1, 3]
 ```
 
-String concatenation is done with `<>`:
+文字列の連結には `<>` が使われます。
 
 ```iex
 iex> "foo" <> "bar"
 "foobar"
 ```
 
-Elixir also provides three boolean operators: `or`, `and` and `not`. These operators are strict in the sense that they expect a boolean (`true` or `false`) as their first argument:
+Elixir は `or`、 `and` 、 `not` など3つの論理演算子も用意しています。これらの演算子は第一引数として `true` か `false` の論理値を期待しています。
 
 ```iex
 iex> true and true
@@ -34,14 +34,14 @@ iex> false or is_atom(:example)
 true
 ```
 
-Providing a non-boolean will raise an exception:
+第一引数に論理値以外を渡すと例外が発生します。
 
 ```iex
 iex> 1 and true
 ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
 ```
 
-`or` and `and` are short-circuit operators. They only execute the right side if the left side is not enough to determine the result:
+`or` と `and` は短絡評価をする演算子です。左辺の結果を確かめるまでもないなら、右辺だけを返します。
 
 ```iex
 iex> false and raise("This error will never be raised")
@@ -50,9 +50,9 @@ iex> true or raise("This error will never be raised")
 true
 ```
 
-> Note: If you are an Erlang developer, `and` and `or` in Elixir actually map to the `andalso` and `orelse` operators in Erlang.
+Note: もしあなたが Erlang エンジニアなら、Elixir の `and` と `or` は Erlang における `andalso` と `orelse` に対応させることでしょう。
 
-Besides these boolean operators, Elixir also provides `||`, `&&` and `!` which accept arguments of any type. For these operators, all values except `false` and `nil` will evaluate to true:
+これら論理演算子とは対比して、如何なる型の引数でも受け取れる `||` や `&&` 、`!` もあります。これらの演算子は `false` と `nil` を除く値のすべてを `true` として評価します。
 
 ```iex
 # or
@@ -76,9 +76,9 @@ iex> !nil
 true
 ```
 
-As a rule of thumb, use `and`, `or` and `not` when you are expecting booleans. If any of the arguments are non-boolean, use `&&`, `||` and `!`.
+大雑把な言い方をすると、論理値を用いる時に `and` や `or` 、 `not` を使い、もし引数のどれかが論理値でない時は `&&` や `||` 、 `!` を使うといいでしょう。
 
-Elixir also provides `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<`, and `>` as comparison operators:
+比較演算子 `==` 、 `!=` 、 `===` 、 `!==` 、 `<=` 、 `>=` 、 `<` 、 `>` も用意されています。
 
 ```iex
 iex> 1 == 1
@@ -89,7 +89,7 @@ iex> 1 < 2
 true
 ```
 
-The difference between `==` and `===` is that the latter is more strict when comparing integers and floats:
+`==` と `===` の違いは、整数と浮動小数点数を比べる際に後者の方がより厳格であることです。
 
 ```iex
 iex> 1 == 1.0
@@ -98,19 +98,19 @@ iex> 1 === 1.0
 false
 ```
 
-In Elixir, we can compare two different data types:
+Elixir では二つの異なる型を比較できます。
 
 ```iex
 iex> 1 < :atom
 true
 ```
 
-The reason we can compare different data types is pragmatism. Sorting algorithms don't need to worry about different data types in order to sort. The overall sorting order is defined below:
+これはプラグマティズム(実用主義)が理由です。よって異なる型をソートする際に、その違いを心配する必要がないのです。
 
     number < atom < reference < function < port < pid < tuple < map < list < bitstring
 
-You don't actually need to memorize this ordering, it's enough to know that this ordering exists.
+実際にこの順序を暗記する必要はなく、そういうものがあるという事だけを覚えていれば十分です。
 
-For reference information about operators (and ordering), check the [reference page on operators](https://hexdocs.pm/elixir/operators.html).
+演算子とその整列順に関する情報は、[演算子について](https://hexdocs.pm/elixir/operators.html)を参照してください。
 
-In the next chapter, we are going to discuss pattern matching through the use of `=`, the match operator.
+次章では、マッチ演算子 `=` を用いたパターンマッチングを取り上げていきます。
