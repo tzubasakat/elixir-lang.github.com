@@ -1,17 +1,17 @@
 ---
 layout: getting-started
-title: Pattern matching
+title: パターン・マッチング
 ---
 
 # {{ page.title }}<span hidden>.</span>
 
 {% include toc.html %}
 
-In this chapter, we will show how the `=` operator in Elixir is actually a match operator and how to use it to pattern match inside data structures. Finally, we will learn about the pin operator `^` used to access previously bound values.
+この章で私たちは、 Elixir における `=` 演算子が実際にマッチ演算子である事と、それをデータ構造の中でパターンマッチに使用する為の使い方を案内します。終盤では、事前に指定された値へアクセスする為に使われるピン演算子 `^` について学びます。
 
-## The match operator
+## マッチ演算子
 
-We have used the `=` operator a couple times to assign variables in Elixir:
+私たちは、変数を定義する為に `=` 演算子を何度か使っています。
 
 ```iex
 iex> x = 1
@@ -20,7 +20,7 @@ iex> x
 1
 ```
 
-In Elixir, the `=` operator is actually called *the match operator*. Let's see why:
+Elixir では、実際のところ `=` 演算子は "マッチ演算子" と呼ばれます。その理由を見ていきましょう。
 
 ```iex
 iex> 1 = x
@@ -29,16 +29,16 @@ iex> 2 = x
 ** (MatchError) no match of right hand side value: 1
 ```
 
-Notice that `1 = x` is a valid expression, and it matched because both the left and right side are equal to 1. When the sides do not match, a `MatchError` is raised.
+`1 = x` は有効な式であることに留意してください。さらに、左辺と右辺の両方が 1 に対して等しいのでマッチしています。その一方がマッチしない時は `MatchError` が起こります。
 
-A variable can only be assigned on the left side of `=`:
+変数は、それが `=` の左辺にある時だけ代入することができます。
 
 ```iex
 iex> 1 = unknown
 ** (CompileError) iex:1: undefined function unknown/0
 ```
 
-Since there is no variable `unknown` previously defined, Elixir imagined you were trying to call a function named `unknown/0`, but such a function does not exist.
+事前に定義された `unknown` という変数が存在しない以上、Elixir はあなたが `unknown/0` という関数の呼び出しを試みているものと考えますが、そのような関数は存在していません。
 
 ## Pattern matching
 

@@ -277,6 +277,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"The code above will work but issue a warning: `variable \"a\" is unused`. The ma"
+"cro is overriding the original value and the original value is never used."
+msgstr ""
+
+msgid ""
 "Variable hygiene only works because Elixir annotates variables with their cont"
 "ext. For example, a variable `x` defined on line 3 of a module would be repres"
 "ented as:"
