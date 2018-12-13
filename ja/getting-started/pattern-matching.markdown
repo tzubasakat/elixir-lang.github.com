@@ -40,9 +40,9 @@ iex> 1 = unknown
 
 事前に定義された `unknown` という変数が存在しない以上、Elixir はあなたが `unknown/0` という関数の呼び出しを試みているものと考えますが、そのような関数は存在していません。
 
-## Pattern matching
+## パターン・マッチ
 
-The match operator is not only used to match against simple values, but it is also useful for destructuring more complex data types. For example, we can pattern match on tuples:
+マッチ演算子は単純にマッチングする為だけのものではなく、より複雑なデータ型を解体する為にも便利なものです。例えば、タプルでパターンマッチを使えます。
 
 ```iex
 iex> {a, b, c} = {:hello, "world", 42}
@@ -53,21 +53,21 @@ iex> b
 "world"
 ```
 
-A pattern match will error if the sides can't be matched, for example if the tuples have different sizes:
+一方がマッチしないのならパターンマッチは失敗します。例えば、それはタプルが違うサイズである等という時に起こります。
 
 ```iex
 iex> {a, b, c} = {:hello, "world"}
 ** (MatchError) no match of right hand side value: {:hello, "world"}
 ```
 
-And also when comparing different types:
+さらには異なる型を比較しようとすることでも起こります。
 
 ```iex
 iex> {a, b, c} = [:hello, "world", 42]
 ** (MatchError) no match of right hand side value: [:hello, "world", 42]
 ```
 
-More interestingly, we can match on specific values. The example below asserts that the left side will only match the right side when the right side is a tuple that starts with the atom `:ok`:
+もっと面白いことに、値を指定してパターンマッチを使うこともできます。以下の例では、右辺がタプルかつその最初の要素はアトムの `:ok` である時にだけ、左辺が右辺とマッチすることを名言しています。
 
 ```iex
 iex> {:ok, result} = {:ok, 13}
@@ -79,7 +79,7 @@ iex> {:ok, result} = {:error, :oops}
 ** (MatchError) no match of right hand side value: {:error, :oops}
 ```
 
-We can pattern match on lists:
+リストでもパターンマッチは出来ます。
 
 ```iex
 iex> [a, b, c] = [1, 2, 3]
@@ -88,7 +88,7 @@ iex> a
 1
 ```
 
-A list also supports matching on its own head and tail:
+リストはそれ自身の首尾と後尾にマッチすることもサポートしています。
 
 ```iex
 iex> [head | tail] = [1, 2, 3]
@@ -99,14 +99,14 @@ iex> tail
 [2, 3]
 ```
 
-Similar to the `hd/1` and `tl/1` functions, we can't match an empty list with a head and tail pattern:
+`hd/1` と `tl/1` 関数と同様に、首尾と後尾が空のリストにはマッチできません。
 
 ```iex
 iex> [h | t] = []
 ** (MatchError) no match of right hand side value: []
 ```
 
-The `[head | tail]` format is not only used on pattern matching but also for prepending items to a list:
+`[head | tail]` 形式はパターンマッチだけで使われるものではなく、リストの先頭に値を付加することにも使えます。
 
 ```iex
 iex> list = [1, 2, 3]
@@ -115,7 +115,7 @@ iex> [0 | list]
 [0, 1, 2, 3]
 ```
 
-Pattern matching allows developers to easily destructure data types such as tuples and lists. As we will see in the following chapters, it is one of the foundations of recursion in Elixir and applies to other types as well, like maps and binaries.
+パターンマッチは、開発者がタプルやリストのようなデータ構造を解体するのを容易にしてくれます。次章で見ていくことになるものとしては、Elixir における再起処理の基礎と、マップやバイナリのようにそれを異なる型へ適用するというものもあります。
 
 ## The pin operator
 

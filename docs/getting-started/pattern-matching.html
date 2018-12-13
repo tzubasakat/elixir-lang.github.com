@@ -254,9 +254,9 @@ iex&gt; 2 = x
 
 <p>事前に定義された <code class="highlighter-rouge">unknown</code> という変数が存在しない以上、Elixir はあなたが <code class="highlighter-rouge">unknown/0</code> という関数の呼び出しを試みているものと考えますが、そのような関数は存在していません。</p>
 
-<h2 id="pattern-matching">Pattern matching</h2>
+<h2 id="パターンマッチ">パターン・マッチ</h2>
 
-<p>The match operator is not only used to match against simple values, but it is also useful for destructuring more complex data types. For example, we can pattern match on tuples:</p>
+<p>マッチ演算子は単純にマッチングする為だけのものではなく、より複雑なデータ型を解体する為にも便利なものです。例えば、タプルでパターンマッチを使えます。</p>
 
 <pre><code class="language-iex">iex&gt; {a, b, c} = {:hello, "world", 42}
 {:hello, "world", 42}
@@ -266,19 +266,19 @@ iex&gt; b
 "world"
 </code></pre>
 
-<p>A pattern match will error if the sides can’t be matched, for example if the tuples have different sizes:</p>
+<p>一方がマッチしないのならパターンマッチは失敗します。例えば、それはタプルが違うサイズである等という時に起こります。</p>
 
 <pre><code class="language-iex">iex&gt; {a, b, c} = {:hello, "world"}
 ** (MatchError) no match of right hand side value: {:hello, "world"}
 </code></pre>
 
-<p>And also when comparing different types:</p>
+<p>さらには異なる型を比較しようとすることでも起こります。</p>
 
 <pre><code class="language-iex">iex&gt; {a, b, c} = [:hello, "world", 42]
 ** (MatchError) no match of right hand side value: [:hello, "world", 42]
 </code></pre>
 
-<p>More interestingly, we can match on specific values. The example below asserts that the left side will only match the right side when the right side is a tuple that starts with the atom <code class="highlighter-rouge">:ok</code>:</p>
+<p>もっと面白いことに、値を指定してパターンマッチを使うこともできます。以下の例では、右辺がタプルかつその最初の要素はアトムの <code class="highlighter-rouge">:ok</code> である時にだけ、左辺が右辺とマッチすることを名言しています。</p>
 
 <pre><code class="language-iex">iex&gt; {:ok, result} = {:ok, 13}
 {:ok, 13}
@@ -289,7 +289,7 @@ iex&gt; {:ok, result} = {:error, :oops}
 ** (MatchError) no match of right hand side value: {:error, :oops}
 </code></pre>
 
-<p>We can pattern match on lists:</p>
+<p>リストでもパターンマッチは出来ます。</p>
 
 <pre><code class="language-iex">iex&gt; [a, b, c] = [1, 2, 3]
 [1, 2, 3]
@@ -297,7 +297,7 @@ iex&gt; a
 1
 </code></pre>
 
-<p>A list also supports matching on its own head and tail:</p>
+<p>リストはそれ自身の首尾と後尾にマッチすることもサポートしています。</p>
 
 <pre><code class="language-iex">iex&gt; [head | tail] = [1, 2, 3]
 [1, 2, 3]
@@ -307,13 +307,13 @@ iex&gt; tail
 [2, 3]
 </code></pre>
 
-<p>Similar to the <code class="highlighter-rouge">hd/1</code> and <code class="highlighter-rouge">tl/1</code> functions, we can’t match an empty list with a head and tail pattern:</p>
+<p><code class="highlighter-rouge">hd/1</code> と <code class="highlighter-rouge">tl/1</code> 関数と同様に、首尾と後尾が空のリストにはマッチできません。</p>
 
 <pre><code class="language-iex">iex&gt; [h | t] = []
 ** (MatchError) no match of right hand side value: []
 </code></pre>
 
-<p>The <code class="highlighter-rouge">[head | tail]</code> format is not only used on pattern matching but also for prepending items to a list:</p>
+<p><code class="highlighter-rouge">[head | tail]</code> 形式はパターンマッチだけで使われるものではなく、リストの先頭に値を付加することにも使えます。</p>
 
 <pre><code class="language-iex">iex&gt; list = [1, 2, 3]
 [1, 2, 3]
@@ -321,7 +321,7 @@ iex&gt; [0 | list]
 [0, 1, 2, 3]
 </code></pre>
 
-<p>Pattern matching allows developers to easily destructure data types such as tuples and lists. As we will see in the following chapters, it is one of the foundations of recursion in Elixir and applies to other types as well, like maps and binaries.</p>
+<p>パターンマッチは、開発者がタプルやリストのようなデータ構造を解体するのを容易にしてくれます。次章で見ていくことになるものとしては、Elixir における再起処理の基礎と、マップやバイナリのようにそれを異なる型へ適用するというものもあります。</p>
 
 <h2 id="the-pin-operator">The pin operator</h2>
 
