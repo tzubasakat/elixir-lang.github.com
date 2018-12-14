@@ -29,29 +29,29 @@ Note > Elixir {{ stable.name }} の使用には Erlang {{ stable.minimum_otp }} 
 
 ### UNIX 系
 
-  * Arch Linux (Community repo) をお使いの場合
-    * インストール: `pacman -S elixir`
-  * openSUSE (and SLES 11 SP3+) をお使いの場合
-    * Erlang devel リポジトリの追加: `zypper ar -f http://download.opensuse.org/repositories/devel:/languages:/erlang/openSUSE_Factory/ erlang`
-    * インストール: `zypper in elixir`
-  * Gentoo をお使いの場合
-    * インストール: `emerge --ask dev-lang/elixir`
+  * Arch Linux (Community repo)
+    * Run: `pacman -S elixir`
+  * openSUSE (and SLES 11 SP3+)
+    * Add Erlang devel repo: `zypper ar -f http://download.opensuse.org/repositories/devel:/languages:/erlang/openSUSE_Factory/ erlang`
+    * Run: `zypper in elixir`
+  * Gentoo
+    * Run: `emerge --ask dev-lang/elixir`
   * GNU Guix
-    * インストール: `guix package -i elixir`
-  * Fedora 21 (and older) をお使いの場合
-    * インストール: `yum install elixir`
+    * Run: `guix package -i elixir`
+  * Fedora 21 (and older)
+    * Run: `yum install elixir`
   * Fedora 22 (and newer)
-    * インストール `dnf install elixir`
-  * FreeBSD をお使いの場合
-    * ports : `cd /usr/ports/lang/elixir && make install clean`
-    * pkg: `pkg install elixir`
-  * Solus をお使いの場合
-    * インストール: `eopkg install elixir`
-  * Ubuntu 14.04/16.04/16.10/17.04 or Debian 7/8/9
-    * Erlang Solutions リポジトリの追加: `wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb`
-    * リストのアップデート: `sudo apt-get update`
-    * Erlang/OTP プラットフォームとそれら全アプリケーションのインストール: `sudo apt-get install esl-erlang`
-    * Elixir をインストール: `sudo apt-get install elixir`
+    * Run `dnf install elixir`
+  * FreeBSD
+    * From ports: `cd /usr/ports/lang/elixir && make install clean`
+    * From pkg: `pkg install elixir`
+  * Solus
+    * Run: `eopkg install elixir`
+  * Ubuntu 14.04/16.04/17.04/18.04 or Debian 7/8/9
+    * Add Erlang Solutions repo: `wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb`
+    * Run: `sudo apt-get update`
+    * Install the Erlang/OTP platform and all of its applications: `sudo apt-get install esl-erlang`
+    * Install Elixir: `sudo apt-get install elixir`
 
 ### Windows
 
