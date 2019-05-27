@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-17 17:58+0900\n"
+"POT-Creation-Date: 2019-05-28 03:48+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,45 +224,82 @@ msgid "```elixir\n"
 msgstr ""
 
 #: ../../../getting-started/typespecs-and-behaviours.markdown:123
-msgid "  def parse(str), do: {:ok, \"some json \" <> str} # ... parse JSON\n"
+msgid "  @impl Parser\n"
+"  def parse(str), do: {:ok, \"some json \" <> str} # ... parse JSON"
+msgstr ""
+
+#: ../../../getting-started/typespecs-and-behaviours.markdown:126
+msgid "  @impl Parser\n"
 "  def extensions, do: [\"json\"]\n"
 "end\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:128
+#: ../../../getting-started/typespecs-and-behaviours.markdown:131
 msgid "```elixir\n"
 "defmodule YAMLParser do\n"
 "  @behaviour Parser"
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:132
-msgid "  def parse(str), do: {:ok, \"some yaml \" <> str} # ... parse YAML\n"
+#: ../../../getting-started/typespecs-and-behaviours.markdown:135
+msgid "  @impl Parser\n"
+"  def parse(str), do: {:ok, \"some yaml \" <> str} # ... parse YAML"
+msgstr ""
+
+#: ../../../getting-started/typespecs-and-behaviours.markdown:138
+msgid "  @impl Parser\n"
 "  def extensions, do: [\"yml\"]\n"
 "end\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:137
+#: ../../../getting-started/typespecs-and-behaviours.markdown:143
 msgid "If a module adopting a given behaviour doesn't implement one of the callbacks required by that behaviour, a compile-time warning will be generated."
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:139
+#: ../../../getting-started/typespecs-and-behaviours.markdown:145
+msgid "Furthermore, with `@impl` you can also make sure that you are implementing the **correct** callbacks from the given behaviour in an explicit manner. For example, the following parser implements both `parse` and `extensions`, however thanks to a typo, `BADParser` is implementing `parse/0` instead of `parse/1`."
+msgstr ""
+
+#: ../../../getting-started/typespecs-and-behaviours.markdown:147
+msgid "```elixir\n"
+"defmodule BADParser do\n"
+"  @behaviour Parser"
+msgstr ""
+
+#: ../../../getting-started/typespecs-and-behaviours.markdown:151
+msgid "  @impl Parser\n"
+"  def parse, do: {:ok, \"something bad\"}"
+msgstr ""
+
+#: ../../../getting-started/typespecs-and-behaviours.markdown:154
+msgid "  @impl Parser\n"
+"  def extensions, do: [\"bad\"]\n"
+"end\n"
+"```"
+msgstr ""
+
+#: ../../../getting-started/typespecs-and-behaviours.markdown:159
+msgid "This code generates a warning letting you know that you are mistakenly implementing `parse/0` instead of `parse/1`.\n"
+"You can read more about `@impl` in the [module documentation](https://hexdocs.pm/elixir/master/Module.html#module-impl)."
+msgstr ""
+
+#: ../../../getting-started/typespecs-and-behaviours.markdown:162
 msgid "### Dynamic dispatch"
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:141
+#: ../../../getting-started/typespecs-and-behaviours.markdown:164
 msgid "Behaviours are frequently used with dynamic dispatching. For example, we could add a `parse!` function to the `Parser` module that dispatches to the given implementation and returns the `:ok` result or raises in cases of `:error`:"
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:143
+#: ../../../getting-started/typespecs-and-behaviours.markdown:166
 msgid "```elixir\n"
 "defmodule Parser do\n"
 "  @callback parse(String.t) :: {:ok, term} | {:error, String.t}\n"
 "  @callback extensions() :: [String.t]"
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:148
+#: ../../../getting-started/typespecs-and-behaviours.markdown:171
 msgid "  def parse!(implementation, contents) do\n"
 "    case implementation.parse(contents) do\n"
 "      {:ok, data} -> data\n"
@@ -273,7 +310,7 @@ msgid "  def parse!(implementation, contents) do\n"
 "```"
 msgstr ""
 
-#: ../../../getting-started/typespecs-and-behaviours.markdown:157
+#: ../../../getting-started/typespecs-and-behaviours.markdown:180
 msgid "Note you don't need to define a behaviour in order to dynamically dispatch on a module, but those features often go hand in hand."
 msgstr ""
 

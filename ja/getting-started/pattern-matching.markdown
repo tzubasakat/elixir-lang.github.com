@@ -117,9 +117,9 @@ iex> [0 | list]
 
 パターンマッチは、開発者がタプルやリストのようなデータ構造を解体するのを容易にしてくれます。次章で見ていくことになるものとしては、Elixir における再起処理の基礎と、マップやバイナリのようにそれを異なる型へ適用するというものもあります。
 
-## The pin operator
+## ピン演算子
 
-Variables in Elixir can be rebound:
+Elixir の変数は再代入ができます。
 
 ```iex
 iex> x = 1
@@ -128,7 +128,7 @@ iex> x = 2
 2
 ```
 
-Use the pin operator `^` when you want to pattern match against an existing variable's value rather than rebinding the variable:
+既存の変数の値に対して、再代入せずにパターンマッチをしたい時にはピン演算子 `^` を使います。
 
 ```iex
 iex> x = 1
@@ -143,14 +143,14 @@ iex> {y, ^x} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 ```
 
-Because we have assigned the value of 1 to the variable x, this last example could also have been written as:
+上での変数 x には既に 1 という値が代入されています。
 
 ```
 iex> {y, 1} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 ```
 
-If a variable is mentioned more than once in a pattern, all references should bind to the same pattern:
+一度のパターンに二つ以上の変数を書くと、参照する全てがパターンへの代入に成功することを期待します。
 
 ```iex
 iex> {x, x} = {1, 1}

@@ -323,9 +323,9 @@ iex&gt; [0 | list]
 
 <p>パターンマッチは、開発者がタプルやリストのようなデータ構造を解体するのを容易にしてくれます。次章で見ていくことになるものとしては、Elixir における再起処理の基礎と、マップやバイナリのようにそれを異なる型へ適用するというものもあります。</p>
 
-<h2 id="the-pin-operator">The pin operator</h2>
+<h2 id="ピン演算子">ピン演算子</h2>
 
-<p>Variables in Elixir can be rebound:</p>
+<p>Elixir の変数は再代入ができます。</p>
 
 <pre><code class="language-iex">iex&gt; x = 1
 1
@@ -333,7 +333,7 @@ iex&gt; x = 2
 2
 </code></pre>
 
-<p>Use the pin operator <code class="highlighter-rouge">^</code> when you want to pattern match against an existing variable’s value rather than rebinding the variable:</p>
+<p>既存の変数の値に対して、再代入せずにパターンマッチをしたい時にはピン演算子 <code class="highlighter-rouge">^</code> を使います。</p>
 
 <pre><code class="language-iex">iex&gt; x = 1
 1
@@ -347,14 +347,14 @@ iex&gt; {y, ^x} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 </code></pre>
 
-<p>Because we have assigned the value of 1 to the variable x, this last example could also have been written as:</p>
+<p>上での変数 x には既に 1 という値が代入されています。</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>iex&gt; {y, 1} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 </code></pre>
 </div>
 
-<p>If a variable is mentioned more than once in a pattern, all references should bind to the same pattern:</p>
+<p>一度のパターンに二つ以上の変数を書くと、参照する全てがパターンへの代入に成功することを期待します。</p>
 
 <pre><code class="language-iex">iex&gt; {x, x} = {1, 1}
 {1, 1}
@@ -415,7 +415,7 @@ iex&gt; h
       <div class="clear"></div>
 
       <div id="copyright">
-        &copy; 2012–2018 <a href="http://plataformatec.com.br/">Plataformatec</a>. All rights reserved.
+        &copy; 2012–2019 <a href="http://plataformatec.com.br/">Plataformatec</a>. All rights reserved.
       </div>
     </div><!-- .wrap -->
   </div><!-- #container -->

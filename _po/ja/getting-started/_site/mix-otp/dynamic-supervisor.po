@@ -110,8 +110,8 @@ msgid "## The bucket supervisor"
 msgstr ""
 
 msgid ""
-"Let's define a DynamicSupervisor and give it a name of `KV.BucketSupervisor` i"
-"n `lib/kv/supervisor.ex` as follows:"
+"Let's define a DynamicSupervisor and give it a name of `KV.BucketSupervisor`. "
+"Replace the `init` function in `lib/kv/supervisor.ex` as follows:"
 msgstr ""
 
 msgid ""
