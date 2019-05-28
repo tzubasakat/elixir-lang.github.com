@@ -362,7 +362,7 @@ iex&gt; {x, x} = {1, 2}
 ** (MatchError) no match of right hand side value: {1, 2}
 </code></pre>
 
-<p>In some cases, you don’t care about a particular value in a pattern. It is a common practice to bind those values to the underscore, <code class="highlighter-rouge">_</code>. For example, if only the head of the list matters to us, we can assign the tail to underscore:</p>
+<p>時にはパターンにおける値を気にしたくない場合があります。そういった場合は、<code class="highlighter-rouge">_</code> という変数へ値を代入するという慣習的な方法を使います。</p>
 
 <pre><code class="language-iex">iex&gt; [h | _] = [1, 2, 3]
 [1, 2, 3]

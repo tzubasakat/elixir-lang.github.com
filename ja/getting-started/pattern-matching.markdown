@@ -159,7 +159,7 @@ iex> {x, x} = {1, 2}
 ** (MatchError) no match of right hand side value: {1, 2}
 ```
 
-In some cases, you don't care about a particular value in a pattern. It is a common practice to bind those values to the underscore, `_`. For example, if only the head of the list matters to us, we can assign the tail to underscore:
+時にはパターンにおける値を気にしたくない場合があります。そういった場合は、`_` という変数へ値を代入するという慣習的な方法を使います。
 
 ```iex
 iex> [h | _] = [1, 2, 3]
