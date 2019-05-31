@@ -175,11 +175,11 @@ iex> _
 ** (CompileError) iex:1: invalid use of _. "_" represents a value to be ignored in a pattern and cannot be used in expressions
 ```
 
-Although pattern matching allows us to build powerful constructs, its usage is limited. For instance, you cannot make function calls on the left side of a match. The following example is invalid:
+パターンマッチはとても有力な構造を表現できますが、その使い方には制限があります。例えば、マッチ演算子の左辺側で関数を呼び出すことができません。
 
 ```iex
 iex> length([1, [2], 3]) = 3
 ** (CompileError) iex:1: cannot invoke remote function :erlang.length/1 inside match
 ```
 
-This finishes our introduction to pattern matching. As we will see in the next chapter, pattern matching is very common in many language constructs.
+パターンマッチの入門はこれで終わりです。次の章で理解していくことになりますが、パターンマッチは多くの言語においてとても普遍的な構造なのです。
