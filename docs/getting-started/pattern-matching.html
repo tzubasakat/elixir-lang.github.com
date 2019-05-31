@@ -333,7 +333,7 @@ iex&gt; x = 2
 2
 </code></pre>
 
-<p>既存の変数の値に対して、再代入せずにパターンマッチをしたい時にはピン演算子 <code class="highlighter-rouge">^</code> を使います。</p>
+<p>既存の変数に対して再代入するのではなく、パターンマッチをしたい時には、ピン演算子 <code class="highlighter-rouge">^</code> を使うことができます。</p>
 
 <pre><code class="language-iex">iex&gt; x = 1
 1
@@ -347,14 +347,14 @@ iex&gt; {y, ^x} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 </code></pre>
 
-<p>上での変数 x には既に 1 という値が代入されています。</p>
+<p>上での変数 x には既に 1 という値が代入されています。最後の部分の例については、これまで以下のように書いてきたものと同じです。</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>iex&gt; {y, 1} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 </code></pre>
 </div>
 
-<p>一度のパターンに二つ以上の変数を書くと、参照する全てがパターンへの代入に成功することを期待します。</p>
+<p>ある変数がひとつのパターンにおいて二つ以上に言及されると、それに対するリファレンスの全てがそのパターンにマッチしなくてはなりません。</p>
 
 <pre><code class="language-iex">iex&gt; {x, x} = {1, 1}
 {1, 1}
@@ -362,7 +362,7 @@ iex&gt; {x, x} = {1, 2}
 ** (MatchError) no match of right hand side value: {1, 2}
 </code></pre>
 
-<p>時にはパターンにおける値を気にしたくない場合があります。そういった場合は、<code class="highlighter-rouge">_</code> という変数へ値を代入するという慣習的な方法を使います。</p>
+<p>場合によってはパターンにおける値を気にしたくないことがあるでしょう。そういった時は、<code class="highlighter-rouge">_</code> という変数へ値を代入するという慣習的な方法を使います。</p>
 
 <pre><code class="language-iex">iex&gt; [h | _] = [1, 2, 3]
 [1, 2, 3]
@@ -370,7 +370,7 @@ iex&gt; h
 1
 </code></pre>
 
-<p>The variable <code class="highlighter-rouge">_</code> is special in that it can never be read from. Trying to read from it gives a compile error:</p>
+<p>変数 <code class="highlighter-rouge">_</code> はそこから読み出すことができない点で特殊なものです。試しにやってみたら CompileError が返ってくることでしょう。</p>
 
 <pre><code class="language-iex">iex&gt; _
 ** (CompileError) iex:1: invalid use of _. "_" represents a value to be ignored in a pattern and cannot be used in expressions
