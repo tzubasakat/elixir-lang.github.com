@@ -117,9 +117,9 @@ iex> [0 | list]
 
 パターンマッチは、開発者がタプルやリストのようなデータ構造を解体するのを容易にしてくれます。次章で見ていくことになるものとしては、Elixir における再起処理の基礎と、マップやバイナリのようにそれを異なる型へ適用するというものもあります。
 
-## The pin operator
+## ピン演算子
 
-Variables in Elixir can be rebound:
+Elixir の変数は再代入ができます。
 
 ```iex
 iex> x = 1
@@ -128,7 +128,7 @@ iex> x = 2
 2
 ```
 
-Use the pin operator `^` when you want to pattern match against an existing variable's value rather than rebinding the variable:
+既存の変数に対して再代入するのではなく、パターンマッチをしたい時には、ピン演算子 `^` を使うことができます。
 
 ```iex
 iex> x = 1
@@ -143,14 +143,14 @@ iex> {y, ^x} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 ```
 
-Because we have assigned the value of 1 to the variable x, this last example could also have been written as:
+上での変数 x には既に 1 という値が代入されています。最後の部分の例については、これまで以下のように書いてきたものと同じです。
 
 ```
 iex> {y, 1} = {2, 2}
 ** (MatchError) no match of right hand side value: {2, 2}
 ```
 
-If a variable is mentioned more than once in a pattern, all references should bind to the same pattern:
+ある変数がひとつのパターンにおいて二つ以上に言及されると、それに対するリファレンスの全てがそのパターンにマッチしなくてはなりません。
 
 ```iex
 iex> {x, x} = {1, 1}
@@ -159,7 +159,7 @@ iex> {x, x} = {1, 2}
 ** (MatchError) no match of right hand side value: {1, 2}
 ```
 
-In some cases, you don't care about a particular value in a pattern. It is a common practice to bind those values to the underscore, `_`. For example, if only the head of the list matters to us, we can assign the tail to underscore:
+場合によってはパターンにおける値を気にしたくないことがあるでしょう。そういった時は、`_` という変数へ値を代入するという慣習的な方法を使います。
 
 ```iex
 iex> [h | _] = [1, 2, 3]
@@ -168,18 +168,18 @@ iex> h
 1
 ```
 
-The variable `_` is special in that it can never be read from. Trying to read from it gives a compile error:
+変数 `_` はそこから読み出すことができない点で特殊なものです。試しにやってみたら CompileError が返ってくることでしょう。
 
 ```iex
 iex> _
 ** (CompileError) iex:1: invalid use of _. "_" represents a value to be ignored in a pattern and cannot be used in expressions
 ```
 
-Although pattern matching allows us to build powerful constructs, its usage is limited. For instance, you cannot make function calls on the left side of a match. The following example is invalid:
+パターンマッチはとても有力な構造を表現できますが、その使い方には制限があります。例えば、マッチ演算子の左辺側で関数を呼び出すことができません。
 
 ```iex
 iex> length([1, [2], 3]) = 3
 ** (CompileError) iex:1: cannot invoke remote function :erlang.length/1 inside match
 ```
 
-This finishes our introduction to pattern matching. As we will see in the next chapter, pattern matching is very common in many language constructs.
+パターンマッチの入門はこれで終わりです。次の章で理解していくことになりますが、パターンマッチは多くの言語においてとても普遍的な構造なのです。
