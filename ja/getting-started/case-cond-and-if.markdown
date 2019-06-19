@@ -7,11 +7,11 @@ title: case, cond, and if
 
 {% include toc.html %}
 
-In this chapter, we will learn about the `case`, `cond`, and `if` control flow structures.
+この章では、 case, cond, if といった制御構造について学んでいきます。
 
 ## `case`
 
-`case` allows us to compare a value against many patterns until we find a matching one:
+`case` を使うと、いくつかあるパターンのいずれかにマッチするまで値を比較することができます。
 
 ```iex
 iex> case {1, 2, 3} do
@@ -25,7 +25,7 @@ iex> case {1, 2, 3} do
 "This clause will match and bind x to 2 in this clause"
 ```
 
-If you want to pattern match against an existing variable, you need to use the `^` operator:
+すでに存在している変数に対してパターンマッチを行うには `^` 演算子を使います。
 
 ```iex
 iex> x = 1
@@ -37,7 +37,7 @@ iex> case 10 do
 "Will match"
 ```
 
-Clauses also allow extra conditions to be specified via guards:
+節はガードを使って条件を指定することもできます。
 
 ```iex
 iex> case {1, 2, 3} do
@@ -49,9 +49,9 @@ iex> case {1, 2, 3} do
 "Will match"
 ```
 
-The first clause above will only match when `x` is positive.
+上記の例にある最初の節では `x` が整数の時にマッチします。
 
-Keep in mind errors in guards do not leak but simply make the guard fail:
+ガードにおけるエラーが処理を抜けることはなく、ただガードに失敗するだけであると覚えておいてください。
 
 ```iex
 iex> hd(1)
@@ -63,7 +63,7 @@ iex> case 1 do
 "Got 1"
 ```
 
-If none of the clauses match, an error is raised:
+いずれの節にもマッチしない時はエラーになります。
 
 ```iex
 iex> case :ok do
@@ -72,9 +72,9 @@ iex> case :ok do
 ** (CaseClauseError) no case clause matching: :ok
 ```
 
-Consult [the full documentation for guards](https://hexdocs.pm/elixir/guards.html) for more information about guards, how they are used, and what expressions are allowed in them.
+ガードの使い方や利用できる式について知りたい時は [the full documentation for guards](https://hexdocs.pm/elixir/guards.html) で詳しい情報を得られます。
 
-Note anonymous functions can also have multiple clauses and guards:
+NOTE: 無名関数は複数の節とガードを含むこともできます。
 
 ```iex
 iex> f = fn
@@ -88,7 +88,7 @@ iex> f.(-1, 3)
 -3
 ```
 
-The number of arguments in each anonymous function clause needs to be the same, otherwise an error is raised.
+無名関数の中で節は引数の数が同じでなくてはならず、その数が合わなければエラーになります。
 
 ```iex
 iex> f2 = fn
