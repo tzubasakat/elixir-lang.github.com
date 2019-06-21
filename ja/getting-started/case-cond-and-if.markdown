@@ -142,7 +142,7 @@ iex> cond do
 
 ## `if` and `unless`
 
-Besides `case` and `cond`, Elixir also provides the macros `if/2` and `unless/2` which are useful when you need to check for only one condition:
+`case` と `cond` の他、ひとつの条件だけを検証したい時に有用なマクロ `if/2` と `unless/2` も使えます。
 
 ```iex
 iex> if true do
@@ -155,9 +155,9 @@ iex> unless true do
 nil
 ```
 
-If the condition given to `if/2` returns `false` or `nil`, the body given between `do/end` is not executed and instead it returns `nil`. The opposite happens with `unless/2`.
+`false` と `nil` を返す条件では `do/end` のブロック間にある内容が実行されず、代わりに `nil` を返します。 `unless` ではこの逆になります。
 
-They also support `else` blocks:
+これらはブロックで `else` も使えます。
 
 ```iex
 iex> if nil do
@@ -168,7 +168,7 @@ iex> if nil do
 "This will"
 ```
 
-> Note: An interesting note regarding `if/2` and `unless/2` is that they are implemented as macros in the language; they aren't special language constructs as they would be in many languages. You can check the documentation and the source of `if/2` in [the `Kernel` module docs](https://hexdocs.pm/elixir/Kernel.html). The `Kernel` module is also where operators like `+/2` and functions like `is_function/2` are defined, all automatically imported and available in your code by default.
+`if/2` と `unless/2` がマクロとして実行されることに関して興味深いところですが、他の多くの言語でもそうであるように、取り立てるほど特別な構造ではありません。これらに関するドキュメントや `if/2` のソースは [the `Kernel` module docs](https://hexdocs.pm/elixir/Kernel.html) で確認できます。 `Kernel` モジュールには `+/2` のような演算子や `is_function/2` といった関数も定義されており、すべて自動的にインポートされるので、あなたのコードはデフォルトでそれらを利用することができます。
 
 ## `do/end` blocks
 
