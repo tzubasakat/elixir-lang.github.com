@@ -100,7 +100,7 @@ iex> f2 = fn
 
 ## `cond`
 
-`case` is useful when you need to match against different values. However, in many circumstances, we want to check different conditions and find the first one that evaluates to true. In such cases, one may use `cond`:
+`case` は様々な値に対してマッチさせたい時に有用です。それでも、様々な条件を調べて最初に true と評価されるものを見つけたいことが往々にしてあります。そういった場合に取る方法のひとつが `cond` です。
 
 ```iex
 iex> cond do
@@ -114,9 +114,9 @@ iex> cond do
 "But this will"
 ```
 
-This is equivalent to `else if` clauses in many imperative languages (although used way less frequently here).
+これは多くの命令型言語における `else if` に相当するものです(ここではあまり使われません)。
 
-If none of the conditions return true, an error (`CondClauseError`) is raised. For this reason, it may be necessary to add a final condition, equal to `true`, which will always match:
+true を返す条件が見つからないと (`CondClauseError`) になります。この理由は、そういった時に最後では必ず `true` に等しくなる条件を書かなくてはならない為です。
 
 ```iex
 iex> cond do
@@ -130,7 +130,7 @@ iex> cond do
 "This is always true (equivalent to else)"
 ```
 
-Finally, note `cond` considers any value besides `nil` and `false` to be true:
+最後に、 `cond` は `nil` と `false` 以外の如何なる値も `true` と見なすことを覚えておきましょう。
 
 ```iex
 iex> cond do
