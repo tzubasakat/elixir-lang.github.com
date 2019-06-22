@@ -377,19 +377,19 @@ nil
 
 <h2 id="doend-blocks"><code class="highlighter-rouge">do/end</code> blocks</h2>
 
-<p>At this point, we have learned four control structures: <code class="highlighter-rouge">case</code>, <code class="highlighter-rouge">cond</code>, <code class="highlighter-rouge">if</code>, and <code class="highlighter-rouge">unless</code>, and they were all wrapped in <code class="highlighter-rouge">do/end</code> blocks. It happens we could also write <code class="highlighter-rouge">if</code> as follows:</p>
+<p>ここまで <code class="highlighter-rouge">case</code>, <code class="highlighter-rouge">cond</code>, <code class="highlighter-rouge">if</code>, <code class="highlighter-rouge">unless</code> という4つの制御構造を学びましたが、これらはすべて <code class="highlighter-rouge">do/end</code> ブロックに包含されていました。しかし、よくある書き方として <code class="highlighter-rouge">if</code> を以下のようにすることもできたのです。</p>
 
 <pre><code class="language-iex">iex&gt; if true, do: 1 + 2
 3
 </code></pre>
 
-<p>Notice how the example above has a comma between <code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">do:</code>, that’s because it is using Elixir’s regular syntax where each argument is separated by a comma. We say this syntax is using <em>keyword lists</em>. We can pass <code class="highlighter-rouge">else</code> using keywords too:</p>
+<p>注目して欲しいのは、どうしてこの例で <code class="highlighter-rouge">true</code> と <code class="highlighter-rouge">do:</code> の間にコンマが置かれているのかです。この理由は、各引数がコンマによって区切られなければいけないという基本的な文法によります。つまり、この文法は <em>キーワードリスト</em> を使っているということなのです。キーワードに <code class="highlighter-rouge">else</code> を渡して使うこともできます。</p>
 
 <pre><code class="language-iex">iex&gt; if false, do: :this, else: :that
 :that
 </code></pre>
 
-<p><code class="highlighter-rouge">do/end</code> blocks are a syntactic convenience built on top of the keywords one. That’s why <code class="highlighter-rouge">do/end</code> blocks do not require a comma between the previous argument and the block. They are useful exactly because they remove the verbosity when writing blocks of code. These are equivalent:</p>
+<p><code class="highlighter-rouge">do/end</code> ブロックは文法的な便宜です。では、なぜ <code class="highlighter-rouge">do/end</code> ブロックは前にある引数やブロックとの間にコンマを必要としないのでしょう。以下の二つは同等になります。</p>
 
 <pre><code class="language-iex">iex&gt; if true do
 ...&gt;   a = 1 + 2
@@ -403,7 +403,7 @@ iex&gt; if true, do: (
 13
 </code></pre>
 
-<p>One thing to keep in mind when using <code class="highlighter-rouge">do/end</code> blocks is they are always bound to the outermost function call. For example, the following expression:</p>
+<p><code class="highlighter-rouge">do/end</code> ブロックを使う場合にひとつ留意して欲しいのが、これらは一番外側で呼ばれた関数に対して働く点です。例えば以下の表現は、<code class="highlighter-rouge">if</code> のキーワードとしては認められません。</p>
 
 <pre><code class="language-iex">iex&gt; is_number if true do
 ...&gt;  1 + 2
@@ -411,7 +411,7 @@ iex&gt; if true, do: (
 ** (CompileError) iex:1: undefined function is_number/2
 </code></pre>
 
-<p>Would be parsed as:</p>
+<p>その為、実際には以下のように解釈されることになってしまいます。</p>
 
 <pre><code class="language-iex">iex&gt; is_number(if true) do
 ...&gt;  1 + 2
@@ -419,9 +419,9 @@ iex&gt; if true, do: (
 ** (CompileError) iex:1: undefined function is_number/2
 </code></pre>
 
-<p>which leads to an undefined function error because that invocation passes two arguments, and <code class="highlighter-rouge">is_number/2</code> does not exist. The <code class="highlighter-rouge">if true</code> expression is invalid in itself because it needs the block, but since the arity of <code class="highlighter-rouge">is_number/2</code> does not match, Elixir does not even reach its evaluation.</p>
+<p>無理なお願いをしたことで起こった undefined function のエラーです。 <code class="highlighter-rouge">is_number/2</code> は存在しないと言っています。<code class="highlighter-rouge">if true</code> という式はブロックが必要になる為、これ自体が無効な表現となります。 <code class="highlighter-rouge">is_number/2</code> のアリティとは一致しません。ゆえに Elixir はそれを評価するにさえ至らないのです。</p>
 
-<p>Adding explicit parentheses is enough to bind the block to <code class="highlighter-rouge">if</code>:</p>
+<p><code class="highlighter-rouge">if</code> にブロックを括り付けるには明確に丸括弧で囲むだけで十分です。</p>
 
 <pre><code class="language-iex">iex&gt; is_number(if true do
 ...&gt;  1 + 2
@@ -429,7 +429,7 @@ iex&gt; if true, do: (
 true
 </code></pre>
 
-<p>Keyword lists play an important role in the language and are quite common in many functions and macros. We will explore them a bit more in a future chapter. Now it is time to talk about “Binaries, strings, and char lists”.</p>
+<p>キーワードリストはとても重要な役割を果たしており、多くの関数やマクロにおいて普遍的なものです。それについてはまた別の章で取り上げる事として、そろそろ “バイナリ、文字列、文字リスト” の紹介してもいい頃でしょう。</p>
 
   </article><!-- .hfeed -->
 

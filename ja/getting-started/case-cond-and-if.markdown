@@ -172,21 +172,21 @@ iex> if nil do
 
 ## `do/end` blocks
 
-At this point, we have learned four control structures: `case`, `cond`, `if`, and `unless`, and they were all wrapped in `do/end` blocks. It happens we could also write `if` as follows:
+ここまで `case`, `cond`, `if`, `unless` という4つの制御構造を学びましたが、これらはすべて `do/end` ブロックに包含されていました。しかし、よくある書き方として `if` を以下のようにすることもできたのです。
 
 ```iex
 iex> if true, do: 1 + 2
 3
 ```
 
-Notice how the example above has a comma between `true` and `do:`, that's because it is using Elixir's regular syntax where each argument is separated by a comma. We say this syntax is using *keyword lists*. We can pass `else` using keywords too:
+注目して欲しいのは、どうしてこの例で `true` と `do:` の間にコンマが置かれているのかです。この理由は、各引数がコンマによって区切られなければいけないという基本的な文法によります。つまり、この文法は *キーワードリスト* を使っているということなのです。キーワードに `else` を渡して使うこともできます。
 
 ```iex
 iex> if false, do: :this, else: :that
 :that
 ```
 
-`do/end` blocks are a syntactic convenience built on top of the keywords one. That's why `do/end` blocks do not require a comma between the previous argument and the block. They are useful exactly because they remove the verbosity when writing blocks of code. These are equivalent:
+`do/end` ブロックは文法的な便宜です。では、なぜ `do/end` ブロックは前にある引数やブロックとの間にコンマを必要としないのでしょう。以下の二つは同等になります。
 
 ```iex
 iex> if true do
@@ -201,7 +201,7 @@ iex> if true, do: (
 13
 ```
 
-One thing to keep in mind when using `do/end` blocks is they are always bound to the outermost function call. For example, the following expression:
+`do/end` ブロックを使う場合にひとつ留意して欲しいのが、これらは一番外側で呼ばれた関数に対して働く点です。例えば以下の表現は、`if` のキーワードとしては認められません。
 
 ```iex
 iex> is_number if true do
@@ -210,7 +210,7 @@ iex> is_number if true do
 ** (CompileError) iex:1: undefined function is_number/2
 ```
 
-Would be parsed as:
+その為、実際には以下のように解釈されることになってしまいます。
 
 ```iex
 iex> is_number(if true) do
@@ -219,9 +219,9 @@ iex> is_number(if true) do
 ** (CompileError) iex:1: undefined function is_number/2
 ```
 
-which leads to an undefined function error because that invocation passes two arguments, and `is_number/2` does not exist. The `if true` expression is invalid in itself because it needs the block, but since the arity of `is_number/2` does not match, Elixir does not even reach its evaluation.
+無理なお願いをしたことで起こった undefined function のエラーです。 `is_number/2` は存在しないと言っています。`if true` という式はブロックが必要になる為、これ自体が無効な表現となります。 `is_number/2` のアリティとは一致しません。ゆえに Elixir はそれを評価するにさえ至らないのです。
 
-Adding explicit parentheses is enough to bind the block to `if`:
+`if` にブロックを括り付けるには明確に丸括弧で囲むだけで十分です。
 
 ```iex
 iex> is_number(if true do
@@ -230,4 +230,4 @@ iex> is_number(if true do
 true
 ```
 
-Keyword lists play an important role in the language and are quite common in many functions and macros. We will explore them a bit more in a future chapter. Now it is time to talk about "Binaries, strings, and char lists".
+キーワードリストはとても重要な役割を果たしており、多くの関数やマクロにおいて普遍的なものです。それについてはまた別の章で取り上げる事として、そろそろ "バイナリ、文字列、文字リスト" の紹介してもいい頃でしょう。
